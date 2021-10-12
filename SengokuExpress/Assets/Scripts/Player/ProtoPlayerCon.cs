@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ProtoPlayerCon : MonoBehaviour
 {
-    public Rigidbody rb;
+    public CharacterController cc;
     public Animator anim;
     public Collider lightHB;
     public Collider heavyHB;
@@ -17,7 +17,7 @@ public class ProtoPlayerCon : MonoBehaviour
 
     private void Awake()
     {
-        rb = GetComponent<Rigidbody>();
+        cc = GetComponent<CharacterController>();
         anim = GetComponent<Animator>();
     }
     public void OnMoveInput(float horIn, float vertIn)
@@ -42,13 +42,13 @@ public class ProtoPlayerCon : MonoBehaviour
         anim.SetTrigger("dash");
         Vector3 moveDir = Vector3.forward * vert * dashSpd + Vector3.right * hor * dashSpd;
 
-        rb.AddForce(moveDir);
+        cc.Move(moveDir);
 
     }
 
     private void FixedUpdate()
     {
         Vector3 moveDir = Vector3.forward * vert * moveSpd + Vector3.right * hor * moveSpd;
-        rb.velocity = moveDir;
+        cc.Move(moveDir);
     }
 }
