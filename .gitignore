@@ -58,3 +58,14 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties
 
+# Visual Studio Code (Matin)
+SengokuExpress/.vscode/*
+SengokuExpress/!.vscode/settings.json
+SengokuExpress/!.vscode/tasks.json
+SengokuExpress/!.vscode/launch.json
+SengokuExpress/!.vscode/extensions.json
+SengokuExpress/*.code-workspace
+
+# Matin WIP folders
+SengokuExpress/Assets/Matin_WIP/
+SengokuExpress/Assets/Matin_WIP.meta
