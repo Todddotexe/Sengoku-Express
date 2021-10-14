@@ -1,0 +1,9 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements">
+    <SplitView style="flex-grow: 1; flex-direction: row;">
+        <Style src="Behaviour_Tree_Editor.uss" />
+        <InspectorView style="flex-grow: 0.3;">
+            <ui:Label text="Inspector" display-tooltip-when-elided="True" style="background-color: rgba(37, 37, 37, 0.98); -unity-text-align: upper-center;" />
+        </InspectorView>
+        <Behaviour_Tree_View focusable="True" style="flex-grow: 1;" />
+    </SplitView>
+</ui:UXML>
