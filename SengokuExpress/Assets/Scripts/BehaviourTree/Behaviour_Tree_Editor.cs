@@ -31,12 +31,22 @@ public class Behaviour_Tree_Editor : EditorWindow {
 
         tree_view = root.Q<Behaviour_Tree_View>();
         inspector_view = root.Q<InspectorView>();
+        tree_view.on_node_selected = on_node_selection_changed;
+        OnSelectionChange();
     }
 
     private void OnSelectionChange() {
         Behaviour_Tree tree = Selection.activeObject as Behaviour_Tree;
-        if (tree != null) {
+        // the commented out section below does not exist in the current version of unity
+        if (tree != null /*&& AssetDatabase.CanOpenAssetInEditor(tree.GetInstanceID())*/) {
             tree_view.populate_view(tree);
         }
+    }
+
+    // ==
+    // custom functions
+    // ==
+    void on_node_selection_changed(Node_View node) {
+        inspector_view.update_selection(node);
     }
 }
