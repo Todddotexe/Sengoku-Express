@@ -2,7 +2,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEditor.UIElements;
-
+using UnityEditor.Callbacks;
 
 public class AI_Tree_Editor : EditorWindow
 {
@@ -10,10 +10,19 @@ public class AI_Tree_Editor : EditorWindow
     AI_Tree_Inspector inspector_view;
 
     [MenuItem("AI_Tree_Editor/Editor")]
-    public static void ShowExample()
+    public static void OpenWindow()
     {
         AI_Tree_Editor wnd = GetWindow<AI_Tree_Editor>();
         wnd.titleContent = new GUIContent("AI_Tree_Editor");
+    }
+
+    [OnOpenAsset]
+    public static bool OnOpenAsset(int instance_id, int line) {
+        if (Selection.activeObject is AI_Tree) {
+            OpenWindow();
+            return true;
+        }
+        return false;
     }
 
     public void OnEnable()
