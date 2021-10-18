@@ -81,11 +81,12 @@ public class Player_Controller : MonoBehaviour {
         public Animator animator = null;
     }
 
-	// =================================================================
-	// ======================= Player_Controller =======================
-	// =================================================================
+    // =================================================================
+    // ======================= Player_Controller =======================
+    // =================================================================
+    public ParticleSystem dashPart;
 
-	// ===
+    // ===
     /// FIELDS
     // ===
     Transform transf = null; // cached transform
@@ -174,6 +175,7 @@ public class Player_Controller : MonoBehaviour {
     /// used as a delegate for Player_Inputs.dash
     void delegate_dash(InputAction.CallbackContext obj) {
         dash.dash(transf.position, inputs.input);
+        dashPart.Play();
     }
     
     /// used as a delegate for Player_Inputs.bark
