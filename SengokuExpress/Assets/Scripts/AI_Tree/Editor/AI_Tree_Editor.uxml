@@ -1,0 +1,13 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements">
+    <ui:VisualElement name="container" style="flex-grow: 1; flex-direction: row;">
+        <Style src="AI_Tree_Editor.uss" />
+        <ui:VisualElement name="inspector_container" style="flex-grow: 0.3;">
+            <ui:Label text="inspector" display-tooltip-when-elided="True" style="-unity-text-align: upper-center; background-color: rgb(32, 32, 32);" />
+            <AI_Tree_Inspector style="flex-grow: 1;" />
+        </ui:VisualElement>
+        <ui:VisualElement name="graph_container" style="flex-grow: 1;">
+            <ui:Label text="Press (F) to refocus" display-tooltip-when-elided="True" style="-unity-text-align: upper-center; background-color: rgba(32, 32, 32, 255);" />
+            <AI_Tree_View focusable="True" style="flex-grow: 1;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
