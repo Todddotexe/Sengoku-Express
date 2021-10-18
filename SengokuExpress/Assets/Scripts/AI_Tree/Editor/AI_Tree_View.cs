@@ -31,9 +31,14 @@ public class AI_Tree_View : GraphView {
     // ==
     // -- right click option menu displays the nodes we can add
     public override void BuildContextualMenu(ContextualMenuPopulateEvent evt) {
-        var types = TypeCache.GetTypesDerivedFrom<AI_Tree_Node>();
-        foreach (var type in types) {
-            evt.menu.AppendAction($"[{type.BaseType.Name}] {type.Name}", (a) => create_node(type));
+        if (tree == null) return;
+        if (tree.root == null) return;
+        { // -- action methods
+            var methods = TypeCache.GetMethodsWithAttribute<AI_Function_Attribute>();
+            foreach (var method in methods) {
+                evt.menu.AppendAction($"[function] {method.Name}", 
+                (a) => create_node(typeof(AI_Tree_Node), method.Name, method.Name));
+            }
         }
     }
     //
@@ -54,11 +59,12 @@ public class AI_Tree_View : GraphView {
         graphViewChanged += on_graph_view_changed;
 
         // -- create root node 
-        // if (tree.root == null) {
-        //     tree.root = tree.create_node(typeof(AI_Tree_Action)) as AI_Tree_Action;
-        //     EditorUtility.SetDirty(tree); // so that changes don't get lost after an assembly reload
-        //     AssetDatabase.SaveAssets();
-        // }
+        if (tree.root == null) {
+            // tree.root = tree.create_node(typeof(AI_Tree_Root)) as AI_Tree_Root;
+            var root = tree.init_from_ai_tree_view();
+            EditorUtility.SetDirty(tree); // so that changes don't get lost after an assembly reload
+            AssetDatabase.SaveAssets();
+        }
 
         // -- create node views in the graph
         tree.nodes.ForEach(n => create_node_view(n));
@@ -78,7 +84,7 @@ public class AI_Tree_View : GraphView {
     AI_Tree_Node_View find_node_view(AI_Tree_Node node) {
         return GetNodeByGuid(node.guid) as AI_Tree_Node_View;
     }
-    //
+    // handle deletion and creation of nodes and edges
     GraphViewChange on_graph_view_changed(GraphViewChange graph_view_change) {
         // -- deletion of nodes and links
         if (graph_view_change.elementsToRemove != null) {
@@ -86,7 +92,10 @@ public class AI_Tree_View : GraphView {
                 // -- node view themselves
                 AI_Tree_Node_View node_view = e as AI_Tree_Node_View;
                 if (node_view != null) {
-                    tree.delete_node(node_view.node);
+                    AI_Tree_Root as_root = node_view.node as AI_Tree_Root;
+                    if (as_root == null) {  // only delete this node if it's not a root
+                        tree.delete_node(node_view.node);
+                    }
                 }
                 // -- links
                 Edge edge = e as Edge;
@@ -109,8 +118,9 @@ public class AI_Tree_View : GraphView {
         return graph_view_change;
     }
     // create a node of the given type, and create the assotiated node view
-    void create_node(System.Type type) {
-        AI_Tree_Node node = tree.create_node(type);
+    void create_node(System.Type type, string title, string method_name) {
+        AI_Tree_Node node = tree.create_node(type, method_name);
+        node.nodeName = title;
         create_node_view(node);
     }
     //
