@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-8202327882592725672
+--- !u!114 &-6691041562746118634
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   connection_ok: []
   connection_fail: []
-  guid: c3989d54237f92a4ab714bb456c0a3c7
-  graph_pos: {x: 0, y: 0}
-  nodeName: 
+  guid: f88dd4d72a004564ba62ddfeaeb44058
+  graph_pos: {x: 880.92, y: -164}
+  nodeName: attack_1
   method_name: attack_1
   tree: {fileID: 11400000}
 --- !u!114 &-4659108394332597843
@@ -96,7 +96,7 @@ MonoBehaviour:
   - {fileID: -4016785460091333492}
   - {fileID: -4659108394332597843}
   - {fileID: -1192799491708000578}
-  - {fileID: -8202327882592725672}
+  - {fileID: -6691041562746118634}
 --- !u!114 &2799751143927591279
 MonoBehaviour:
   m_ObjectHideFlags: 0
