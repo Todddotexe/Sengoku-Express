@@ -57,6 +57,14 @@ public class @PlayerInp : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Reset_Level_Debug"",
+                    ""type"": ""Button"",
+                    ""id"": ""d9b584f4-0361-4ee3-aa6a-7673ed2eacc1"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -158,6 +166,17 @@ public class @PlayerInp : IInputActionCollection, IDisposable
                     ""action"": ""Dash"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""51a1e410-341f-4e54-9148-b9b31c8c3ee0"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Reset_Level_Debug"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -171,6 +190,7 @@ public class @PlayerInp : IInputActionCollection, IDisposable
         m_InGameAP_LightAttack = m_InGameAP.FindAction("LightAttack", throwIfNotFound: true);
         m_InGameAP_HeavyAttack = m_InGameAP.FindAction("HeavyAttack", throwIfNotFound: true);
         m_InGameAP_Bark = m_InGameAP.FindAction("Bark", throwIfNotFound: true);
+        m_InGameAP_Reset_Level_Debug = m_InGameAP.FindAction("Reset_Level_Debug", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -225,6 +245,7 @@ public class @PlayerInp : IInputActionCollection, IDisposable
     private readonly InputAction m_InGameAP_LightAttack;
     private readonly InputAction m_InGameAP_HeavyAttack;
     private readonly InputAction m_InGameAP_Bark;
+    private readonly InputAction m_InGameAP_Reset_Level_Debug;
     public struct InGameAPActions
     {
         private @PlayerInp m_Wrapper;
@@ -234,6 +255,7 @@ public class @PlayerInp : IInputActionCollection, IDisposable
         public InputAction @LightAttack => m_Wrapper.m_InGameAP_LightAttack;
         public InputAction @HeavyAttack => m_Wrapper.m_InGameAP_HeavyAttack;
         public InputAction @Bark => m_Wrapper.m_InGameAP_Bark;
+        public InputAction @Reset_Level_Debug => m_Wrapper.m_InGameAP_Reset_Level_Debug;
         public InputActionMap Get() { return m_Wrapper.m_InGameAP; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -258,6 +280,9 @@ public class @PlayerInp : IInputActionCollection, IDisposable
                 @Bark.started -= m_Wrapper.m_InGameAPActionsCallbackInterface.OnBark;
                 @Bark.performed -= m_Wrapper.m_InGameAPActionsCallbackInterface.OnBark;
                 @Bark.canceled -= m_Wrapper.m_InGameAPActionsCallbackInterface.OnBark;
+                @Reset_Level_Debug.started -= m_Wrapper.m_InGameAPActionsCallbackInterface.OnReset_Level_Debug;
+                @Reset_Level_Debug.performed -= m_Wrapper.m_InGameAPActionsCallbackInterface.OnReset_Level_Debug;
+                @Reset_Level_Debug.canceled -= m_Wrapper.m_InGameAPActionsCallbackInterface.OnReset_Level_Debug;
             }
             m_Wrapper.m_InGameAPActionsCallbackInterface = instance;
             if (instance != null)
@@ -277,6 +302,9 @@ public class @PlayerInp : IInputActionCollection, IDisposable
                 @Bark.started += instance.OnBark;
                 @Bark.performed += instance.OnBark;
                 @Bark.canceled += instance.OnBark;
+                @Reset_Level_Debug.started += instance.OnReset_Level_Debug;
+                @Reset_Level_Debug.performed += instance.OnReset_Level_Debug;
+                @Reset_Level_Debug.canceled += instance.OnReset_Level_Debug;
             }
         }
     }
@@ -288,5 +316,6 @@ public class @PlayerInp : IInputActionCollection, IDisposable
         void OnLightAttack(InputAction.CallbackContext context);
         void OnHeavyAttack(InputAction.CallbackContext context);
         void OnBark(InputAction.CallbackContext context);
+        void OnReset_Level_Debug(InputAction.CallbackContext context);
     }
 }
