@@ -27,6 +27,14 @@ public class Proto_Enemy : MonoBehaviour {
         Gizmos.DrawWireSphere(transform.position, vision_radius);
     }
 
+    void look_at(Vector3 pos) {
+        Vector3 current_pos = transf.position;
+        current_pos.y = 0;
+        Vector3 target_pos = pos;
+        target_pos.y = 0;
+        transf.LookAt(target_pos, Vector3.up);
+    }
+
     // ==
     // AI FUNCTIONS
     // ==
@@ -38,15 +46,16 @@ public class Proto_Enemy : MonoBehaviour {
 
     [AI_Function_Attribute]
     bool approach_player() {
-        if (is_player_in_combat_range()) return true;   // @temp @TODO remove this
         Vector3 velocity = (target_transform.position - transf.position).normalized * speed;
         velocity.y = 0;
         transf.position += velocity * Time.deltaTime;
+        look_at(target_transform.position);
         return false;
     }
 
     [AI_Function_Attribute]
     bool attack_1() {
+        look_at(target_transform.position);
         return true;
     }
 
