@@ -68,7 +68,8 @@ public class Player_Controller : MonoBehaviour {
     }
     /// Player Inputs
     private class Player_Inputs{
-        public Vector3 input = new Vector2();
+        public Vector3 input = new Vector3();
+        public Vector2 input_vec2 = new Vector2();
         public InputAction walk = null;
         public InputAction dash = null;
         public InputAction bark = null;
@@ -84,7 +85,7 @@ public class Player_Controller : MonoBehaviour {
     // =================================================================
     // ======================= Player_Controller =======================
     // =================================================================
-    public ParticleSystem dashPart;
+    public ParticleSystem dash_part;
 
     // ===
     /// FIELDS
@@ -127,6 +128,7 @@ public class Player_Controller : MonoBehaviour {
         // -- get input
         { // -- translate vec2 to vec3
             var input_vec2 = inputs.walk.ReadValue<Vector2>();
+            inputs.input_vec2 = input_vec2;
             inputs.input.x = input_vec2.x;
             inputs.input.y = 0;
             inputs.input.z = input_vec2.y;
@@ -174,8 +176,10 @@ public class Player_Controller : MonoBehaviour {
 
     /// used as a delegate for Player_Inputs.dash
     void delegate_dash(InputAction.CallbackContext obj) {
-        dash.dash(transf.position, inputs.input);
-        dashPart.Play();
+        dash.dash(transf.position, inputs.input_vec2);
+        if (dash_part != null) {
+            dash_part.Play();
+        }
     }
     
     /// used as a delegate for Player_Inputs.bark

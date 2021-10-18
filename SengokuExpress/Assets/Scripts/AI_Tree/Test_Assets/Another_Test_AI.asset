@@ -1,0 +1,116 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-9115478136610175888
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0dbed3cfd70659e4291ff89edb331e69, type: 3}
+  m_Name: AI_Tree_Node
+  m_EditorClassIdentifier: 
+  connection_ok: []
+  connection_fail: []
+  guid: 5a0ac6259401ccc4b948e7c8c0cc2c2e
+  graph_pos: {x: 948, y: -120.285706}
+  nodeName: attack_1
+  method_name: attack_1
+  tree: {fileID: 11400000}
+--- !u!114 &-7612399999719969743
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0dbed3cfd70659e4291ff89edb331e69, type: 3}
+  m_Name: AI_Tree_Node
+  m_EditorClassIdentifier: 
+  connection_ok: []
+  connection_fail: []
+  guid: 35c9edc62a5e17a459bbfe972ab4a734
+  graph_pos: {x: 619, y: 1.7142944}
+  nodeName: is_player_in_combat_range
+  method_name: is_player_in_combat_range
+  tree: {fileID: 11400000}
+--- !u!114 &-4586905020108079625
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4be67395561e17e4cbfadf719f9ba096, type: 3}
+  m_Name: AI_Tree_Root
+  m_EditorClassIdentifier: 
+  connection_ok: []
+  connection_fail: []
+  guid: f4953c10ab2719943bb9d5b5e5949551
+  graph_pos: {x: 0, y: 0}
+  nodeName: 
+  method_name: 
+  tree: {fileID: 11400000}
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 676cacdd435b4d2409bae7169499bb3d, type: 3}
+  m_Name: Another_Test_AI
+  m_EditorClassIdentifier: 
+  root: {fileID: -4586905020108079625}
+  nodes:
+  - {fileID: -4586905020108079625}
+  - {fileID: 1550741481973698700}
+  - {fileID: -7612399999719969743}
+  - {fileID: -9115478136610175888}
+  - {fileID: 5070945370311121429}
+--- !u!114 &1550741481973698700
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0dbed3cfd70659e4291ff89edb331e69, type: 3}
+  m_Name: AI_Tree_Node
+  m_EditorClassIdentifier: 
+  connection_ok: []
+  connection_fail: []
+  guid: 3e46c74dace3b3f4f990d5115547fa2e
+  graph_pos: {x: 258.4286, y: 1.1428528}
+  nodeName: is_player_in_range
+  method_name: is_player_in_range
+  tree: {fileID: 11400000}
+--- !u!114 &5070945370311121429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0dbed3cfd70659e4291ff89edb331e69, type: 3}
+  m_Name: AI_Tree_Node
+  m_EditorClassIdentifier: 
+  connection_ok: []
+  connection_fail: []
+  guid: e6b1ceac777fdf9439af95be5a63ccb0
+  graph_pos: {x: 0, y: 0}
+  nodeName: 
+  method_name: approach_player
+  tree: {fileID: 11400000}

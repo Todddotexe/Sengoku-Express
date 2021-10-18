@@ -37,10 +37,8 @@ public class Proto_Enemy : MonoBehaviour {
     }
 
     [AI_Function_Attribute]
-    bool approach_player_until_in_combat_range() {
-        if ((transf.position - target_transform.position).magnitude <= combat_radius) {
-            return true;
-        }
+    bool approach_player() {
+        if (is_player_in_combat_range()) return true;   // @temp @TODO remove this
         Vector3 velocity = (target_transform.position - transf.position).normalized * speed;
         velocity.y = 0;
         transf.position += velocity * Time.deltaTime;
@@ -50,5 +48,10 @@ public class Proto_Enemy : MonoBehaviour {
     [AI_Function_Attribute]
     bool attack_1() {
         return true;
+    }
+
+    [AI_Function_Attribute]
+    bool is_player_in_combat_range() {
+        return (transf.position - target_transform.position).magnitude <= combat_radius;
     }
 }

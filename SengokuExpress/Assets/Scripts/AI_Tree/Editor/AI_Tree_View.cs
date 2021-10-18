@@ -47,7 +47,10 @@ public class AI_Tree_View : GraphView {
         // don't allow duplicate edges (a node connected to another twice)
         return ports.ToList().Where(end => 
         end.direction != s.direction && 
-        end.node != s.node && !s_node_view.node.connection_next.Contains((((AI_Tree_Node_View)end.node).node))).ToList();
+        end.node != s.node &&
+        !s_node_view.node.connection_ok.Contains((((AI_Tree_Node_View)end.node).node)) &&
+        !s_node_view.node.connection_fail.Contains((((AI_Tree_Node_View)end.node).node))
+        ).ToList();
     }
     // ==
     // CUSTOM
@@ -71,13 +74,24 @@ public class AI_Tree_View : GraphView {
 
         // -- create the links between node views
         tree.nodes.ForEach(n => {
-            var children = tree.get_children(n);
-            children.ForEach(c => {
-                AI_Tree_Node_View parent_view = find_node_view(n);
-                AI_Tree_Node_View child_view = find_node_view(c);
-                Edge edge = parent_view.output.ConnectTo(child_view.input);
-                AddElement(edge);
-            });
+            { // connection ok
+                var connections = tree.get_connection_ok(n);
+                connections.ForEach(c => {
+                    AI_Tree_Node_View parent_view = find_node_view(n);
+                    AI_Tree_Node_View child_view = find_node_view(c);
+                    Edge edge = parent_view.output_ok.ConnectTo(child_view.input);
+                    AddElement(edge);
+                });
+            }
+            { // connection fail
+                var connections = tree.get_connection_fail(n);
+                connections.ForEach(c => {
+                    AI_Tree_Node_View parent_view = find_node_view(n);
+                    AI_Tree_Node_View child_view = find_node_view(c);
+                    Edge edge = parent_view.output_fail.ConnectTo(child_view.input);
+                    AddElement(edge);
+                });
+            }
         });
     }
     // find node view from node
@@ -102,7 +116,14 @@ public class AI_Tree_View : GraphView {
                 if (edge != null) {
                     var parent_view = edge.output.node as AI_Tree_Node_View;
                     var child_view = edge.input.node as AI_Tree_Node_View;
-                    tree.remove_connection(parent_view.node, child_view.node);
+                    // -- if output comes out of ok port
+                    if (edge.output.portName.CompareTo(AI_Tree_Node_View.PORT_OK) == 0) {
+                        tree.remove_connection_ok(parent_view.node, child_view.node);
+                    }
+                    // -- fail case
+                    if (edge.output.portName.CompareTo(AI_Tree_Node_View.PORT_FAIL) == 0) {
+                        tree.remove_connection_fail(parent_view.node, child_view.node);
+                    }
                 }
             });
         }
@@ -111,8 +132,16 @@ public class AI_Tree_View : GraphView {
             graph_view_change.edgesToCreate.ForEach(e => {
                 var parent_view = e.output.node as AI_Tree_Node_View;
                 var child_view = e.input.node as AI_Tree_Node_View;
-                tree.add_connection(parent_view.node, child_view.node);
-                Debug.Log("some connection occurred");
+                // -- ok case
+                if (e.output.portName.CompareTo(AI_Tree_Node_View.PORT_OK) == 0) {
+                    tree.add_connection_ok(parent_view.node, child_view.node);
+                    Debug.Log("some ok connection was made");
+                }
+                // -- fail case
+                if (e.output.portName.CompareTo(AI_Tree_Node_View.PORT_FAIL) == 0) {
+                    tree.add_connection_fail(parent_view.node, child_view.node);
+                    Debug.Log("some fail connection was made");
+                }
             });
         }
         return graph_view_change;

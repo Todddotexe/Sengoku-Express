@@ -39,16 +39,28 @@ public class AI_Tree : ScriptableObject {
         AssetDatabase.SaveAssets();
     }
     //
-    public void add_connection(AI_Tree_Node parent, AI_Tree_Node child) {
-        parent.add_connection(child);
+    public void add_connection_ok(AI_Tree_Node parent, AI_Tree_Node child) {
+        parent.add_connection_ok(child);
     }
     //
-    public void remove_connection(AI_Tree_Node parent, AI_Tree_Node child) {
-        parent.remove_connection(child);
+    public void remove_connection_ok(AI_Tree_Node parent, AI_Tree_Node child) {
+        parent.remove_connection_ok(child);
     }
     //
-    public List<AI_Tree_Node> get_children(AI_Tree_Node parent) {
-        return parent.connection_next;
+    public void add_connection_fail(AI_Tree_Node parent, AI_Tree_Node child) {
+        parent.add_connection_fail(child);
+    }
+    //
+    public void remove_connection_fail(AI_Tree_Node parent, AI_Tree_Node child) {
+        parent.remove_connection_fail(child);
+    }
+    //
+    public List<AI_Tree_Node> get_connection_ok(AI_Tree_Node parent) {
+        return parent.connection_ok;
+    } 
+    //
+    public List<AI_Tree_Node> get_connection_fail(AI_Tree_Node parent) {
+        return parent.connection_fail;
     } 
     //
     public AI_Tree clone() {

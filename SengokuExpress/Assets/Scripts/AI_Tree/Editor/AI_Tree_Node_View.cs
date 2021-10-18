@@ -8,10 +8,14 @@ using System.Linq;
 using System;
 
 public class AI_Tree_Node_View : UnityEditor.Experimental.GraphView.Node {
+    public static string PORT_OK = "OK";
+    public static string PORT_FAIL = "FAIL";
+
     public Action<AI_Tree_Node_View> on_node_selected;
     public AI_Tree_Node node;
     public Port input;
-    public Port output;
+    public Port output_ok;
+    public Port output_fail;
 
     public AI_Tree_Node_View(AI_Tree_Node _node) {
         node = _node;
@@ -53,10 +57,15 @@ public class AI_Tree_Node_View : UnityEditor.Experimental.GraphView.Node {
     }
     // output ports
     void create_output_ports() {
-        output = InstantiatePort(Orientation.Horizontal, Direction.Output, Port.Capacity.Multi, typeof(bool));
-        if (output != null) {
-            output.portName = "run";
-            outputContainer.Add(output);
+        output_ok = InstantiatePort(Orientation.Horizontal, Direction.Output, Port.Capacity.Multi, typeof(bool));
+        output_fail = InstantiatePort(Orientation.Horizontal, Direction.Output, Port.Capacity.Multi, typeof(bool));
+        if (output_ok != null) {
+            output_ok.portName = PORT_OK;
+            outputContainer.Add(output_ok);
+        }
+        if (output_fail != null) {
+            output_fail.portName = PORT_FAIL;
+            outputContainer.Add(output_fail);
         }
     }
 }
