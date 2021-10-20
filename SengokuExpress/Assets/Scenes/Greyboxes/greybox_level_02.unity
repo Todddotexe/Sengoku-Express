@@ -1420,7 +1420,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed58c5e390e19b845a900ebc443ab7e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 1206859825362775140}
+  player: {fileID: 1206859825362775140}
   area_to_enable: {fileID: 709447425}
 --- !u!65 &393002939
 BoxCollider:

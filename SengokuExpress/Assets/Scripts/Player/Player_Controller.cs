@@ -74,6 +74,7 @@ public class Player_Controller : MonoBehaviour {
         public InputAction dash = null;
         public InputAction bark = null;
         public InputAction reset = null;
+        public InputAction temp_exit = null;
     }
     /// Player Components
     private class Player_Components {
@@ -118,9 +119,11 @@ public class Player_Controller : MonoBehaviour {
         inputs.walk  = components.input.actions["Move"];
         inputs.dash  = components.input.actions["Dash"];
         inputs.bark  = components.input.actions["Bark"];
+        inputs.temp_exit  = components.input.actions["Temp_Exit"];
         inputs.reset = components.input.actions["Reset_Level_Debug"]; // @incomplete @debug remove this from here and the PlayerInp Inputs after debugging is over
         inputs.dash.performed += delegate_dash;
         inputs.bark.performed += delegate_bark;
+        inputs.temp_exit.performed += delegate_temp_exit;
     }
 
     /// physics update
@@ -195,5 +198,10 @@ public class Player_Controller : MonoBehaviour {
             //     print("stunted enemy");
             // }
         }
+    }
+
+    /// temporarily used to exit the game during build
+    void delegate_temp_exit(InputAction.CallbackContext obj) {
+        Application.Quit();
     }
 }

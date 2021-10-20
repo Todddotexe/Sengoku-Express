@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 
 [CreateAssetMenu()]
 public class AI_Tree : ScriptableObject {
@@ -22,21 +24,29 @@ public class AI_Tree : ScriptableObject {
     public AI_Tree_Node create_node(System.Type type, string method_name) { // TODO set delegates
         AI_Tree_Node node = ScriptableObject.CreateInstance(type) as AI_Tree_Node;
         node.name = type.Name;
+
+        #if UNITY_EDITOR
         node.guid = GUID.Generate().ToString();
-        
+        #endif
+
         node.method_name = method_name;
         node.tree = this;
         nodes.Add(node);
 
+        #if UNITY_EDITOR
         AssetDatabase.AddObjectToAsset(node, this); // add this node to the asset viewed in the folders
         AssetDatabase.SaveAssets();
+        #endif
+
         return node;
     }
     //
     public void delete_node(AI_Tree_Node node) {
         nodes.Remove(node);
+        #if UNITY_EDITOR
         AssetDatabase.RemoveObjectFromAsset(node);
         AssetDatabase.SaveAssets();
+        #endif
     }
     //
     public void add_connection_ok(AI_Tree_Node parent, AI_Tree_Node child) {
