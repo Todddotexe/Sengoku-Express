@@ -72,7 +72,7 @@ public class Player_Controller : MonoBehaviour {
         if (dash.is_in_progress && PLAYER_apply_dash()) {
         } else
         if (inputs.input_vec2.magnitude > 0) {
-            PLAYER_apply_walk();
+            movement.velocity = inputs.input * movement.speed * Time.deltaTime;
         }
         PLAYER_apply_velocity();
     }
@@ -84,7 +84,7 @@ public class Player_Controller : MonoBehaviour {
         // -- dash range
         Vector3 dash_offset = new Vector3(0, 1, 0) + transform.position;
         Gizmos.color = Color.blue;
-        Gizmos.DrawLine(dash_offset, dash_offset + transform.forward * dash.range);
+        Gizmos.DrawLine(dash_offset, dash_offset + transform.forward * dash.normal_dash_range);
     }
     /// used as a delegate for Player_Inputs.dash
     void delegate_dash(InputAction.CallbackContext obj) {
@@ -155,15 +155,11 @@ public class Player_Controller : MonoBehaviour {
         }
         return false;
     }
-    /// applies input to velocity. Turns to where the player is walking towards. 
-    /// Returns true all the time
-    void PLAYER_apply_walk() {
-        movement.velocity = inputs.input * movement.speed * Time.deltaTime;
-        Vector3 face_dir = inputs.input;
-        transf.forward = Vector3.Slerp(transf.forward, face_dir, movement.rotation_speed * Time.deltaTime);
-    }
     /// apply velocity to the player. Returns true at all times
     void PLAYER_apply_velocity() {
+        // -- update face dir to point at input direction not velocity
+        Vector3 face_dir = inputs.input;
+        transf.forward = Vector3.Slerp(transf.forward, face_dir, movement.rotation_speed * Time.deltaTime);
         // -- friction
         if (movement.velocity.x != 0 || movement.velocity.y != 0) {
             movement.velocity.x = Mathf.Lerp(movement.velocity.x, 0, 
@@ -224,22 +220,25 @@ public class Player_Controller : MonoBehaviour {
     /// Player Dash
     [System.Serializable]
     private class Player_Dash {
-        public float range = 5f;    // default values subject to change through the editor
+        public float normal_dash_range = 5f;                // default values subject to change through the editor
+        public float combat_dash_range = 2f;    // default values subject to change through the editor
         public float speed = 30f;
         [HideInInspector] public bool is_in_progress = false;
         float progression = 0;                     // range from 0 - 1
         Vector3 start = new Vector3();             // used to lerp between the two dash points when dashing. Updated in the Input_dash_performed()
         Vector3 end = new Vector3();
+        // TODO add dash fx and combat dash fx. turn them on in dash() depedning on whether this is a combat dash or a normal dash. turn them off in update after is_in_progress is changed to false;
 
         // updates the dash variables for a dash move. Use update() to perform the dash
-        public void dash(Vector3 _start, Vector2 input_vec2) {
-            if (!is_in_progress) { // ! not sure why this check should be here. Do we want the player to be able to reset dash once this function is called or not?
+        public void dash(Vector3 _start, Vector2 input_vec2, bool is_combat_dash = false) {
+            if (!is_in_progress) { // ? not sure why this check should be here. Do we want the player to be able to reset dash once this function is called or not?
                 is_in_progress = true;
                 // -- get and adjust input
                 Vector3 input = new Vector3(input_vec2.x, 0, input_vec2.y);
-
+                // -- change the range of dash depending on is_combat_dash
+                var dash_range = is_combat_dash ? combat_dash_range : normal_dash_range;
                 start = _start;
-                end = start + input * range;
+                end = start + input * dash_range;
                 progression = 0;
             }
         }
