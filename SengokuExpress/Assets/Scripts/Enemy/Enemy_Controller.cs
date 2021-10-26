@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Character_Util;
 
 public class Enemy_Controller : MonoBehaviour {
     /// ===
@@ -10,12 +11,13 @@ public class Enemy_Controller : MonoBehaviour {
     Transform transf = null; // cache transform
     public float vision_radius = 6;
     public float combat_radius = 3;
-    public float speed = 10f;
     public float stunt_duration_init = 1f;
+    public Movement movement = new Movement();
 
     Transform target_transform = null;
     float stunt_duration;
     bool stunted = false;
+
     /// init
     void Start() {
         transf = transform; // cache transform
@@ -70,9 +72,9 @@ public class Enemy_Controller : MonoBehaviour {
     bool ENEMY_approach_player() {
         if (target_transform == null) return false;
         // -- apply velocity
-        Vector3 velocity = (target_transform.position - transf.position).normalized * speed;
-        velocity.y = 0;
-        transf.position += velocity * Time.deltaTime;
+        movement.velocity = (target_transform.position - transf.position).normalized * movement.speed;
+        movement.velocity.y = 0;
+        transf.position += movement.velocity * Time.deltaTime;
         // -- face the target
         look_at(target_transform.position);
         return false;

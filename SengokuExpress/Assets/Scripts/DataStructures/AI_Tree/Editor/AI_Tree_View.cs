@@ -23,7 +23,7 @@ public class AI_Tree_View : GraphView {
         this.AddManipulator(new ContentDragger());
         this.AddManipulator(new SelectionDragger());
         this.AddManipulator(new RectangleSelector());
-        var style_sheet = AssetDatabase.LoadAssetAtPath<StyleSheet>("Assets/Scripts/AI_Tree/Editor/AI_Tree_Editor.uss");
+        var style_sheet = AssetDatabase.LoadAssetAtPath<StyleSheet>("Assets/Scripts/DataStructures/AI_Tree/Editor/AI_Tree_Editor.uss");
         styleSheets.Add(style_sheet);
     }
     // ==

@@ -31,11 +31,11 @@ public class AI_Tree_Editor : EditorWindow
         VisualElement root = rootVisualElement;
 
         // Import UXML
-        var visualTree = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>("Assets/Scripts/AI_Tree/Editor/AI_Tree_Editor.uxml");
+        var visualTree = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>("Assets/Scripts/DataStructures/AI_Tree/Editor/AI_Tree_Editor.uxml");
         visualTree.CloneTree(root);
 
         // A stylesheet can be added to a VisualElement.
-        var styleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>("Assets/Scripts/AI_Tree/Editor/AI_Tree_Editor.uss");
+        var styleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>("Assets/Scripts/DataStructures/AI_Tree/Editor/AI_Tree_Editor.uss");
         root.styleSheets.Add(styleSheet);
 
         // -- setup editor for me
