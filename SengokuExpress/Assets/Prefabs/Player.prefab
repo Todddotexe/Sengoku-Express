@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8344202030470013310}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -122,10 +122,17 @@ MonoBehaviour:
     gravity: 10
     velocity: {x: 0, y: 0, z: 0}
   dash:
-    range: 5
+    normal_dash_range: 5
+    combat_dash_range: 2
     speed: 30
+    is_in_progress: 0
   bark:
     radius: 3
+  binds:
+    WALK_INPUT_LABEL: Move
+    DASH_INPUT_LABEL: Dash
+    BARK_INPUT_LABEL: Bark
+    ATTACK_INPUT_LABEL: LightAttack
 --- !u!1 &8344202031474306481
 GameObject:
   m_ObjectHideFlags: 0

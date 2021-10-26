@@ -65,6 +65,14 @@ public class @PlayerInp : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Temp_Exit"",
+                    ""type"": ""Button"",
+                    ""id"": ""98f642b8-1bf3-4104-b9ab-675f29362cc3"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -177,6 +185,17 @@ public class @PlayerInp : IInputActionCollection, IDisposable
                     ""action"": ""Reset_Level_Debug"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""51bbac09-84d6-4ae3-b52d-902ab88b2004"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Temp_Exit"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -191,6 +210,7 @@ public class @PlayerInp : IInputActionCollection, IDisposable
         m_InGameAP_HeavyAttack = m_InGameAP.FindAction("HeavyAttack", throwIfNotFound: true);
         m_InGameAP_Bark = m_InGameAP.FindAction("Bark", throwIfNotFound: true);
         m_InGameAP_Reset_Level_Debug = m_InGameAP.FindAction("Reset_Level_Debug", throwIfNotFound: true);
+        m_InGameAP_Temp_Exit = m_InGameAP.FindAction("Temp_Exit", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -246,6 +266,7 @@ public class @PlayerInp : IInputActionCollection, IDisposable
     private readonly InputAction m_InGameAP_HeavyAttack;
     private readonly InputAction m_InGameAP_Bark;
     private readonly InputAction m_InGameAP_Reset_Level_Debug;
+    private readonly InputAction m_InGameAP_Temp_Exit;
     public struct InGameAPActions
     {
         private @PlayerInp m_Wrapper;
@@ -256,6 +277,7 @@ public class @PlayerInp : IInputActionCollection, IDisposable
         public InputAction @HeavyAttack => m_Wrapper.m_InGameAP_HeavyAttack;
         public InputAction @Bark => m_Wrapper.m_InGameAP_Bark;
         public InputAction @Reset_Level_Debug => m_Wrapper.m_InGameAP_Reset_Level_Debug;
+        public InputAction @Temp_Exit => m_Wrapper.m_InGameAP_Temp_Exit;
         public InputActionMap Get() { return m_Wrapper.m_InGameAP; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -283,6 +305,9 @@ public class @PlayerInp : IInputActionCollection, IDisposable
                 @Reset_Level_Debug.started -= m_Wrapper.m_InGameAPActionsCallbackInterface.OnReset_Level_Debug;
                 @Reset_Level_Debug.performed -= m_Wrapper.m_InGameAPActionsCallbackInterface.OnReset_Level_Debug;
                 @Reset_Level_Debug.canceled -= m_Wrapper.m_InGameAPActionsCallbackInterface.OnReset_Level_Debug;
+                @Temp_Exit.started -= m_Wrapper.m_InGameAPActionsCallbackInterface.OnTemp_Exit;
+                @Temp_Exit.performed -= m_Wrapper.m_InGameAPActionsCallbackInterface.OnTemp_Exit;
+                @Temp_Exit.canceled -= m_Wrapper.m_InGameAPActionsCallbackInterface.OnTemp_Exit;
             }
             m_Wrapper.m_InGameAPActionsCallbackInterface = instance;
             if (instance != null)
@@ -305,6 +330,9 @@ public class @PlayerInp : IInputActionCollection, IDisposable
                 @Reset_Level_Debug.started += instance.OnReset_Level_Debug;
                 @Reset_Level_Debug.performed += instance.OnReset_Level_Debug;
                 @Reset_Level_Debug.canceled += instance.OnReset_Level_Debug;
+                @Temp_Exit.started += instance.OnTemp_Exit;
+                @Temp_Exit.performed += instance.OnTemp_Exit;
+                @Temp_Exit.canceled += instance.OnTemp_Exit;
             }
         }
     }
@@ -317,5 +345,6 @@ public class @PlayerInp : IInputActionCollection, IDisposable
         void OnHeavyAttack(InputAction.CallbackContext context);
         void OnBark(InputAction.CallbackContext context);
         void OnReset_Level_Debug(InputAction.CallbackContext context);
+        void OnTemp_Exit(InputAction.CallbackContext context);
     }
 }
