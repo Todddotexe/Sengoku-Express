@@ -20,19 +20,42 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Bush
-  m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
+  m_Name: Bush Unlit
+  m_Shader: {fileID: -6465566751694194690, guid: 59f68d3b2b74b7b4f8475994470e9bf4, type: 3}
   m_ShaderKeywords: _EMISSION
   m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 2000
-  stringTagMap:
-    RenderType: Opaque
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
   disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - Texture2D_479DA19A:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_894EE8D7:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_9B18B13E:
+        m_Texture: {fileID: 2800000, guid: e85a001ab1ab4fc42919a6b43fba3e38, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_B281DE19:
+        m_Texture: {fileID: 2800000, guid: 38801575c1762074aab04cc61c5c0f75, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_B67FDEB5:
+        m_Texture: {fileID: 2800000, guid: e85a001ab1ab4fc42919a6b43fba3e38, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_ED0C6477:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _BaseMap:
         m_Texture: {fileID: 2800000, guid: e85a001ab1ab4fc42919a6b43fba3e38, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -62,6 +85,17 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
+    - BOOLEAN_1D2D67EA: 0
+    - Vector1_2B8EFBD1: 0.05
+    - Vector1_502C65BD: -0.43
+    - Vector1_5FAC8B0B: 1000
+    - Vector1_7D1F5ADA: 5.82
+    - Vector1_807EB619: 0.09
+    - Vector1_81C1EA44: 77.5
+    - Vector1_915C0980: 0.23
+    - Vector1_9D819699: 0.25
+    - Vector1_C19185AF: 999.5
+    - Vector1_D5F18D10: 0.42
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
@@ -84,6 +118,13 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
+    - Color_1F0F8399: {r: 0, g: 0, b: 0, a: 0}
+    - Color_37919CD9: {r: 0, g: 0, b: 0, a: 0}
+    - Color_3AFFB4E6: {r: 0, g: 0, b: 0, a: 0}
+    - Color_B18E2BB9: {r: 0, g: 0, b: 0, a: 0}
+    - Color_E14B0FA1: {r: 0, g: 0, b: 0, a: 0}
+    - Color_EC609AC6: {r: 0, g: 0, b: 0, a: 0}
+    - Color_FA4AA570: {r: 0, g: 0, b: 0, a: 0}
     - _BaseColor: {r: 0.58678883, g: 1, b: 0.5254902, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0.23584908, g: 0.23584908, b: 0.23584908, a: 1}
