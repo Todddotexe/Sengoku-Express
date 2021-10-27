@@ -15,8 +15,13 @@ namespace Character_Util {
     /// Dash
     [System.Serializable]
     public class Dash {
-        public float normal_dash_range = 5f;                // default values subject to change through the editor
+        public enum TYPES {
+            NORMAL, COMBAT, KNOCKBACK,
+        }
+        TYPES current_dash_type = TYPES.NORMAL;
+        public float normal_dash_range = 5f;    // default values subject to change through the editor
         public float combat_dash_range = 2f;    // default values subject to change through the editor
+        public float knockback_dash_range = 3f; // used when this enemy gets knocked back
         public float speed = 30f;
         [HideInInspector] public bool is_in_progress = false;
         float progression = 0;                     // range from 0 - 1
@@ -25,15 +30,20 @@ namespace Character_Util {
         // TODO add dash fx and combat dash fx. turn them on in dash() depedning on whether this is a combat dash or a normal dash. turn them off in update after is_in_progress is changed to false;
 
         /// updates the dash variables for a dash move. Use update() to perform the dash
-        public void dash(Vector3 _start, Vector2 input_vec2, bool is_combat_dash = false) {
+        public void dash(Vector3 _start, Vector2 direction, TYPES type) {
             if (!is_in_progress) { // ? not sure why this check should be here. Do we want the player to be able to reset dash once this function is called or not?
                 is_in_progress = true;
                 // -- get and adjust input
-                Vector3 input = new Vector3(input_vec2.x, 0, input_vec2.y);
-                // -- change the range of dash depending on is_combat_dash
-                var dash_range = is_combat_dash ? combat_dash_range : normal_dash_range;
+                Vector3 input = new Vector3(direction.x, 0, direction.y);
+                // -- change the range of dash depending on type
+                float range = normal_dash_range;
+                switch (type) {
+                    case TYPES.NORMAL: range = normal_dash_range; break;
+                    case TYPES.COMBAT: range = combat_dash_range; break;
+                    case TYPES.KNOCKBACK: range = knockback_dash_range; break;
+                }
                 start = _start;
-                end = start + input * dash_range;
+                end = start + input * range;
                 progression = 0;
             }
         }

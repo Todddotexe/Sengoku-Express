@@ -90,7 +90,7 @@ public class Player_Controller : MonoBehaviour {
     }
     /// used as a delegate for Player_Inputs.dash
     void delegate_dash(InputAction.CallbackContext obj) {
-        dash.dash(transf.position, inputs.input_vec2);
+        dash.dash(transf.position, inputs.input_vec2, Dash.TYPES.NORMAL);
         // if (dash_part != null) { // TODO add this back when we have a proper particle system
         //     dash_part.Play();
         // }
@@ -116,7 +116,7 @@ public class Player_Controller : MonoBehaviour {
     /// first attack in the combo chain (Start)
     void delegate_attack_1_start() {
         print("attack 1 start");
-        dash.dash(transf.position, inputs.input_vec2, true);
+        dash.dash(transf.position, inputs.input_vec2, Dash.TYPES.COMBAT);
     }
     /// first attack in the combo chain (Update)
     void delegate_attack_1_update() {
@@ -125,7 +125,7 @@ public class Player_Controller : MonoBehaviour {
     /// second attack in the combo chain (Start)
     void delegate_attack_2_start() {
         print("attack 2 start");
-        dash.dash(transf.position, inputs.input_vec2, false);
+        dash.dash(transf.position, inputs.input_vec2, Dash.TYPES.NORMAL);
     }
     /// second attack in the combo chain (Update)
     void delegate_attack_2_update() {
