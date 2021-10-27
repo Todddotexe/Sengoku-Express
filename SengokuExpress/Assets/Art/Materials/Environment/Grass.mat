@@ -21,20 +21,31 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Grass
-  m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
-  m_ShaderKeywords: 
+  m_Shader: {fileID: -6465566751694194690, guid: f5d6a17d5a438ed429ac6beb94e134ab, type: 3}
+  m_ShaderKeywords: BOOLEAN_DBA0411F_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 2000
-  stringTagMap:
-    RenderType: Opaque
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
   disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - _BaseMap:
+    - Texture2D_479DA19A:
         m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_9B18B13E:
+        m_Texture: {fileID: 2800000, guid: 54d0ed6ad872f9944a57680dbc7f366f, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_E0AFF5D0:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _BaseMap:
+        m_Texture: {fileID: 2800000, guid: 54d0ed6ad872f9944a57680dbc7f366f, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
@@ -46,7 +57,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 54d0ed6ad872f9944a57680dbc7f366f, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -62,6 +73,13 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
+    - BOOLEAN_DBA0411F: 1
+    - Vector1_21E0CC83: 0
+    - Vector1_502C65BD: 0.01
+    - Vector1_7D1F5ADA: 0.13
+    - Vector1_81C1EA44: 1.26
+    - Vector1_C19185AF: 1000
+    - Vector1_D5F18D10: 0.08
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
@@ -84,7 +102,12 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - _BaseColor: {r: 0.4901961, g: 0.89019614, b: 0.34901962, a: 1}
+    - Color_1F0F8399: {r: 0.06884122, g: 0.122641504, b: 0.072607234, a: 0}
+    - Color_2BF5C84A: {r: 0.38679248, g: 0.38679248, b: 0.38679248, a: 0}
+    - Color_37919CD9: {r: 1, g: 1, b: 1, a: 0}
+    - Color_B18E2BB9: {r: 1, g: 1, b: 1, a: 0}
+    - Color_FA4AA570: {r: 1, g: 1, b: 1, a: 0}
+    - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
