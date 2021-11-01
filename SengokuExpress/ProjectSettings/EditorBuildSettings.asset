@@ -11,5 +11,14 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Greyboxes/greybox_level_02.unity
     guid: bf61f7ab3d50a514bb1f5a2329cae715
+  - enabled: 1
+    path: Assets/Scenes/Prototypes/proto_main_menu.unity
+    guid: b70435011b226ba46a40c485e44078f0
+  - enabled: 1
+    path: Assets/Scenes/Prototypes/proto_settings_menu.unity
+    guid: bb5263c6a71f7ad4c84617ae88f9c8ca
+  - enabled: 1
+    path: Assets/Scenes/Greyboxes/greybox_001-map.unity
+    guid: 4854085a51939bc49b443f10761ac136
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: d39c07fa05be0254f842fa00363480c7, type: 2}

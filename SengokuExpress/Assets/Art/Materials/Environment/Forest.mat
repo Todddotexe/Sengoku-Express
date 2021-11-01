@@ -8,18 +8,29 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Forest
-  m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: f5d6a17d5a438ed429ac6beb94e134ab, type: 3}
   m_ShaderKeywords: _EMISSION
   m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 2000
-  stringTagMap:
-    RenderType: Opaque
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
   disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - Texture2D_479DA19A:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_9B18B13E:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_E0AFF5D0:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _BaseMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -49,6 +60,13 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
+    - BOOLEAN_DBA0411F: 0
+    - Vector1_21E0CC83: 0
+    - Vector1_502C65BD: 0.05
+    - Vector1_7D1F5ADA: 0.1
+    - Vector1_81C1EA44: 1
+    - Vector1_C19185AF: 1000
+    - Vector1_D5F18D10: 0.01
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
@@ -71,6 +89,11 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
+    - Color_1F0F8399: {r: 0, g: 0, b: 0, a: 0}
+    - Color_2BF5C84A: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 0}
+    - Color_37919CD9: {r: 0.48380208, g: 0.6792453, b: 0.5057916, a: 0}
+    - Color_B18E2BB9: {r: 0, g: 0.6698113, b: 0.3041448, a: 0}
+    - Color_FA4AA570: {r: 0.7311321, g: 1, b: 0.8275919, a: 0}
     - _BaseColor: {r: 0.15419188, g: 0.5188679, b: 0.20709771, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0.103773594, b: 0.020074999, a: 1}
