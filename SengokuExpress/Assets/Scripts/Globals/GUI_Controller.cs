@@ -47,4 +47,12 @@ public class GUI_Controller : MonoBehaviour {
             } break;
         }
     }
+
+    // !== MAIN METHODS !== //
+    /// on level start
+    void Start() {
+        switch_panel(PANELS.GAME);
+        Global.set_pause(false);
+    }
+
 }
