@@ -19,7 +19,7 @@ public class AI_Tree_Node : ScriptableObject {
             var method = caller.GetType().GetMethod(method_name, 
             System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic);
             bool result = (bool)method.Invoke(caller, null);
-            
+            // Debug.Log("AI TREE CURRENTLY RUNNING: " + method_name);
             if (result == true) {
                 connection_ok.ForEach(c => c.update(caller));
             } else {

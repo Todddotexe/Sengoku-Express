@@ -32,6 +32,7 @@ namespace Character_Util {
         /// updates the dash variables for a dash move. Use update() to perform the dash
         public void dash(Vector3 _start, Vector2 direction, TYPES type) {
             if (!is_in_progress) { // ? not sure why this check should be here. Do we want the player to be able to reset dash once this function is called or not?
+                direction = direction.normalized;
                 is_in_progress = true;
                 // -- get and adjust input
                 Vector3 input = new Vector3(direction.x, 0, direction.y);
@@ -79,4 +80,18 @@ namespace Character_Util {
             temp_attack_duration = temp_attack_duration_init;
         }
     }
+
+    public static class Vec3_Extension {
+     
+     public static Vector3 rotate(this Vector3 v, float degrees) {
+         float sin = -Mathf.Sin(degrees * Mathf.Deg2Rad);
+         float cos = Mathf.Cos(degrees * Mathf.Deg2Rad);
+         
+         float tx = v.x;
+         float tz = v.z;
+         v.x = (cos * tx) - (sin * tz);
+         v.z = (sin * tx) + (cos * tz);
+         return v;
+     }
+ }
 }
