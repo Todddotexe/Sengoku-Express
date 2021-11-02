@@ -34,7 +34,7 @@ struct Varyings
 
 //Properties
 float _Height;
-float _Base;
+float _Base;t
 float _Tint;
 
 
@@ -76,10 +76,36 @@ Varyings LitPassVertex(Attributes input)
 [maxvertexcount(6)]
 void LitPassGeom(triangle Varyings input[3], inout TriangleStream<Varyings> outStream)
 {
-    outStream.Append(input[0]);
-    outStream.Append(input[1]);
-    outStream.Append(input[2]);
+    float3 basePos = (input[0].positionWSAndFogFactor.xyz + input[1].positionWSAndFogFactor.xyz + input[2].positionWSAndFogFactor.xyz) / 3;    
+    
+    Varyings o = input[0];
+    float3 oPos = (basePos - o.tangentWS);
+    o.positionCS = TransformWorldToHClip(oPos);
+
+    Varyings o2 = input[0];
+    float3 o2Pos = (basePos + o2.tangentWS);
+    o2.positionCS = TransformWorldToHClip(o2Pos);
+
+    Varyings o3 = input[0];
+    float3 o3Pos = (basePos + o3.tangentWS + o3.normalWS);
+    o3.positionCS = TransformWorldToHClip(o3Pos);
+
+    Varyings o4 = input[0];
+    float3 o4Pos = (basePos - o4.tangentWS + o3.normalWS);
+    o4.positionCS = TransformWorldToHClip(o4Pos);
+
+    outStream.Append(o4);
+    outStream.Append(o3);
+    outStream.Append(o);
+
     outStream.RestartStrip();
+
+    outStream.Append(o3);
+    outStream.Append(o2);
+    outStream.Append(o);
+
+    outStream.RestartStrip();
+
 }
 
 half4 LitPassFragment(Varyings input, bool vf : SV_IsFrontFace) : SV_Target
