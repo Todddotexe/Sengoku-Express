@@ -34,7 +34,7 @@ struct Varyings
 
 //Properties
 float _Height;
-float _Base;t
+float _Base;
 float _Tint;
 
 
