@@ -19,10 +19,8 @@ public class Player_Controller : MonoBehaviour {
     /// FIELDS
     /// ===
     Transform transf = null; // cached transform
-	[SerializeField] Movement movement = new Movement();   // ! the reason we initialise these here is because I'm testing whether we can change the values in Unity Editor and keep it. If we initialise them in Start(), all the changes in UnityEditor will be lost. Especially if there's an asset field like the Dash_Particle alex tried to put in.
-    
+    [SerializeField] Movement movement = new Movement();   // ! the reason we initialise these here is because I'm testing whether we can change the values in Unity Editor and keep it. If we initialise them in Start(), all the changes in UnityEditor will be lost. Especially if there's an asset field like the Dash_Particle alex tried to put in.
     [SerializeField] Dash dash = new Dash();
-    
     [SerializeField] Player_Bark bark = new Player_Bark();
     [SerializeField] Player_Binding binds = new Player_Binding();
     Combat combat = new Combat();
@@ -42,12 +40,18 @@ public class Player_Controller : MonoBehaviour {
         components.character_controller = GetComponent<CharacterController>();
         components.animator = GetComponent<Animator>();
         // -- setup inputs
+        Debug.Assert(components.input.actions != null);
         inputs.walk       = components.input.actions[binds.WALK_INPUT_LABEL];
         inputs.dash       = components.input.actions[binds.DASH_INPUT_LABEL];
         inputs.bark       = components.input.actions[binds.BARK_INPUT_LABEL];
         inputs.attack     = components.input.actions[binds.ATTACK_INPUT_LABEL];
         inputs.temp_exit  = components.input.actions["Temp_Exit"];
         inputs.reset      = components.input.actions["Reset_Level_Debug"]; // @incomplete @debug remove this from here and the PlayerInp Inputs after debugging is over
+        inputs.dash.performed      -= delegate_dash;
+        inputs.bark.performed      -= delegate_bark;
+        inputs.attack.performed    -= delegate_attack;
+        inputs.temp_exit.performed -= delegate_temp_exit;
+        
         inputs.dash.performed += delegate_dash;
         inputs.bark.performed += delegate_bark;
         inputs.attack.performed += delegate_attack;
@@ -153,6 +157,7 @@ public class Player_Controller : MonoBehaviour {
             foreach (Collider collider in colliders) {
                 Enemy_Controller enemy = collider.gameObject.GetComponent<Enemy_Controller>();
                 if (enemy != null) {
+                    // -- apply damage
                     // -- apply damage
                     enemy.hit(1);
                     {   // -- apply knockback

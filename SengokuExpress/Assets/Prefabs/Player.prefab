@@ -114,7 +114,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c179ad1c0254d9429151d9d4eb15479, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dashPart: {fileID: 0}
+  action_map: {fileID: -944628639613478452, guid: 89fa87a8f9f0eca4ea16ee16a3dc5158, type: 3}
   movement:
     speed: 10
     rotation_speed: 10
@@ -134,6 +134,8 @@ MonoBehaviour:
     DASH_INPUT_LABEL: Dash
     BARK_INPUT_LABEL: Bark
     ATTACK_INPUT_LABEL: LightAttack
+  attack_hitbox_offset: {x: 0, y: 0, z: 0}
+  attack_hitbox_extents: {x: 0, y: 0, z: 0}
 --- !u!1 &8344202031474306481
 GameObject:
   m_ObjectHideFlags: 0
