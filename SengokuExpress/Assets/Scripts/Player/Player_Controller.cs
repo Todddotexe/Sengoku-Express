@@ -31,6 +31,9 @@ public class Player_Controller : MonoBehaviour {
     public Vector3 attack_hitbox_offset;
     public Vector3 attack_hitbox_extents;
 
+    float timer_knockback_init = 2;
+    float timer_knockback = 2;
+
     /// initialise fields
     void Start() {
         // -- setup fields
@@ -66,6 +69,21 @@ public class Player_Controller : MonoBehaviour {
     }
     /// physics update
     void FixedUpdate() {
+        if (!is_alive) {
+            Destroy(gameObject);
+            return;
+        }
+        if (is_knocked_back) {
+            if (timer_knockback > 0) {
+                timer_knockback -= Time.deltaTime;
+                PLAYER_apply_dash();
+                PLAYER_apply_velocity();
+                return;
+            } else {
+                timer_knockback = timer_knockback_init;
+                is_knocked_back = false;
+            }
+        }
         { // -- update input
             var input_vec2    = inputs.walk.ReadValue<Vector2>();
             inputs.input_vec2 = input_vec2;
@@ -74,7 +92,7 @@ public class Player_Controller : MonoBehaviour {
             inputs.input.z    = input_vec2.y;
         }
         if (combat.is_attacking || combat.queued_combo) {
-            PLAYER_update_simple_combat();
+            combat.update();
         } else
         if (dash.is_in_progress) {
             // -- if dash is in progress, apply and update dash.
@@ -84,6 +102,25 @@ public class Player_Controller : MonoBehaviour {
             movement.velocity = inputs.input * movement.speed * Time.deltaTime;
         }
         PLAYER_apply_velocity();
+    }
+    /// hit this enemy
+    bool is_hit = false;
+    bool is_alive = true;
+    bool is_knocked_back = false;
+    float health = 3;
+    public void hit(float damage) {
+        is_hit = true;
+        // -- start hit animation
+        health -= damage;
+        if (health <= 0) {
+            is_alive = false;
+        }
+    }
+    /// knock back and stun enemy
+    public void knock_back(Vector2 direction) {
+        dash.dash(transf.position, direction, Dash.TYPES.KNOCKBACK);
+        is_knocked_back = true;
+        //is_stunned = true;
     }
     /// draw debugging aids
     void OnDrawGizmos() {
@@ -207,35 +244,6 @@ public class Player_Controller : MonoBehaviour {
         }
         // -- apply friction
         components.character_controller.Move(movement.velocity);
-    }
-    /// update simple combat goes through the attack queues and performs them.
-    void PLAYER_update_simple_combat() {
-        // TODO -- check if attack animation is finished. If so, set is_attacking to false and set current_combo to 0.
-        if (combat.is_attacking) {
-            if (combat.temp_attack_duration > 0) {
-                combat.temp_attack_duration -= Time.deltaTime;
-                // * this is where attacks update()
-                combat.attack_functions_update[combat.current_combo_index]();
-            } else {
-                combat.temp_attack_duration = combat.temp_attack_duration_init;
-                if (combat.queued_combo) { // if another attack is queued, increase current_combo and keep is_attacking true
-                    // * this is where attacks start()
-                    combat.queued_combo = false;
-                    if (combat.current_combo_index < 2) combat.current_combo_index++; // if overflowing the maximum number of combos, reset back to zero
-                    else combat.current_combo_index = 0;
-                    combat.attack_functions_start[combat.current_combo_index]();
-                } else { // if no other attack is queued, no more attacking
-                    combat.is_attacking = false;
-                    combat.current_combo_index = 0;
-                }
-            }
-        } else if (combat.queued_combo) {
-            // * this is where attacks start
-            combat.is_attacking = true;
-            combat.queued_combo = false;
-            combat.current_combo_index = 0; // * if we were not attacking, or in the progress of attacking, the current_combo_index should be zero. This is here to make that clear.
-            combat.attack_functions_start[combat.current_combo_index]();
-        }
     }
 
     // !=================================================================

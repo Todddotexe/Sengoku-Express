@@ -79,6 +79,36 @@ namespace Character_Util {
         public Combat() {
             temp_attack_duration = temp_attack_duration_init;
         }
+
+        public void update() {
+            if (attack_functions_start.Count == 0) return;
+            // TODO -- check if attack animation is finished. If so, set is_attacking to false and set current_combo to 0.
+            if (is_attacking) {
+                if (temp_attack_duration > 0) {
+                    temp_attack_duration -= Time.deltaTime;
+                    // * this is where attacks update()
+                    attack_functions_update[current_combo_index]();
+                } else {
+                    temp_attack_duration = temp_attack_duration_init;
+                    if (queued_combo) { // if another attack is queued, increase current_combo and keep is_attacking true
+                        // * this is where attacks start()
+                        queued_combo = false;
+                        if (current_combo_index < attack_functions_start.Count - 1) current_combo_index++; // if overflowing the maximum number of combos, reset back to zero
+                        else current_combo_index = 0;
+                        attack_functions_start[current_combo_index]();
+                    } else { // if no other attack is queued, no more attacking
+                        is_attacking = false;
+                        current_combo_index = 0;
+                    }
+                }
+            } else if (queued_combo) {
+                // * this is where attacks start
+                is_attacking = true;
+                queued_combo = false;
+                current_combo_index = 0; // * if we were not attacking, or in the progress of attacking, the current_combo_index should be zero. This is here to make that clear.
+                attack_functions_start[current_combo_index]();
+            }
+        }
     }
 
     public static class Vec3_Extension {

@@ -19,6 +19,9 @@ public class Enemy_Controller : MonoBehaviour {
     [SerializeField] Dash dash = new Dash();
     [SerializeField] Material material_hit = null; // used to demo enemy getting hit. Flash enemy to this material when is_hit == true
     [SerializeField] new Renderer renderer = null;
+    Combat combat = new Combat();
+    [SerializeField] Vector3 attack_hitbox_offset = new Vector3();
+    [SerializeField] Vector3 attack_hitbox_extents = new Vector3();
 
     Transform target_transform = null;
     float stun_timer;
@@ -29,6 +32,8 @@ public class Enemy_Controller : MonoBehaviour {
     bool is_spawned = false;
     bool is_alive = true;
     bool is_knocked_back = false;
+    bool trigger_hit_player = false;
+    bool trigger_finished_attack_combo = false;
     Material material_normal = null;
     float hit_animation_timer = 0.2f;
     /// init
@@ -41,6 +46,14 @@ public class Enemy_Controller : MonoBehaviour {
         target_transform = GameObject.FindGameObjectWithTag("Player").transform;
         maneuver_timer = maneuver_timer_init;
         material_normal = renderer.material;
+
+        // -- attack delegates
+        combat.attack_functions_start.Add(delegate_attack_1_start);
+        combat.attack_functions_start.Add(delegate_attack_2_start);
+        combat.attack_functions_start.Add(delegate_attack_3_start);
+        combat.attack_functions_update.Add(delegate_attack_1_update);
+        combat.attack_functions_update.Add(delegate_attack_2_update);
+        combat.attack_functions_update.Add(delegate_attack_3_update);
     }
     /// called every physics frame
     void FixedUpdate() {
@@ -54,7 +67,20 @@ public class Enemy_Controller : MonoBehaviour {
                                 if (ENEMY_C_has_maneuvered_long_enough()) {
                                     if (ENEMY_C_is_player_in_combat_range()) {
                                         if (ENEMY_C_is_ready_to_land_attack()) {
-                                            // TODO ATTACK
+                                            if (ENEMY_C_is_swinging()) {
+                                                if (!ENEMY_C_ATTACK_is_player_hit()) {
+                                                    if (!ENEMY_C_ATTACK_end_of_attack_combo()) {
+                                                        ENEMY_A_update_current_attack_swing();
+                                                    } else {
+                                                        trigger_finished_attack_combo = false;
+                                                    }
+                                                } else {
+                                                    trigger_hit_player = false;
+                                                    // TODO jump back
+                                                }
+                                            } else {
+                                                ENEMY_A_queue_another_attack();
+                                            }
                                         } else {
                                             ENEMY_A_get_ready_to_land_attack();
                                         }
@@ -96,10 +122,14 @@ public class Enemy_Controller : MonoBehaviour {
     }
     /// draw gizmos in the Unity editor to visualize some parameters
     void OnDrawGizmos() {
+        // -- combat radius
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, combat_radius);
         Gizmos.color = Color.blue;
+        // -- vision radius
         Gizmos.DrawWireSphere(transform.position, vision_radius);
+        // -- attack hitbox
+        Gizmos.DrawWireCube(transform.position + (attack_hitbox_offset).rotate(transform.rotation.eulerAngles.y), attack_hitbox_extents);
     }
     /// simplified lookAt. pass in a Vec3 to look at
     void look_at(Vector3 pos) {
@@ -168,6 +198,7 @@ public class Enemy_Controller : MonoBehaviour {
     /// updates the maneuver timer. Returns true if the timer has completed and resets the timer
     [AI_Function_Attribute]
     bool ENEMY_C_has_maneuvered_long_enough() {
+        return true; // @nocheckin
         if (maneuver_timer > 0) {
             maneuver_timer -= Time.deltaTime;
             return false;
@@ -185,7 +216,7 @@ public class Enemy_Controller : MonoBehaviour {
     /// the suspense at the beginning of attacks
     [AI_Function_Attribute]
     bool ENEMY_C_is_ready_to_land_attack() {
-        // TODO 
+        // TODO
         return true;
     }
     ///
@@ -197,14 +228,12 @@ public class Enemy_Controller : MonoBehaviour {
     ///
     [AI_Function_Attribute]
     bool ENEMY_C_ATTACK_is_player_hit() {
-        // TODO
-        return false;
+        return trigger_hit_player;
     }
     ///
     [AI_Function_Attribute]
     bool ENEMY_C_ATTACK_end_of_attack_combo() {
-        // TODO
-        return false;
+        return trigger_finished_attack_combo;
     }
     /// have we been knocked back
     [AI_Function_Attribute]
@@ -267,11 +296,13 @@ public class Enemy_Controller : MonoBehaviour {
     /// Update current attack swing animation. Update the state of current attack afterwards (was player hit?)
     [AI_Function_Attribute]
     bool ENEMY_A_update_current_attack_swing() {
+        combat.update();
         return false;
     }
     /// Queue the next attack in the combo chain if not already queued
     [AI_Function_Attribute]
     bool ENEMY_A_queue_another_attack() {
+        combat.queued_combo = true;
         return false;
     }
     /// Apply dash velocity whether it's jump or knock back
@@ -307,12 +338,52 @@ public class Enemy_Controller : MonoBehaviour {
         // @incomplete
         return true;
     }
-    ///
+    /// return true if combat requires updating
     [AI_Function_Attribute]
-    bool ENEMY_R_attack() { // TODO change to are_we_swinging in the Enemy Decision Tree png from draw.io. It would fit the purpose better
-        // does nothing for now
-        // @incomplete
-        return true;
+    bool ENEMY_C_is_swinging() {
+        return combat.is_attacking || combat.queued_combo;
     }
-
+    
+    // ! == ATTACK DELEGATES == ! //
+    /// attack 1
+    void delegate_attack_1_start() {
+    }
+    void delegate_attack_1_update() {
+        attack_hit(1);
+    }
+    /// attack 2
+    void delegate_attack_2_start() {
+    }
+    void delegate_attack_2_update() {
+        attack_hit(2);
+    }
+    /// attack 3
+    void delegate_attack_3_start() {
+    }
+    void delegate_attack_3_update() {
+        attack_hit(3);
+        trigger_finished_attack_combo = true; // @incomplete have this at the end of animation
+    }
+    /// attack hit
+    void attack_hit(uint attack_combo_index) {
+        if (!trigger_hit_player) {
+            Collider[] colliders = Physics.OverlapBox(transf.position + (attack_hitbox_offset).rotate(transf.rotation.eulerAngles.y), attack_hitbox_extents, transf.rotation);
+            foreach (Collider collider in colliders) {
+                Player_Controller player = collider.gameObject.GetComponent<Player_Controller>();
+                if (player != null) {
+                    // -- apply damage
+                    player.hit(1);
+                    { // -- apply knockback
+                        var knock_back_direction = player.transform.position - transf.position;
+                        player.knock_back(new Vector2(knock_back_direction.x, knock_back_direction.z));
+                    }
+                    { // -- toggle has hit enemy so we don't hit more enemies or hit the same enemy multiple times
+                        print("enemy has hit doggo at index: " + attack_combo_index.ToString());
+                        trigger_hit_player = true;
+                        break;
+                    }
+                }
+            }
+        }
+    }
 }
