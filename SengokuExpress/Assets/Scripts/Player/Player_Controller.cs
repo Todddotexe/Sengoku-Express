@@ -19,16 +19,17 @@ public class Player_Controller : MonoBehaviour {
     /// FIELDS
     /// ===
     Transform transf = null; // cached transform
-	[SerializeField] Movement movement = new Movement();   // ! the reason we initialise these here is because I'm testing whether we can change the values in Unity Editor and keep it. If we initialise them in Start(), all the changes in UnityEditor will be lost. Especially if there's an asset field like the Dash_Particle alex tried to put in.
-    
+    [SerializeField] Movement movement = new Movement();   // ! the reason we initialise these here is because I'm testing whether we can change the values in Unity Editor and keep it. If we initialise them in Start(), all the changes in UnityEditor will be lost. Especially if there's an asset field like the Dash_Particle alex tried to put in.
     [SerializeField] Dash dash = new Dash();
-    
     [SerializeField] Player_Bark bark = new Player_Bark();
     [SerializeField] Player_Binding binds = new Player_Binding();
     Combat combat = new Combat();
     Player_Components components = new Player_Components();
     Player_Inputs inputs = new Player_Inputs();
     const string animator_bark = "Bark";
+    bool has_hit_enemy = false;
+    public Vector3 attack_hitbox_offset;
+    public Vector3 attack_hitbox_extents;
 
     /// initialise fields
     void Start() {
@@ -39,12 +40,18 @@ public class Player_Controller : MonoBehaviour {
         components.character_controller = GetComponent<CharacterController>();
         components.animator = GetComponent<Animator>();
         // -- setup inputs
+        Debug.Assert(components.input.actions != null);
         inputs.walk       = components.input.actions[binds.WALK_INPUT_LABEL];
         inputs.dash       = components.input.actions[binds.DASH_INPUT_LABEL];
         inputs.bark       = components.input.actions[binds.BARK_INPUT_LABEL];
         inputs.attack     = components.input.actions[binds.ATTACK_INPUT_LABEL];
         inputs.temp_exit  = components.input.actions["Temp_Exit"];
         inputs.reset      = components.input.actions["Reset_Level_Debug"]; // @incomplete @debug remove this from here and the PlayerInp Inputs after debugging is over
+        inputs.dash.performed      -= delegate_dash;
+        inputs.bark.performed      -= delegate_bark;
+        inputs.attack.performed    -= delegate_attack;
+        inputs.temp_exit.performed -= delegate_temp_exit;
+        
         inputs.dash.performed += delegate_dash;
         inputs.bark.performed += delegate_bark;
         inputs.attack.performed += delegate_attack;
@@ -79,7 +86,7 @@ public class Player_Controller : MonoBehaviour {
         PLAYER_apply_velocity();
     }
     /// draw debugging aids
-    void OnDrawGizmosSelected() {
+    void OnDrawGizmos() {
         // -- bark area
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, bark.radius);
@@ -87,10 +94,12 @@ public class Player_Controller : MonoBehaviour {
         Vector3 dash_offset = new Vector3(0, 1, 0) + transform.position;
         Gizmos.color = Color.blue;
         Gizmos.DrawLine(dash_offset, dash_offset + transform.forward * dash.normal_dash_range);
+        // -- attack hitbox
+        Gizmos.DrawWireCube(transform.position + (attack_hitbox_offset).rotate(transform.rotation.eulerAngles.y), attack_hitbox_extents);
     }
     /// used as a delegate for Player_Inputs.dash
     void delegate_dash(InputAction.CallbackContext obj) {
-        dash.dash(transf.position, inputs.input_vec2);
+        dash.dash(transf.position, inputs.input_vec2, Dash.TYPES.NORMAL);
         // if (dash_part != null) { // TODO add this back when we have a proper particle system
         //     dash_part.Play();
         // }
@@ -101,12 +110,11 @@ public class Player_Controller : MonoBehaviour {
         // -- init collision
         Collider[] colliders = Physics.OverlapSphere(transf.position, bark.radius);
         foreach (Collider collider in colliders) {
-            print("found a collision");
-            //// proto_enemy_bark enemy = collider.gameObject.GetComponent<proto_enemy_bark>();
-            //// if (enemy != null) {
-            ////     enemy.stunt = true;
-            ////     print("stunted enemy");
-            //// }
+            Enemy_Controller enemy = collider.gameObject.GetComponent<Enemy_Controller>();
+            if (enemy != null) {
+                enemy.stun();
+                print("stunned enemy");
+            }
         }
     }
     /// used to queue attack
@@ -116,26 +124,54 @@ public class Player_Controller : MonoBehaviour {
     /// first attack in the combo chain (Start)
     void delegate_attack_1_start() {
         print("attack 1 start");
-        dash.dash(transf.position, inputs.input_vec2, true);
+        has_hit_enemy = false;
     }
     /// first attack in the combo chain (Update)
     void delegate_attack_1_update() {
-        PLAYER_apply_dash();
+        attack_hit(1);
     }
     /// second attack in the combo chain (Start)
     void delegate_attack_2_start() {
+        has_hit_enemy = false;
         print("attack 2 start");
-        dash.dash(transf.position, inputs.input_vec2, false);
     }
     /// second attack in the combo chain (Update)
     void delegate_attack_2_update() {
-        PLAYER_apply_dash();
+        attack_hit(2);
     }
     /// third attack in the combo chain (Start)
     void delegate_attack_3_start() {
+        has_hit_enemy = false;
+        var rot = transf.forward;
+        dash.dash(transf.position, new Vector2(rot.x, rot.z), Dash.TYPES.COMBAT);
     }
     /// third attack in the combo chain (Update)
     void delegate_attack_3_update() {
+        PLAYER_apply_dash();
+        attack_hit(3);
+    }
+    /// this is called when the attack hits an enemy
+    void attack_hit(uint attack_combo_index) {
+        if (!has_hit_enemy) {
+            Collider[] colliders = Physics.OverlapBox(transf.position + (attack_hitbox_offset).rotate(transf.rotation.eulerAngles.y), attack_hitbox_extents, transf.rotation);
+            foreach (Collider collider in colliders) {
+                Enemy_Controller enemy = collider.gameObject.GetComponent<Enemy_Controller>();
+                if (enemy != null) {
+                    // -- apply damage
+                    // -- apply damage
+                    enemy.hit(1);
+                    {   // -- apply knockback
+                        var knock_back_direction = enemy.transform.position - transf.position;
+                        enemy.knock_back(new Vector2(knock_back_direction.x, knock_back_direction.z));
+                    }
+                    {   // -- toggle has hit enemy so we don't hit more enemies or hit the same enemy multiple times
+                        print("hit enemy attack combo index: " + attack_combo_index.ToString());
+                        has_hit_enemy = true;
+                        break;
+                    }
+                }
+            }
+        }
     }
     /// temporarily used to exit the game during build
     void delegate_temp_exit(InputAction.CallbackContext obj) {
@@ -206,73 +242,6 @@ public class Player_Controller : MonoBehaviour {
     // !=======================  PRIVATE CLASSES  =======================
     // !=================================================================
     // ! the following private classes are used for grouping variables
-	// /// Player Movement
-	// [System.Serializable]
-	// private class Player_Movement {
-	// 	public float speed 				= 10f; // default values subject to change through the editor
-	// 	public float rotation_speed 	= 10f;
-	// 	public float friction 			= 10f;
-	// 	public float gravity  			= 10f;
-	// 	public Vector3 velocity;
-	// }
-    // /// Player Dash
-    // [System.Serializable]
-    // private class Player_Dash {
-    //     public float normal_dash_range = 5f;                // default values subject to change through the editor
-    //     public float combat_dash_range = 2f;    // default values subject to change through the editor
-    //     public float speed = 30f;
-    //     [HideInInspector] public bool is_in_progress = false;
-    //     float progression = 0;                     // range from 0 - 1
-    //     Vector3 start = new Vector3();             // used to lerp between the two dash points when dashing. Updated in the Input_dash_performed()
-    //     Vector3 end = new Vector3();
-    //     // TODO add dash fx and combat dash fx. turn them on in dash() depedning on whether this is a combat dash or a normal dash. turn them off in update after is_in_progress is changed to false;
-
-    //     /// updates the dash variables for a dash move. Use update() to perform the dash
-    //     public void dash(Vector3 _start, Vector2 input_vec2, bool is_combat_dash = false) {
-    //         if (!is_in_progress) { // ? not sure why this check should be here. Do we want the player to be able to reset dash once this function is called or not?
-    //             is_in_progress = true;
-    //             // -- get and adjust input
-    //             Vector3 input = new Vector3(input_vec2.x, 0, input_vec2.y);
-    //             // -- change the range of dash depending on is_combat_dash
-    //             var dash_range = is_combat_dash ? combat_dash_range : normal_dash_range;
-    //             start = _start;
-    //             end = start + input * dash_range;
-    //             progression = 0;
-    //         }
-    //     }
-
-    //     /// returns the velocity with applied dash force
-    //     public Vector3 update(Vector3 velocity, Transform transf) {    // @incomplete try to see if removing transf will work. Meaning instead of dash_start - transf.position we could do dash_start - dash_start or 0, and dash_end - 0
-    //         if (is_in_progress) {
-    //             progression += speed * Time.deltaTime;
-                 
-    //             velocity = Vector3.Lerp(start - transf.position, end - transf.position, progression);
-    //             if (progression >= 1) {
-    //                 is_in_progress = false;
-    //             }
-    //         }
-    //         return velocity;
-    //     }
-    // }
-    // /// Player Combat
-    // [System.Serializable]
-    // private class Player_Combat {
-    //     [HideInInspector] public bool is_attacking = false;
-    //     [HideInInspector] public int current_combo_index = 0; // starts from 0 - 2 (inclusive)
-    //     [HideInInspector] public bool queued_combo = false;
-    //     [HideInInspector] public delegate void Attack_Function_Start();
-    //     [HideInInspector] public delegate void Attack_Function_Update();
-    //     [HideInInspector] public List<Attack_Function_Start> attack_functions_start = new List<Attack_Function_Start>();
-    //     [HideInInspector] public List<Attack_Function_Update> attack_functions_update = new List<Attack_Function_Update>();
-    //     // !Temp @temp
-    //     [HideInInspector] public float temp_attack_duration; // set to init value in the constructor
-    //     public float temp_attack_duration_init = 0.2f;
-
-    //     public Player_Combat() {
-    //         temp_attack_duration = temp_attack_duration_init;
-    //     }
-
-    // }
     /// Player Bark
     [System.Serializable]
     private class Player_Bark {

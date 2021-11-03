@@ -89,9 +89,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ai_tree: {fileID: 11400000, guid: 323e2b74aeac6e144881b70913f341b9, type: 2}
   vision_radius: 10
+  combat_manoeuvre_radius: 4
   combat_radius: 3
-  speed: 10
-  stunt_duration_init: 1
+  stunt_timer_init: 1
+  maneuver_timer_init: 1
+  health: 4
+  movement:
+    speed: 5
+    rotation_speed: 10
+    friction: 10
+    gravity: 10
+    velocity: {x: 0, y: 0, z: 0}
+  dash:
+    normal_dash_range: 5
+    combat_dash_range: 2
+    knockback_dash_range: 80
+    speed: 30
+    is_in_progress: 0
 --- !u!1 &3183367227147901266
 GameObject:
   m_ObjectHideFlags: 0

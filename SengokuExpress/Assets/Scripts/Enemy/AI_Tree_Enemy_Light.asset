@@ -1,24 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-9062278813788741245
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0dbed3cfd70659e4291ff89edb331e69, type: 3}
-  m_Name: AI_Tree_Node
-  m_EditorClassIdentifier: 
-  connection_ok: []
-  connection_fail: []
-  guid: 5a506bcad854b8248afaefbb48a035a9
-  graph_pos: {x: 0, y: 0}
-  nodeName: 
-  method_name: ENEMY_approach_player
-  tree: {fileID: 11400000}
 --- !u!114 &-8948715633281850614
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32,14 +13,35 @@ MonoBehaviour:
   m_Name: AI_Tree_Root
   m_EditorClassIdentifier: 
   connection_ok:
-  - {fileID: 3915008519016031221}
+  - {fileID: 1512559961920945634}
   connection_fail: []
   guid: 895feec993af5f24b8fd8bd7956c7382
-  graph_pos: {x: -24, y: -17}
+  graph_pos: {x: -84, y: -7.142853}
   nodeName: 
   method_name: 
   tree: {fileID: 11400000}
---- !u!114 &-7780050025773794572
+--- !u!114 &-7999271556900578337
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0dbed3cfd70659e4291ff89edb331e69, type: 3}
+  m_Name: AI_Tree_Node
+  m_EditorClassIdentifier: 
+  connection_ok:
+  - {fileID: -4111352199722807104}
+  connection_fail:
+  - {fileID: -787188232624851297}
+  guid: 30d7a20ebd8d59148b9d58561661c01f
+  graph_pos: {x: 654.02295, y: -13}
+  nodeName: ENEMY_C_is_stunned
+  method_name: ENEMY_C_is_stunned
+  tree: {fileID: 11400000}
+--- !u!114 &-4111352199722807104
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -53,10 +55,87 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   connection_ok: []
   connection_fail: []
-  guid: 56f2c0c660dcf034eacad53bd260fbc9
-  graph_pos: {x: 426.00006, y: -17.285706}
-  nodeName: ENEMY_is_player_in_combat_range
-  method_name: ENEMY_is_player_in_combat_range
+  guid: 6feec8ff28cf0ed43bbefb873753a7ba
+  graph_pos: {x: 930.9174, y: -147.97263}
+  nodeName: ENEMY_A_play_stunned_animation
+  method_name: ENEMY_A_play_stunned_animation
+  tree: {fileID: 11400000}
+--- !u!114 &-1501837985519973127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0dbed3cfd70659e4291ff89edb331e69, type: 3}
+  m_Name: AI_Tree_Node
+  m_EditorClassIdentifier: 
+  connection_ok: []
+  connection_fail: []
+  guid: 943adfcb04790034c8e19fec66588318
+  graph_pos: {x: 1806.7869, y: 133.78236}
+  nodeName: ENEMY_A_approach_player
+  method_name: ENEMY_A_approach_player
+  tree: {fileID: 11400000}
+--- !u!114 &-787188232624851297
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0dbed3cfd70659e4291ff89edb331e69, type: 3}
+  m_Name: AI_Tree_Node
+  m_EditorClassIdentifier: 
+  connection_ok:
+  - {fileID: 8152713771098204479}
+  connection_fail: []
+  guid: 0a01a1938a34d844aae893cac353a6b1
+  graph_pos: {x: 944.57135, y: 9.960431}
+  nodeName: ENEMY_C_is_player_in_vision_range
+  method_name: ENEMY_C_is_player_in_vision_range
+  tree: {fileID: 11400000}
+--- !u!114 &-464813100984170388
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0dbed3cfd70659e4291ff89edb331e69, type: 3}
+  m_Name: AI_Tree_Node
+  m_EditorClassIdentifier: 
+  connection_ok: []
+  connection_fail: []
+  guid: ac5f8988bdd7c9c41b1a547a47a91fd3
+  graph_pos: {x: 0, y: 0}
+  nodeName: 
+  method_name: ENEMY_A_apply_knockback
+  tree: {fileID: 11400000}
+--- !u!114 &-386147065397740773
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0dbed3cfd70659e4291ff89edb331e69, type: 3}
+  m_Name: AI_Tree_Node
+  m_EditorClassIdentifier: 
+  connection_ok: []
+  connection_fail: []
+  guid: 75f31b914cf64a34a95cf85a6bb77c60
+  graph_pos: {x: 380.32144, y: 141.23573}
+  nodeName: ENEMY_A_destroy_gameobject
+  method_name: ENEMY_A_destroy_gameobject
   tree: {fileID: 11400000}
 --- !u!114 &11400000
 MonoBehaviour:
@@ -73,10 +152,60 @@ MonoBehaviour:
   root: {fileID: -8948715633281850614}
   nodes:
   - {fileID: -8948715633281850614}
-  - {fileID: 3915008519016031221}
-  - {fileID: -7780050025773794572}
-  - {fileID: -9062278813788741245}
---- !u!114 &3915008519016031221
+  - {fileID: 1512559961920945634}
+  - {fileID: 5416959597971074161}
+  - {fileID: -7999271556900578337}
+  - {fileID: -787188232624851297}
+  - {fileID: 8152713771098204479}
+  - {fileID: 8392505569763683034}
+  - {fileID: 3224066580235252948}
+  - {fileID: 989260888107140929}
+  - {fileID: -386147065397740773}
+  - {fileID: -4111352199722807104}
+  - {fileID: -1501837985519973127}
+  - {fileID: 4918595738933444337}
+  - {fileID: 397115708752654493}
+  - {fileID: 5461723569147740256}
+  - {fileID: -464813100984170388}
+--- !u!114 &397115708752654493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0dbed3cfd70659e4291ff89edb331e69, type: 3}
+  m_Name: AI_Tree_Node
+  m_EditorClassIdentifier: 
+  connection_ok: []
+  connection_fail: []
+  guid: 2976c5ed40c59c64b823e2d64c1b2765
+  graph_pos: {x: 2590, y: 128.14288}
+  nodeName: ENEMY_A_approach_player
+  method_name: ENEMY_A_approach_player
+  tree: {fileID: 11400000}
+--- !u!114 &989260888107140929
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0dbed3cfd70659e4291ff89edb331e69, type: 3}
+  m_Name: AI_Tree_Node
+  m_EditorClassIdentifier: 
+  connection_ok: []
+  connection_fail: []
+  guid: 4085a152e718663419a0e40230143bfb
+  graph_pos: {x: 722.0357, y: 130.95003}
+  nodeName: ENEMY_A_spawn
+  method_name: ENEMY_A_spawn
+  tree: {fileID: 11400000}
+--- !u!114 &1512559961920945634
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -89,10 +218,132 @@ MonoBehaviour:
   m_Name: AI_Tree_Node
   m_EditorClassIdentifier: 
   connection_ok:
-  - {fileID: -7780050025773794572}
+  - {fileID: 5416959597971074161}
+  connection_fail:
+  - {fileID: -386147065397740773}
+  guid: bfe1e1f2c12571c4183080a505bd1416
+  graph_pos: {x: 72.42859, y: -7.8571167}
+  nodeName: ENEMY_C_is_alive
+  method_name: ENEMY_C_is_alive
+  tree: {fileID: 11400000}
+--- !u!114 &3224066580235252948
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0dbed3cfd70659e4291ff89edb331e69, type: 3}
+  m_Name: AI_Tree_Node
+  m_EditorClassIdentifier: 
+  connection_ok:
+  - {fileID: 8392505569763683034}
+  connection_fail:
+  - {fileID: 4918595738933444337}
+  guid: 54a1740c09ad2104091dbe1aa9d56afb
+  graph_pos: {x: 1788.5715, y: -40.47882}
+  nodeName: ENEMY_C_has_maneuvered_long_enough
+  method_name: ENEMY_C_has_maneuvered_long_enough
+  tree: {fileID: 11400000}
+--- !u!114 &4918595738933444337
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0dbed3cfd70659e4291ff89edb331e69, type: 3}
+  m_Name: AI_Tree_Node
+  m_EditorClassIdentifier: 
+  connection_ok: []
   connection_fail: []
-  guid: 73b7c95e08c3c9d4a8a138e127feb15e
-  graph_pos: {x: 130.42859, y: -16.285706}
-  nodeName: ENEMY_is_player_in_range
-  method_name: ENEMY_is_player_in_range
+  guid: 8b366c3eeaa5b9640a6da86694198e89
+  graph_pos: {x: 2178.4915, y: 133.1656}
+  nodeName: ENEMY_A_maneuver_player
+  method_name: ENEMY_A_maneuver_player
+  tree: {fileID: 11400000}
+--- !u!114 &5416959597971074161
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0dbed3cfd70659e4291ff89edb331e69, type: 3}
+  m_Name: AI_Tree_Node
+  m_EditorClassIdentifier: 
+  connection_ok:
+  - {fileID: -7999271556900578337}
+  connection_fail:
+  - {fileID: 989260888107140929}
+  guid: 42c44f8bfec6efc4c830c476f4036823
+  graph_pos: {x: 352, y: -8.285706}
+  nodeName: ENEMY_C_has_spawned
+  method_name: ENEMY_C_has_spawned
+  tree: {fileID: 11400000}
+--- !u!114 &5461723569147740256
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0dbed3cfd70659e4291ff89edb331e69, type: 3}
+  m_Name: AI_Tree_Node
+  m_EditorClassIdentifier: 
+  connection_ok: []
+  connection_fail: []
+  guid: 3d727d278cbd1094a90933f1f5ccbefa
+  graph_pos: {x: 479.3496, y: -189.1175}
+  nodeName: ENEMY_C_is_knocked_back
+  method_name: ENEMY_C_is_knocked_back
+  tree: {fileID: 11400000}
+--- !u!114 &8152713771098204479
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0dbed3cfd70659e4291ff89edb331e69, type: 3}
+  m_Name: AI_Tree_Node
+  m_EditorClassIdentifier: 
+  connection_ok:
+  - {fileID: 3224066580235252948}
+  connection_fail:
+  - {fileID: -1501837985519973127}
+  guid: e9f34dd64fbbd0449a5216c9928a8491
+  graph_pos: {x: 1327.6803, y: 10.673656}
+  nodeName: ENEMY_C_is_player_in_combat_manoeuvre_range
+  method_name: ENEMY_C_is_player_in_combat_manoeuvre_range
+  tree: {fileID: 11400000}
+--- !u!114 &8392505569763683034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0dbed3cfd70659e4291ff89edb331e69, type: 3}
+  m_Name: AI_Tree_Node
+  m_EditorClassIdentifier: 
+  connection_ok: []
+  connection_fail:
+  - {fileID: 397115708752654493}
+  guid: b9b76f58e717ed04186201490905680a
+  graph_pos: {x: 2225.7139, y: -43.335896}
+  nodeName: ENEMY_C_is_player_in_combat_range
+  method_name: ENEMY_C_is_player_in_combat_range
   tree: {fileID: 11400000}
