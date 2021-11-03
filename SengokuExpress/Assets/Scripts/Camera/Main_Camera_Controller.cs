@@ -29,6 +29,7 @@ public class Main_Camera_Controller : MonoBehaviour {
     }
     //
     void FixedUpdate() {
+        if (target == null) return;
         transform.position += ((target.position - transform.position) - target_offset) * drag_stiffness * Time.deltaTime;
     }
 }

@@ -198,7 +198,8 @@ public class Enemy_Controller : MonoBehaviour {
     /// updates the maneuver timer. Returns true if the timer has completed and resets the timer
     [AI_Function_Attribute]
     bool ENEMY_C_has_maneuvered_long_enough() {
-        return true; // @nocheckin
+        return true;
+        // TODO figure out how to do maneuver for BETA
         if (maneuver_timer > 0) {
             maneuver_timer -= Time.deltaTime;
             return false;

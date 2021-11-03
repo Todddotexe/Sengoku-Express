@@ -31,8 +31,9 @@ public class Player_Controller : MonoBehaviour {
     public Vector3 attack_hitbox_offset;
     public Vector3 attack_hitbox_extents;
 
-    float timer_knockback_init = 2;
-    float timer_knockback = 2;
+    float timer_knockback_init = 0.5f;
+    float timer_knockback = 0.5f;
+    public Animator attack_animator = null; // @temp this is temporary and used for a basic trail renderer for alpha milestone
 
     /// initialise fields
     void Start() {
@@ -71,6 +72,7 @@ public class Player_Controller : MonoBehaviour {
     void FixedUpdate() {
         if (!is_alive) {
             Destroy(gameObject);
+            Global.set_game_state(Global.STATES.LOST);
             return;
         }
         if (is_knocked_back) {
@@ -84,6 +86,14 @@ public class Player_Controller : MonoBehaviour {
                 is_knocked_back = false;
             }
         }
+        { // -- turn combat trail on and off
+            if (combat.is_attacking || combat.queued_combo) {
+                attack_animator.gameObject.SetActive(true);
+            } else {
+                attack_animator.gameObject.SetActive(false);
+            }
+        }
+
         { // -- update input
             var input_vec2    = inputs.walk.ReadValue<Vector2>();
             inputs.input_vec2 = input_vec2;
@@ -162,6 +172,7 @@ public class Player_Controller : MonoBehaviour {
     void delegate_attack_1_start() {
         print("attack 1 start");
         has_hit_enemy = false;
+        attack_animator.SetTrigger("Atk1");
     }
     /// first attack in the combo chain (Update)
     void delegate_attack_1_update() {
@@ -171,6 +182,7 @@ public class Player_Controller : MonoBehaviour {
     void delegate_attack_2_start() {
         has_hit_enemy = false;
         print("attack 2 start");
+        attack_animator.SetTrigger("Atk2");
     }
     /// second attack in the combo chain (Update)
     void delegate_attack_2_update() {
@@ -181,6 +193,7 @@ public class Player_Controller : MonoBehaviour {
         has_hit_enemy = false;
         var rot = transf.forward;
         dash.dash(transf.position, new Vector2(rot.x, rot.z), Dash.TYPES.COMBAT);
+        attack_animator.SetTrigger("Atk3");
     }
     /// third attack in the combo chain (Update)
     void delegate_attack_3_update() {
