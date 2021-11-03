@@ -26,7 +26,6 @@ public class Player_Controller : MonoBehaviour {
     Combat combat = new Combat();
     Player_Components components = new Player_Components();
     Player_Inputs inputs = new Player_Inputs();
-    const string animator_bark = "Bark";
     bool has_hit_enemy = false;
     public Vector3 attack_hitbox_offset;
     public Vector3 attack_hitbox_extents;
@@ -109,6 +108,7 @@ public class Player_Controller : MonoBehaviour {
             PLAYER_apply_dash();
         } else
         if (inputs.input_vec2.magnitude > 0) {
+            components.animator.SetTrigger(binds.ANIMATION_TRIGGER_WALK);
             movement.velocity = inputs.input * movement.speed * Time.deltaTime;
         }
         PLAYER_apply_velocity();
@@ -147,13 +147,14 @@ public class Player_Controller : MonoBehaviour {
     /// used as a delegate for Player_Inputs.dash
     void delegate_dash(InputAction.CallbackContext obj) {
         dash.dash(transf.position, inputs.input_vec2, Dash.TYPES.NORMAL);
+        components.animator.SetTrigger(binds.ANIMATION_TRIGGER_DASH);
         // if (dash_part != null) { // TODO add this back when we have a proper particle system
         //     dash_part.Play();
         // }
     }
     /// used as a delegate for Player_Inputs.bark
     void delegate_bark(InputAction.CallbackContext obj) {
-        components.animator.SetTrigger(animator_bark);
+        components.animator.SetTrigger(binds.ANIMATION_TRIGGER_BARK);
         // -- init collision
         Collider[] colliders = Physics.OverlapSphere(transf.position, bark.radius);
         foreach (Collider collider in colliders) {
@@ -275,6 +276,12 @@ public class Player_Controller : MonoBehaviour {
         public string DASH_INPUT_LABEL = "Dash";
         public string BARK_INPUT_LABEL = "Bark";
         public string ATTACK_INPUT_LABEL = "LightAttack";
+        public string ANIMATION_TRIGGER_ATTACK_1 = "Attack1";
+        public string ANIMATION_TRIGGER_ATTACK_2 = "Attack2";
+        public string ANIMATION_TRIGGER_ATTACK_3 = "Attack3";
+        public string ANIMATION_TRIGGER_BARK     = "Bark";
+        public string ANIMATION_TRIGGER_DASH     = "Dash";
+        public string ANIMATION_TRIGGER_WALK     = "Walk";
     }
     /// Player Inputs
     private class Player_Inputs{

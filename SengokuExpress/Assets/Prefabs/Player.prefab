@@ -225,8 +225,14 @@ MonoBehaviour:
     DASH_INPUT_LABEL: Dash
     BARK_INPUT_LABEL: Bark
     ATTACK_INPUT_LABEL: LightAttack
+    ANIMATION_TRIGGER_ATTACK_1: Attack1
+    ANIMATION_TRIGGER_ATTACK_2: Attack2
+    ANIMATION_TRIGGER_ATTACK_3: Attack3
+    ANIMATION_TRIGGER_BARK: Bark
+    ANIMATION_TRIGGER_DASH: Dash
+    ANIMATION_TRIGGER_WALK: Walk
   attack_hitbox_offset: {x: 0, y: 1, z: 1}
-  attack_hitbox_extents: {x: 2, y: 2, z: 2}
+  attack_hitbox_extents: {x: 2, y: 2, z: 4}
   attack_animator: {fileID: 4660239364217155405}
 --- !u!1 &8344202031474306481
 GameObject:
