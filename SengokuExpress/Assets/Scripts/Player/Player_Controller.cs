@@ -30,8 +30,8 @@ public class Player_Controller : MonoBehaviour {
     public Vector3 attack_hitbox_offset;
     public Vector3 attack_hitbox_extents;
 
-    float timer_knockback_init = 0.5f;
-    float timer_knockback = 0.5f;
+    float timer_knockback_init = 0.1f;
+    float timer_knockback = 0.1f;
     public Animator attack_animator = null; // @temp this is temporary and used for a basic trail renderer for alpha milestone
 
     /// initialise fields
