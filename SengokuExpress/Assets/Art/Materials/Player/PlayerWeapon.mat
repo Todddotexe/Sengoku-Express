@@ -20,30 +20,19 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Player
-  m_Shader: {fileID: -6465566751694194690, guid: f5d6a17d5a438ed429ac6beb94e134ab, type: 3}
+  m_Name: PlayerWeapon
+  m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
   m_ShaderKeywords: _ENVIRONMENTREFLECTIONS_OFF _RECEIVE_SHADOWS_OFF _SPECULARHIGHLIGHTS_OFF
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
+  m_CustomRenderQueue: 2000
+  stringTagMap:
+    RenderType: Opaque
   disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - Texture2D_479DA19A:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - Texture2D_9B18B13E:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - Texture2D_E0AFF5D0:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - _BaseMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -73,13 +62,6 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - BOOLEAN_DBA0411F: 0
-    - Vector1_21E0CC83: 0.3
-    - Vector1_502C65BD: 0.05
-    - Vector1_7D1F5ADA: 2.1
-    - Vector1_81C1EA44: 1
-    - Vector1_C19185AF: 1000
-    - Vector1_D5F18D10: 0.61
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
@@ -102,12 +84,7 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - Color_1F0F8399: {r: 0, g: 0, b: 0, a: 0}
-    - Color_2BF5C84A: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 0}
-    - Color_37919CD9: {r: 1, g: 0, b: 0, a: 0}
-    - Color_B18E2BB9: {r: 0.6933962, g: 1, b: 0.99696565, a: 0}
-    - Color_FA4AA570: {r: 0.9339623, g: 0.9339623, b: 0.9339623, a: 0}
-    - _BaseColor: {r: 0.24783623, g: 0.20652369, b: 0.4811321, a: 1}
+    - _BaseColor: {r: 0.6084906, g: 1, b: 0.90409786, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
