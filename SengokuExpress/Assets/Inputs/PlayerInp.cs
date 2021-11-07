@@ -166,17 +166,6 @@ public class @PlayerInp : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""7e9e4510-893e-47cd-8edb-de48afb7dccd"",
-                    ""path"": ""<Keyboard>/space"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Dash"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""51a1e410-341f-4e54-9148-b9b31c8c3ee0"",
                     ""path"": ""<Keyboard>/r"",
                     ""interactions"": """",
@@ -194,6 +183,17 @@ public class @PlayerInp : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Temp_Exit"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""cfbaafeb-f920-4daf-95e9-aa5b96e010d1"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Dash"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
