@@ -31,7 +31,7 @@ namespace Character_Util {
 
         /// updates the dash variables for a dash move. Use update() to perform the dash
         public void dash(Vector3 _start, Vector2 direction, TYPES type) {
-            if (!is_in_progress) { // ? not sure why this check should be here. Do we want the player to be able to reset dash once this function is called or not?
+            if (!is_in_progress) { // ? not sure why this check should be here. Do we want the player to be able to reset dash once this function is called or not? I think this is here to stop the player from being able to fly forward lol
                 direction = direction.normalized;
                 is_in_progress = true;
                 // -- get and adjust input
