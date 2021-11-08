@@ -30,6 +30,8 @@ public class Player_Controller : MonoBehaviour {
     public Vector3 attack_hitbox_offset;
     public Vector3 attack_hitbox_extents;
 
+    [SerializeField] float dash_cool_down_duration = 0.5f;
+    float dash_cool_down = 0f;
     float timer_knockback_init = 0.1f;
     float timer_knockback = 0.1f;
     public Animator attack_animator = null; // @temp this is temporary and used for a basic trail renderer for alpha milestone
@@ -73,6 +75,9 @@ public class Player_Controller : MonoBehaviour {
             Destroy(gameObject);
             Global.set_game_state(Global.STATES.LOST);
             return;
+        }
+        { // -- dash cool down
+            if (dash_cool_down > 0) dash_cool_down -= Time.deltaTime;
         }
         if (is_knocked_back) {
             if (timer_knockback > 0) {
@@ -146,11 +151,14 @@ public class Player_Controller : MonoBehaviour {
     }
     /// used as a delegate for Player_Inputs.dash
     void delegate_dash(InputAction.CallbackContext obj) {
-        dash.dash(transf.position, inputs.input_vec2, Dash.TYPES.NORMAL);
-        components.animator.SetTrigger(binds.ANIMATION_TRIGGER_DASH);
-        // if (dash_part != null) { // TODO add this back when we have a proper particle system
-        //     dash_part.Play();
-        // }
+        if (dash_cool_down <= 0) {
+            dash_cool_down = dash_cool_down_duration;
+            dash.dash(transf.position, inputs.input_vec2, Dash.TYPES.NORMAL);
+            components.animator.SetTrigger(binds.ANIMATION_TRIGGER_DASH);
+            // if (dash_part != null) { // TODO add this back when we have a proper particle system
+            //     dash_part.Play();
+            // }
+        }
     }
     /// used as a delegate for Player_Inputs.bark
     void delegate_bark(InputAction.CallbackContext obj) {
