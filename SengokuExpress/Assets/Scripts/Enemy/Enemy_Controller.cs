@@ -30,17 +30,23 @@ public class Enemy_Controller : MonoBehaviour {
     bool is_stunned = false;
     bool is_hit = false;
     bool is_spawned = false;
-    bool is_alive = true;
+    [HideInInspector] public bool is_alive = true;
     bool is_knocked_back = false;
     bool trigger_hit_player = false;
     bool trigger_finished_attack_combo = false;
     Material material_normal = null;
     float hit_animation_timer = 0.2f;
+    Proto_Combat_Arena_Controller arena = null;
     /// init
     void Start() {
+        arena = gameObject.GetComponentInParent<Proto_Combat_Arena_Controller>();
+        // -- assert
+        Debug.Assert(arena != null);
         Debug.Assert(renderer != null);
         Debug.Assert(material_hit != null);
-
+        // -- setup arena
+        arena.enemies.Add(this);
+        // -- init fields
         transf = transform; // cache transform
         stun_timer = stunt_timer_init;
         target_transform = GameObject.FindGameObjectWithTag("Player").transform;
