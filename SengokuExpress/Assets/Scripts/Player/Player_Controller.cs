@@ -34,6 +34,8 @@ public class Player_Controller : MonoBehaviour {
     float dash_cool_down = 0f;
     float timer_knockback_init = 0.1f;
     float timer_knockback = 0.1f;
+    float bark_meter_percentage = 0f; // goes from 0 - 1
+    const float BARK_METER_POINT = 0.1f;
     public Animator attack_animator = null; // @temp this is temporary and used for a basic trail renderer for alpha milestone
 
     /// initialise fields
@@ -162,6 +164,9 @@ public class Player_Controller : MonoBehaviour {
     }
     /// used as a delegate for Player_Inputs.bark
     void delegate_bark(InputAction.CallbackContext obj) {
+        if (combat.is_attacking || combat.queued_combo) return; // ! don't bark while attacking
+        if (bark_meter_percentage != 1) return; // ! don't bark if bark meter is not filled
+        bark_meter_percentage = 0;
         components.animator.SetTrigger(binds.ANIMATION_TRIGGER_BARK);
         // -- init collision
         Collider[] colliders = Physics.OverlapSphere(transf.position, bark.radius);
@@ -219,6 +224,7 @@ public class Player_Controller : MonoBehaviour {
                     // -- apply damage
                     // -- apply damage
                     enemy.hit(1);
+                    bark_meter_percentage += BARK_METER_POINT;
                     {   // -- apply knockback
                         var knock_back_direction = enemy.transform.position - transf.position;
                         enemy.knock_back(new Vector2(knock_back_direction.x, knock_back_direction.z));
