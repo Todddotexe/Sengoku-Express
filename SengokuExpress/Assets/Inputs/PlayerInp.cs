@@ -43,14 +43,6 @@ public class @PlayerInp : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""HeavyAttack"",
-                    ""type"": ""Button"",
-                    ""id"": ""2eb5ac65-c3b7-4f76-ba64-51307d0538b9"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """"
-                },
-                {
                     ""name"": ""Bark"",
                     ""type"": ""Button"",
                     ""id"": ""9af4ac93-4b8f-4f51-9b6b-016efeaa723b"",
@@ -166,23 +158,23 @@ public class @PlayerInp : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""28b33c08-b531-4570-a8a1-ca83df786261"",
-                    ""path"": ""<Keyboard>/upArrow"",
+                    ""id"": ""b0c8412b-a27c-4f18-88b1-bf69b14fd8e9"",
+                    ""path"": ""<Mouse>/leftButton"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""HeavyAttack"",
+                    ""action"": ""LightAttack"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""fc66da21-45ff-4332-955f-4a09ff7abb88"",
-                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""id"": ""49622089-03c1-4a7c-85e7-1dcdb83d9b4e"",
+                    ""path"": ""<Keyboard>/downArrow"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""HeavyAttack"",
+                    ""action"": ""LightAttack"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -201,6 +193,28 @@ public class @PlayerInp : IInputActionCollection, IDisposable
                     ""name"": """",
                     ""id"": ""3287ed44-11c8-40f2-b5a6-08ee2ccf8df1"",
                     ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Bark"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""cfa420f2-8633-49b7-8b66-a7e98aad5938"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Bark"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c9bc9622-67f4-46ed-b5be-d4134aeb0c29"",
+                    ""path"": ""<Keyboard>/upArrow"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -262,7 +276,6 @@ public class @PlayerInp : IInputActionCollection, IDisposable
         m_InGameAP_Move = m_InGameAP.FindAction("Move", throwIfNotFound: true);
         m_InGameAP_Dash = m_InGameAP.FindAction("Dash", throwIfNotFound: true);
         m_InGameAP_LightAttack = m_InGameAP.FindAction("LightAttack", throwIfNotFound: true);
-        m_InGameAP_HeavyAttack = m_InGameAP.FindAction("HeavyAttack", throwIfNotFound: true);
         m_InGameAP_Bark = m_InGameAP.FindAction("Bark", throwIfNotFound: true);
         m_InGameAP_Reset_Level_Debug = m_InGameAP.FindAction("Reset_Level_Debug", throwIfNotFound: true);
         m_InGameAP_Temp_Exit = m_InGameAP.FindAction("Temp_Exit", throwIfNotFound: true);
@@ -318,7 +331,6 @@ public class @PlayerInp : IInputActionCollection, IDisposable
     private readonly InputAction m_InGameAP_Move;
     private readonly InputAction m_InGameAP_Dash;
     private readonly InputAction m_InGameAP_LightAttack;
-    private readonly InputAction m_InGameAP_HeavyAttack;
     private readonly InputAction m_InGameAP_Bark;
     private readonly InputAction m_InGameAP_Reset_Level_Debug;
     private readonly InputAction m_InGameAP_Temp_Exit;
@@ -329,7 +341,6 @@ public class @PlayerInp : IInputActionCollection, IDisposable
         public InputAction @Move => m_Wrapper.m_InGameAP_Move;
         public InputAction @Dash => m_Wrapper.m_InGameAP_Dash;
         public InputAction @LightAttack => m_Wrapper.m_InGameAP_LightAttack;
-        public InputAction @HeavyAttack => m_Wrapper.m_InGameAP_HeavyAttack;
         public InputAction @Bark => m_Wrapper.m_InGameAP_Bark;
         public InputAction @Reset_Level_Debug => m_Wrapper.m_InGameAP_Reset_Level_Debug;
         public InputAction @Temp_Exit => m_Wrapper.m_InGameAP_Temp_Exit;
@@ -351,9 +362,6 @@ public class @PlayerInp : IInputActionCollection, IDisposable
                 @LightAttack.started -= m_Wrapper.m_InGameAPActionsCallbackInterface.OnLightAttack;
                 @LightAttack.performed -= m_Wrapper.m_InGameAPActionsCallbackInterface.OnLightAttack;
                 @LightAttack.canceled -= m_Wrapper.m_InGameAPActionsCallbackInterface.OnLightAttack;
-                @HeavyAttack.started -= m_Wrapper.m_InGameAPActionsCallbackInterface.OnHeavyAttack;
-                @HeavyAttack.performed -= m_Wrapper.m_InGameAPActionsCallbackInterface.OnHeavyAttack;
-                @HeavyAttack.canceled -= m_Wrapper.m_InGameAPActionsCallbackInterface.OnHeavyAttack;
                 @Bark.started -= m_Wrapper.m_InGameAPActionsCallbackInterface.OnBark;
                 @Bark.performed -= m_Wrapper.m_InGameAPActionsCallbackInterface.OnBark;
                 @Bark.canceled -= m_Wrapper.m_InGameAPActionsCallbackInterface.OnBark;
@@ -376,9 +384,6 @@ public class @PlayerInp : IInputActionCollection, IDisposable
                 @LightAttack.started += instance.OnLightAttack;
                 @LightAttack.performed += instance.OnLightAttack;
                 @LightAttack.canceled += instance.OnLightAttack;
-                @HeavyAttack.started += instance.OnHeavyAttack;
-                @HeavyAttack.performed += instance.OnHeavyAttack;
-                @HeavyAttack.canceled += instance.OnHeavyAttack;
                 @Bark.started += instance.OnBark;
                 @Bark.performed += instance.OnBark;
                 @Bark.canceled += instance.OnBark;
@@ -397,7 +402,6 @@ public class @PlayerInp : IInputActionCollection, IDisposable
         void OnMove(InputAction.CallbackContext context);
         void OnDash(InputAction.CallbackContext context);
         void OnLightAttack(InputAction.CallbackContext context);
-        void OnHeavyAttack(InputAction.CallbackContext context);
         void OnBark(InputAction.CallbackContext context);
         void OnReset_Level_Debug(InputAction.CallbackContext context);
         void OnTemp_Exit(InputAction.CallbackContext context);
