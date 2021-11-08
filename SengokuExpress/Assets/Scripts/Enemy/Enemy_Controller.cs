@@ -36,16 +36,12 @@ public class Enemy_Controller : MonoBehaviour {
     bool trigger_finished_attack_combo = false;
     Material material_normal = null;
     float hit_animation_timer = 0.2f;
-    Proto_Combat_Arena_Controller arena = null;
+    [HideInInspector] public Proto_Combat_Arena_Controller arena = null;
     /// init
     void Start() {
-        arena = gameObject.GetComponentInParent<Proto_Combat_Arena_Controller>();
         // -- assert
-        Debug.Assert(arena != null);
         Debug.Assert(renderer != null);
         Debug.Assert(material_hit != null);
-        // -- setup arena
-        arena.enemies.Add(this);
         // -- init fields
         transf = transform; // cache transform
         stun_timer = stunt_timer_init;
@@ -152,6 +148,9 @@ public class Enemy_Controller : MonoBehaviour {
         health -= damage;
         if (health <= 0) {
             is_alive = false;
+            if (arena != null) {
+                arena.update_status(); // refresh arena to register this enemy's death
+            }
         }
         // -- slow down
         local_delta_time_scaler = 0.2f; // ! @incomplete MAGIC NUMBER
