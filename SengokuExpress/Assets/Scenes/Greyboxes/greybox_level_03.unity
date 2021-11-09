@@ -7704,15 +7704,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1840263989754931028, guid: cdca83769e4f2e746b8e2970ca31dd37, type: 3}
       propertyPath: target_offset.x
-      value: 11
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 1840263989754931028, guid: cdca83769e4f2e746b8e2970ca31dd37, type: 3}
       propertyPath: target_offset.y
-      value: -14
+      value: -22
       objectReference: {fileID: 0}
     - target: {fileID: 1840263989754931028, guid: cdca83769e4f2e746b8e2970ca31dd37, type: 3}
       propertyPath: target_offset.z
-      value: 12
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 5880825375811200732, guid: cdca83769e4f2e746b8e2970ca31dd37, type: 3}
       propertyPath: m_Name
