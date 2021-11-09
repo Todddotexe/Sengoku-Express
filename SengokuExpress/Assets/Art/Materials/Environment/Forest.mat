@@ -78,7 +78,7 @@ Material:
     m_Floats:
     - BOOLEAN_DBA0411F: 0
     - Vector1_187D0CB0: 6
-    - Vector1_1EA8DA98: 6
+    - Vector1_1EA8DA98: 15
     - Vector1_21E0CC83: 0
     - Vector1_301F9A53: 0.67
     - Vector1_465E5D8D: 10.14
@@ -86,7 +86,7 @@ Material:
     - Vector1_7D1F5ADA: 0.1
     - Vector1_81C1EA44: 1
     - Vector1_C19185AF: 1000
-    - Vector1_C587F7F2: 15
+    - Vector1_C587F7F2: 25
     - Vector1_D5F18D10: 0.01
     - _AlphaClip: 0
     - _Blend: 0

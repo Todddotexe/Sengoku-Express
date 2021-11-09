@@ -129,6 +129,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  drag_stiffness: 3
+  drag_stiffness: 6
   drag_ignore_radius: 1
-  target_offset: {x: 0, y: 0, z: 0}
+  target_offset: {x: 15, y: -22, z: 16}
+  angle: {x: 40, y: 45, z: 0}
