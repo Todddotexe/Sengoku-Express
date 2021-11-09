@@ -38,9 +38,9 @@ public class Main_Camera_Controller : MonoBehaviour {
     [SerializeField]
     float drag_ignore_radius = 1f;
     [SerializeField]
-    Vector3 target_offset;
+    Vector3 target_offset = new Vector3(40, 40, 0);
     [SerializeField]
-    Vector3 angle;
+    Vector3 angle = new Vector3(11, -14, 12);
     // Quaternion rotation;
     Transform transf;
 
