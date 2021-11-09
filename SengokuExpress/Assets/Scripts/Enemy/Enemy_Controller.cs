@@ -25,7 +25,7 @@ public class Enemy_Controller : MonoBehaviour {
 
     Transform target_transform = null;
     float stun_timer;
-    float maneuver_timer = 0; // used in ENEMY_C_has_maneuvered_long_enough
+    float maneuver_timer; // * used in ENEMY_C_has_maneuvered_long_enough, SET in Start()
     float local_delta_time_scaler = 1;     // * this is used to slow down the enemy when they're hit.
     bool is_stunned = false;
     bool is_hit = false;
@@ -290,7 +290,9 @@ public class Enemy_Controller : MonoBehaviour {
     /// The player is close enough, move around him a little before initiating attack.
     [AI_Function_Attribute]
     bool ENEMY_A_maneuver_player() {
-        // TODO maneuver the player. Update the maneuver timer and set have_maneuvered long enough to true
+        // * note that the maneuver timer is updated in ENEMY_C_has_maneuvered_long_enough()
+        // TODO maneuver the player.
+        
         return false;
     }
     /// Get ready to land attack updates the animation for the suspense before landing an attack
