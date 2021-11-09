@@ -30,14 +30,6 @@
                     "interactions": ""
                 },
                 {
-                    "name": "HeavyAttack",
-                    "type": "Button",
-                    "id": "2eb5ac65-c3b7-4f76-ba64-51307d0538b9",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
                     "name": "Bark",
                     "type": "Button",
                     "id": "9af4ac93-4b8f-4f51-9b6b-016efeaa723b",
@@ -153,23 +145,23 @@
                 },
                 {
                     "name": "",
-                    "id": "28b33c08-b531-4570-a8a1-ca83df786261",
-                    "path": "<Keyboard>/upArrow",
+                    "id": "b0c8412b-a27c-4f18-88b1-bf69b14fd8e9",
+                    "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "HeavyAttack",
+                    "action": "LightAttack",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "fc66da21-45ff-4332-955f-4a09ff7abb88",
-                    "path": "<Gamepad>/buttonNorth",
+                    "id": "49622089-03c1-4a7c-85e7-1dcdb83d9b4e",
+                    "path": "<Keyboard>/downArrow",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "HeavyAttack",
+                    "action": "LightAttack",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -188,6 +180,28 @@
                     "name": "",
                     "id": "3287ed44-11c8-40f2-b5a6-08ee2ccf8df1",
                     "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Bark",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "cfa420f2-8633-49b7-8b66-a7e98aad5938",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Bark",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c9bc9622-67f4-46ed-b5be-d4134aeb0c29",
+                    "path": "<Keyboard>/upArrow",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

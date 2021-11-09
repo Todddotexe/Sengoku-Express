@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3552019100623633027}
-  - component: {fileID: 2710142747574752908}
+  - component: {fileID: 3103493768009385247}
   m_Layer: 0
   m_Name: env_bamboo_01
   m_TagString: Untagged
@@ -26,14 +26,14 @@ Transform:
   m_GameObject: {fileID: 2604209350500989916}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -17.6796, y: 17, z: 140.6079}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 706052292116250337}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!64 &2710142747574752908
-MeshCollider:
+--- !u!136 &3103493768009385247
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -42,10 +42,10 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 8073567734801229987, guid: 555fb5f11527c7f47a3793b332ee7110, type: 3}
+  m_Radius: 0.5
+  m_Height: 10
+  m_Direction: 1
+  m_Center: {x: 0, y: 4, z: 0}
 --- !u!1001 &840658083307448466
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -96,6 +96,18 @@ PrefabInstance:
     - target: {fileID: 173099152126350963, guid: 43761728424e11e43a85d156a43c674a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 173099152126350963, guid: 43761728424e11e43a85d156a43c674a, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 173099152126350963, guid: 43761728424e11e43a85d156a43c674a, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 173099152126350963, guid: 43761728424e11e43a85d156a43c674a, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 661229180114554057, guid: 43761728424e11e43a85d156a43c674a, type: 3}
       propertyPath: m_Name

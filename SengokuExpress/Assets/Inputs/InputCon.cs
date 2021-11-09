@@ -12,8 +12,6 @@ public class InputDashEvent : UnityEvent<bool> { }
 [Serializable]
 public class InputLightAttackEvent : UnityEvent<bool> { }
 [Serializable]
-public class InputHeavyAttackEvent : UnityEvent<bool> { }
-[Serializable]
 public class InputBarkEvent : UnityEvent<bool> { }
 
 public class InputCon : MonoBehaviour
@@ -22,7 +20,6 @@ public class InputCon : MonoBehaviour
     public InputMoveEvent inputMoveEv;
     public InputDashEvent inputDashEv;
     public InputLightAttackEvent inputLightAttackEv;
-    public InputHeavyAttackEvent inputHeavyAttackEv;
     public InputBarkEvent inputBarkEv;
 
     private void Awake()
@@ -36,7 +33,6 @@ public class InputCon : MonoBehaviour
         cont.InGameAP.Move.canceled += OnMovePerform;
         cont.InGameAP.Dash.performed += OnDashPerform;
         cont.InGameAP.LightAttack.performed += OnLightPerform;
-        cont.InGameAP.HeavyAttack.performed += OnHeavyAttackPerform;
         cont.InGameAP.Bark.performed += OnBarkSelectPerform;
     }
     public void OnMovePerform(InputAction.CallbackContext context)
@@ -53,11 +49,6 @@ public class InputCon : MonoBehaviour
     {
         bool lightAtkInput = context.ReadValueAsButton();
         inputLightAttackEv.Invoke(lightAtkInput);
-    }
-    public void OnHeavyAttackPerform(InputAction.CallbackContext context)
-    {
-        bool heavyAtkInput = context.ReadValueAsButton();
-        inputHeavyAttackEv.Invoke(heavyAtkInput);
     }
     public void OnBarkSelectPerform(InputAction.CallbackContext context)
     {
