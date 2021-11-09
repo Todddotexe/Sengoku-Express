@@ -45,4 +45,8 @@ public static class Global {
             } break;
         }
     }
+
+    public static void set_bark_meter(float value) {
+        gui.set_bark_meter(value);
+    }
 }

@@ -42,6 +42,8 @@ public class Player_Controller : MonoBehaviour {
     void Start() {
         // -- setup fields
         transf = transform;
+        bark_meter_percentage = 0;
+        Global.set_bark_meter(bark_meter_percentage);
         // -- setup components
         components.input = GetComponent<PlayerInput>();
         components.character_controller = GetComponent<CharacterController>();
@@ -167,6 +169,7 @@ public class Player_Controller : MonoBehaviour {
         if (combat.is_attacking || combat.queued_combo) return; // ! don't bark while attacking
         if (bark_meter_percentage != 1) return; // ! don't bark if bark meter is not filled
         bark_meter_percentage = 0;
+        Global.set_bark_meter(bark_meter_percentage);
         components.animator.SetTrigger(binds.ANIMATION_TRIGGER_BARK);
         // -- init collision
         Collider[] colliders = Physics.OverlapSphere(transf.position, bark.radius);
@@ -224,6 +227,7 @@ public class Player_Controller : MonoBehaviour {
                     // -- apply damage
                     enemy.hit(1);
                     bark_meter_percentage += BARK_METER_POINT;
+                    Global.set_bark_meter(bark_meter_percentage);
                     {   // -- apply knockback
                         var knock_back_direction = enemy.transform.position - transf.position;
                         enemy.knock_back(new Vector2(knock_back_direction.x, knock_back_direction.z));
