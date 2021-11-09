@@ -29,6 +29,7 @@ public class Player_Controller : MonoBehaviour {
     bool has_hit_enemy = false;
     public Vector3 attack_hitbox_offset;
     public Vector3 attack_hitbox_extents;
+    public bool god_mode = false;
 
     [SerializeField] float dash_cool_down_duration = 0.5f;
     float dash_cool_down = 0f;
@@ -42,6 +43,8 @@ public class Player_Controller : MonoBehaviour {
     void Start() {
         // -- setup fields
         transf = transform;
+        bark_meter_percentage = 0;
+        Global.set_bark_meter(bark_meter_percentage);
         // -- setup components
         components.input = GetComponent<PlayerInput>();
         components.character_controller = GetComponent<CharacterController>();
@@ -71,6 +74,15 @@ public class Player_Controller : MonoBehaviour {
         combat.attack_functions_update.Add(delegate_attack_2_update);
         combat.attack_functions_update.Add(delegate_attack_3_update);
     }
+    /// Update to read input values
+    void Update() {
+        // -- update input
+        var input_vec2    = inputs.walk.ReadValue<Vector2>();
+        inputs.input_vec2 = input_vec2;
+        inputs.input.x    = input_vec2.x;
+        inputs.input.y    = 0;
+        inputs.input.z    = input_vec2.y;
+    }
     /// physics update
     void FixedUpdate() {
         if (!is_alive) {
@@ -99,14 +111,7 @@ public class Player_Controller : MonoBehaviour {
                 attack_animator.gameObject.SetActive(false);
             }
         }
-
-        { // -- update input
-            var input_vec2    = inputs.walk.ReadValue<Vector2>();
-            inputs.input_vec2 = input_vec2;
-            inputs.input.x    = input_vec2.x;
-            inputs.input.y    = 0;
-            inputs.input.z    = input_vec2.y;
-        }
+        
         if (combat.is_attacking || combat.queued_combo) {
             combat.update();
         } else
@@ -128,9 +133,12 @@ public class Player_Controller : MonoBehaviour {
     public void hit(float damage) {
         is_hit = true;
         // -- start hit animation
-        health -= damage;
-        if (health <= 0) {
-            is_alive = false;
+        // -- apply damage
+        if (!god_mode) {
+            health -= damage;
+            if (health <= 0) {
+                is_alive = false;
+            }
         }
     }
     /// knock back and stun enemy
@@ -165,8 +173,9 @@ public class Player_Controller : MonoBehaviour {
     /// used as a delegate for Player_Inputs.bark
     void delegate_bark(InputAction.CallbackContext obj) {
         if (combat.is_attacking || combat.queued_combo) return; // ! don't bark while attacking
-        if (bark_meter_percentage != 1) return; // ! don't bark if bark meter is not filled
+        if (bark_meter_percentage < 1) return; // ! don't bark if bark meter is not filled
         bark_meter_percentage = 0;
+        Global.set_bark_meter(bark_meter_percentage);
         components.animator.SetTrigger(binds.ANIMATION_TRIGGER_BARK);
         // -- init collision
         Collider[] colliders = Physics.OverlapSphere(transf.position, bark.radius);
@@ -224,6 +233,7 @@ public class Player_Controller : MonoBehaviour {
                     // -- apply damage
                     enemy.hit(1);
                     bark_meter_percentage += BARK_METER_POINT;
+                    Global.set_bark_meter(bark_meter_percentage);
                     {   // -- apply knockback
                         var knock_back_direction = enemy.transform.position - transf.position;
                         enemy.knock_back(new Vector2(knock_back_direction.x, knock_back_direction.z));

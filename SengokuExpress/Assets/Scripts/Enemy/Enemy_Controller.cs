@@ -25,11 +25,12 @@ public class Enemy_Controller : MonoBehaviour {
 
     Transform target_transform = null;
     float stun_timer;
-    float maneuver_timer = 0; // used in ENEMY_C_has_maneuvered_long_enough
+    float maneuver_timer; // * used in ENEMY_C_has_maneuvered_long_enough, SET in Start()
     float local_delta_time_scaler = 1;     // * this is used to slow down the enemy when they're hit.
     bool is_stunned = false;
     bool is_hit = false;
     bool is_spawned = false;
+    bool has_maneuvered_long_enough = false;
     [HideInInspector] public bool is_alive = true;
     bool is_knocked_back = false;
     bool trigger_hit_player = false;
@@ -203,15 +204,8 @@ public class Enemy_Controller : MonoBehaviour {
     /// updates the maneuver timer. Returns true if the timer has completed and resets the timer
     [AI_Function_Attribute]
     bool ENEMY_C_has_maneuvered_long_enough() {
-        return true;
-        // TODO figure out how to do maneuver for BETA
-        if (maneuver_timer > 0) {
-            maneuver_timer -= Time.deltaTime;
-            return false;
-        } else {
-            maneuver_timer = maneuver_timer_init;
-            return true;
-        }
+        // return true;
+        return has_maneuvered_long_enough;
     }
     /// returns true if the target_transform is within combat radius
     [AI_Function_Attribute]
@@ -290,7 +284,9 @@ public class Enemy_Controller : MonoBehaviour {
     /// The player is close enough, move around him a little before initiating attack.
     [AI_Function_Attribute]
     bool ENEMY_A_maneuver_player() {
-        // TODO maneuver the player. Update the maneuver timer and set have_maneuvered long enough to true
+        // * note that the maneuver timer is updated in ENEMY_C_has_maneuvered_long_enough()
+        // TODO maneuver the player.
+        
         return false;
     }
     /// Get ready to land attack updates the animation for the suspense before landing an attack
