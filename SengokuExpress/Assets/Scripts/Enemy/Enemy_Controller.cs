@@ -79,6 +79,7 @@ public class Enemy_Controller : MonoBehaviour {
                                                     }
                                                 } else {
                                                     trigger_hit_player = false;
+                                                    has_maneuvered_long_enough = false;
                                                     // TODO jump back
                                                 }
                                             } else {
@@ -286,7 +287,13 @@ public class Enemy_Controller : MonoBehaviour {
     bool ENEMY_A_maneuver_player() {
         // * note that the maneuver timer is updated in ENEMY_C_has_maneuvered_long_enough()
         // TODO maneuver the player.
-        
+        if (maneuver_timer > 0) {
+            maneuver_timer -= Time.deltaTime;
+        } else {
+            maneuver_timer = maneuver_timer_init;
+            has_maneuvered_long_enough = true;
+        }
+
         return false;
     }
     /// Get ready to land attack updates the animation for the suspense before landing an attack
