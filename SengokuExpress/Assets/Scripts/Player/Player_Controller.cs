@@ -171,7 +171,7 @@ public class Player_Controller : MonoBehaviour {
     /// used as a delegate for Player_Inputs.bark
     void delegate_bark(InputAction.CallbackContext obj) {
         if (combat.is_attacking || combat.queued_combo) return; // ! don't bark while attacking
-        if (bark_meter_percentage != 1) return; // ! don't bark if bark meter is not filled
+        if (bark_meter_percentage < 1) return; // ! don't bark if bark meter is not filled
         bark_meter_percentage = 0;
         Global.set_bark_meter(bark_meter_percentage);
         components.animator.SetTrigger(binds.ANIMATION_TRIGGER_BARK);
