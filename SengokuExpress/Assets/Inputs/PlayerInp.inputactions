@@ -145,6 +145,28 @@
                 },
                 {
                     "name": "",
+                    "id": "b0c8412b-a27c-4f18-88b1-bf69b14fd8e9",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LightAttack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "49622089-03c1-4a7c-85e7-1dcdb83d9b4e",
+                    "path": "<Keyboard>/downArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LightAttack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "381dc49f-72cf-4cc3-aca3-7146d0d9d181",
                     "path": "<Keyboard>/rightArrow",
                     "interactions": "",
@@ -158,6 +180,28 @@
                     "name": "",
                     "id": "3287ed44-11c8-40f2-b5a6-08ee2ccf8df1",
                     "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Bark",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "cfa420f2-8633-49b7-8b66-a7e98aad5938",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Bark",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c9bc9622-67f4-46ed-b5be-d4134aeb0c29",
+                    "path": "<Keyboard>/upArrow",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
