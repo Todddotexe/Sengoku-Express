@@ -98,6 +98,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5596554146560290292}
   - component: {fileID: 889689245033619408}
+  - component: {fileID: 3014235303218526155}
   m_Layer: 5
   m_Name: Game
   m_TagString: Untagged
@@ -133,6 +134,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3554003963961182621}
   m_CullTransparentMesh: 0
+--- !u!114 &3014235303218526155
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3554003963961182621}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 190cf87de98a01341895ba8633110215, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bark_meter: {fileID: 3400676834798423338}
 --- !u!1 &4998816423743394236
 GameObject:
   m_ObjectHideFlags: 0
@@ -680,6 +694,7 @@ MonoBehaviour:
   winPanel: {fileID: 8854381301322922520}
   gamePanel: {fileID: 5596554146560290292}
   pausePanel: {fileID: 146592765658956474}
+  game_gui: {fileID: 3014235303218526155}
 --- !u!1 &8696863015368349050
 GameObject:
   m_ObjectHideFlags: 0

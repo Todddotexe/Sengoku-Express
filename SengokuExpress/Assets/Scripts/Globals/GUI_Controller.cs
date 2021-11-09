@@ -13,7 +13,7 @@ public class GUI_Controller : MonoBehaviour {
     public RectTransform winPanel = null;
     public RectTransform gamePanel = null;
     public RectTransform pausePanel = null;
-    GUI_Game game_gui = null;
+    public GUI_Game game_gui = null;
     /// restart level
     public void restart_level() {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
@@ -67,7 +67,6 @@ public class GUI_Controller : MonoBehaviour {
     /// on level start
     void Start() {
         switch_panel(PANELS.GAME);
-        game_gui = gamePanel.gameObject.GetComponent<GUI_Game>();
         Debug.Assert(game_gui != null);
         Global.set_pause(false);
     }
