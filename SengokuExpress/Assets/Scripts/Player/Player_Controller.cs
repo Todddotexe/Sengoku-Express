@@ -29,6 +29,7 @@ public class Player_Controller : MonoBehaviour {
     bool has_hit_enemy = false;
     public Vector3 attack_hitbox_offset;
     public Vector3 attack_hitbox_extents;
+    public bool god_mode = false;
 
     [SerializeField] float dash_cool_down_duration = 0.5f;
     float dash_cool_down = 0f;
@@ -130,9 +131,12 @@ public class Player_Controller : MonoBehaviour {
     public void hit(float damage) {
         is_hit = true;
         // -- start hit animation
-        health -= damage;
-        if (health <= 0) {
-            is_alive = false;
+        // -- apply damage
+        if (!god_mode) {
+            health -= damage;
+            if (health <= 0) {
+                is_alive = false;
+            }
         }
     }
     /// knock back and stun enemy
