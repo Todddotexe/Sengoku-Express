@@ -222,7 +222,6 @@ public class Player_Controller : MonoBehaviour {
                 Enemy_Controller enemy = collider.gameObject.GetComponent<Enemy_Controller>();
                 if (enemy != null) {
                     // -- apply damage
-                    // -- apply damage
                     enemy.hit(1);
                     bark_meter_percentage += BARK_METER_POINT;
                     {   // -- apply knockback
