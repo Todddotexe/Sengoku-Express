@@ -30,14 +30,6 @@
                     "interactions": ""
                 },
                 {
-                    "name": "HeavyAttack",
-                    "type": "Button",
-                    "id": "2eb5ac65-c3b7-4f76-ba64-51307d0538b9",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
                     "name": "Bark",
                     "type": "Button",
                     "id": "9af4ac93-4b8f-4f51-9b6b-016efeaa723b",
@@ -148,28 +140,6 @@
                     "processors": "",
                     "groups": "",
                     "action": "LightAttack",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "28b33c08-b531-4570-a8a1-ca83df786261",
-                    "path": "<Keyboard>/upArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "HeavyAttack",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "fc66da21-45ff-4332-955f-4a09ff7abb88",
-                    "path": "<Gamepad>/buttonNorth",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "HeavyAttack",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
