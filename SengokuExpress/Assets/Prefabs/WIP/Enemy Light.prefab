@@ -88,10 +88,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vision_radius: 10
-  combat_manoeuvre_radius: 4
+  combat_maneuver_radius: 6
   combat_radius: 3
   stunt_timer_init: 1
   maneuver_timer_init: 1
+  maneuver_speed_deg_per_second: 40
   health: 5
   hit_animation_timer_init: 0.2
   movement:
@@ -110,6 +111,8 @@ MonoBehaviour:
   renderer: {fileID: 4801428116242008823}
   attack_hitbox_offset: {x: 0, y: 0, z: 1}
   attack_hitbox_extents: {x: 2, y: 3, z: 3}
+  is_alive: 1
+  arena: {fileID: 0}
 --- !u!1 &3183367227147901266
 GameObject:
   m_ObjectHideFlags: 0

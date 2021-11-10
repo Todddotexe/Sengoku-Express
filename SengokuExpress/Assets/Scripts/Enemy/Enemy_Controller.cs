@@ -9,10 +9,11 @@ public class Enemy_Controller : MonoBehaviour {
     /// ===
     Transform transf = null; // cache transform
     [SerializeField] float vision_radius = 6f;
-    [SerializeField] float combat_manoeuvre_radius = 4f;
+    [SerializeField] float combat_maneuver_radius = 5f;
     [SerializeField] float combat_radius = 3f;
     [SerializeField] float stunt_timer_init = 1f;
-    [SerializeField] float maneuver_timer_init = 1; // used in ENEMY_C_has_maneuvered_long_enough
+    [SerializeField] float maneuver_timer_init = 0.5f; // used in ENEMY_C_has_maneuvered_long_enough
+    [SerializeField] float maneuver_speed_deg_per_second = 40f;
     [SerializeField] float health = 4;
     [SerializeField] float hit_animation_timer_init = 0.2f;
     [SerializeField] Movement movement = new Movement();
@@ -35,8 +36,10 @@ public class Enemy_Controller : MonoBehaviour {
     bool is_knocked_back = false;
     bool trigger_hit_player = false;
     bool trigger_finished_attack_combo = false;
+    bool trigger_is_jumping = false;
     Material material_normal = null;
     float hit_animation_timer = 0.2f;
+    int maneuver_direction = -1;
     [HideInInspector] public Proto_Combat_Arena_Controller arena = null;
     /// init
     void Start() {
@@ -64,44 +67,46 @@ public class Enemy_Controller : MonoBehaviour {
         if (ENEMY_C_is_alive()) {
             if (ENEMY_C_has_spawned()) {
                 if (!ENEMY_C_is_knocked_back()) {
-                    if (!ENEMY_C_is_stunned()) {
-                        if (ENEMY_C_is_player_in_vision_range()) {
-                            if (ENEMY_C_is_player_in_combat_manoeuvre_range()) {
-                                if (ENEMY_C_has_maneuvered_long_enough()) {
-                                    if (ENEMY_C_is_player_in_combat_range()) {
-                                        if (ENEMY_C_is_ready_to_land_attack()) {
-                                            if (ENEMY_C_is_swinging()) {
-                                                if (!ENEMY_C_ATTACK_is_player_hit()) {
-                                                    if (!ENEMY_C_ATTACK_end_of_attack_combo()) {
-                                                        ENEMY_A_update_current_attack_swing();
+                    if (!ENEMY_C_is_jumping()) {
+                        if (!ENEMY_C_is_stunned()) {
+                            if (ENEMY_C_is_player_in_vision_range()) {
+                                if (ENEMY_C_is_player_in_combat_manoeuvre_range()) {
+                                    if (ENEMY_C_has_maneuvered_long_enough()) {
+                                        if (ENEMY_C_is_player_in_combat_range()) {
+                                            if (ENEMY_C_is_ready_to_land_attack()) {
+                                                if (ENEMY_C_is_swinging()) {
+                                                    if (!ENEMY_C_ATTACK_is_player_hit()) {
+                                                        if (!ENEMY_C_ATTACK_end_of_attack_combo()) {
+                                                            ENEMY_A_update_current_attack_swing();
+                                                        } else {
+                                                            trigger_finished_attack_combo = false;
+                                                        }
                                                     } else {
-                                                        trigger_finished_attack_combo = false;
+                                                        // * note that we moved "jump" to attack_hit() when the player is hit, because when we had that logic here, we encountered a problem where ENEMY_C_is_player_in_combat_range() check returned false before we even got here during the next frame, so we didn't get here in time
                                                     }
                                                 } else {
-                                                    trigger_hit_player = false;
-                                                    has_maneuvered_long_enough = false;
-                                                    // TODO jump back
+                                                    ENEMY_A_queue_another_attack();
                                                 }
                                             } else {
-                                                ENEMY_A_queue_another_attack();
+                                                ENEMY_A_get_ready_to_land_attack();
                                             }
                                         } else {
-                                            ENEMY_A_get_ready_to_land_attack();
+                                            ENEMY_A_approach_player();
                                         }
                                     } else {
-                                        ENEMY_A_approach_player();
+                                        ENEMY_A_maneuver_player();
                                     }
                                 } else {
-                                    ENEMY_A_maneuver_player();
+                                    ENEMY_A_approach_player();
                                 }
                             } else {
-                                ENEMY_A_approach_player();
+                                // -- STAND GAURD
                             }
                         } else {
-                            // -- STAND GAURD
+                            ENEMY_A_play_stunned_animation();
                         }
                     } else {
-                        ENEMY_A_play_stunned_animation();
+                        ENEMY_A_apply_jump();
                     }
                 } else {
                     ENEMY_A_apply_knockback();
@@ -177,67 +182,55 @@ public class Enemy_Controller : MonoBehaviour {
     /// ==
 
     // !== CONDITIONS ==! //
-    [AI_Function_Attribute]
     bool ENEMY_C_is_alive() {
         return is_alive;
     }
     /// returns true once the spawned animation is over. Take a look at ENEMY_spawn()
-    [AI_Function_Attribute]
     bool ENEMY_C_has_spawned() {
         return is_spawned;
     }
     /// returns true if the enemy is stunt
-    [AI_Function_Attribute]
     bool ENEMY_C_is_stunned() {
         return is_stunned;
     }
     /// returns true if the target_transform is within vision radius
-    [AI_Function_Attribute]
     bool ENEMY_C_is_player_in_vision_range() {
         if (target_transform == null) return false;
         return (target_transform.position - transf.position).magnitude < vision_radius;
     }
     /// returns true when the player is within combat manoeuvre radius
-    [AI_Function_Attribute]
     bool ENEMY_C_is_player_in_combat_manoeuvre_range() {
-        return (target_transform.position - transf.position).magnitude <= combat_manoeuvre_radius;
+        return (target_transform.position - transf.position).magnitude <= combat_maneuver_radius;
     }
     /// updates the maneuver timer. Returns true if the timer has completed and resets the timer
-    [AI_Function_Attribute]
     bool ENEMY_C_has_maneuvered_long_enough() {
         // return true;
         return has_maneuvered_long_enough;
     }
     /// returns true if the target_transform is within combat radius
-    [AI_Function_Attribute]
     bool ENEMY_C_is_player_in_combat_range() {
         if (target_transform == null) return false;
         return (transf.position - target_transform.position).magnitude <= combat_radius;
     }
     /// the suspense at the beginning of attacks
-    [AI_Function_Attribute]
     bool ENEMY_C_is_ready_to_land_attack() {
         // TODO
         return true;
     }
     ///
-    [AI_Function_Attribute]
     bool ENEMY_C_ATTACK_is_current_swing_over() {
         // TODO
         return true;
     }
     ///
-    [AI_Function_Attribute]
     bool ENEMY_C_ATTACK_is_player_hit() {
         return trigger_hit_player;
     }
     ///
-    [AI_Function_Attribute]
     bool ENEMY_C_ATTACK_end_of_attack_combo() {
         return trigger_finished_attack_combo;
     }
     /// have we been knocked back
-    [AI_Function_Attribute]
     bool ENEMY_C_is_knocked_back() {
         return is_knocked_back;
     }
@@ -245,85 +238,82 @@ public class Enemy_Controller : MonoBehaviour {
     // !== ACTIONS ==! //
     /// the enemy is being spwaned.
     /// returns false at all times
-    [AI_Function_Attribute]
-    bool ENEMY_A_spawn() {
+    void ENEMY_A_spawn() {
         is_spawned = true; // TODO add animation for spawning. set spawned to true once the animation is over
-        return false;
     }
     /// Destory this game object
     /// returns false
-    [AI_Function_Attribute]
-    bool ENEMY_A_destroy_gameobject() {
+    void ENEMY_A_destroy_gameobject() {
         Destroy(gameObject);
-        return false;
     }
     /// Updates the stunned Play the stunt animation
-    [AI_Function_Attribute]
-    bool ENEMY_A_play_stunned_animation() {
+    void ENEMY_A_play_stunned_animation() {
         if (stun_timer > 0) {
             stun_timer -= Time.deltaTime;
         } else {
             stun_timer = stunt_timer_init;
             is_stunned = false;
         }
-        return false;
     }
     /// the player is far. Run towards him to get closer.
-    [AI_Function_Attribute]
-    bool ENEMY_A_approach_player() {
-        if (target_transform == null) return false;
-        if (dash.is_in_progress) return false;
+    void ENEMY_A_approach_player() {
+        if (target_transform == null) return;
+        if (dash.is_in_progress) return;
         // -- apply velocity
         movement.velocity = (target_transform.position - transf.position).normalized * movement.speed;
         movement.velocity.y = 0;
         apply_velocity();
         // -- face the target
         look_at(target_transform.position);
-        
-        return false;
     }
     /// The player is close enough, move around him a little before initiating attack.
-    [AI_Function_Attribute]
-    bool ENEMY_A_maneuver_player() {
-        // * note that the maneuver timer is updated in ENEMY_C_has_maneuvered_long_enough()
-        // TODO maneuver the player.
+    void ENEMY_A_maneuver_player() {
+        // TODO replace the combat radius (where the enemy approaches the player until arrives at combat radius) with maneuver radius
+        // -- update timer
         if (maneuver_timer > 0) {
             maneuver_timer -= Time.deltaTime;
         } else {
-            maneuver_timer = maneuver_timer_init;
+            maneuver_timer = maneuver_timer_init + Random.Range(-.5f, .5f); // add some randomness
+            maneuver_direction *= -1; // reverse the direction of maneuver for next time
             has_maneuvered_long_enough = true;
         }
-
-        return false;
+        // -- maneuver player (move the enemy in a straight line adjacent to the player)
+        transf.RotateAround(target_transform.position, Vector3.up, maneuver_direction * maneuver_speed_deg_per_second * Time.deltaTime);
+        look_at(target_transform.position);
     }
     /// Get ready to land attack updates the animation for the suspense before landing an attack
-    [AI_Function_Attribute]
-    bool ENEMY_A_get_ready_to_land_attack() {
+    void ENEMY_A_get_ready_to_land_attack() {
         // TODO update the animation for getting ready. Set is_ready_to_land_attack to true afterwards
-        return false;
     }
     /// Update current attack swing animation. Update the state of current attack afterwards (was player hit?)
-    [AI_Function_Attribute]
-    bool ENEMY_A_update_current_attack_swing() {
+    void ENEMY_A_update_current_attack_swing() {
         combat.update();
-        return false;
     }
     /// Queue the next attack in the combo chain if not already queued
-    [AI_Function_Attribute]
-    bool ENEMY_A_queue_another_attack() {
+    void ENEMY_A_queue_another_attack() {
         combat.queued_combo = true;
-        return false;
     }
-    /// Apply dash velocity whether it's jump or knock back
-    [AI_Function_Attribute]
-    bool ENEMY_A_apply_knockback() {
+    /// Apply dash velocity when it's knock back
+    void ENEMY_A_apply_knockback() {
         if (dash.is_in_progress) {
             movement.velocity = dash.update(movement.velocity, transf);
             apply_velocity();
         } else {
             is_knocked_back = false;
         }
-        return false;
+    }
+    /// Apply jump back velocity
+    void ENEMY_A_apply_jump() {
+        if (dash.is_in_progress) {
+            movement.velocity = dash.update(movement.velocity, transf);
+            apply_velocity();
+        } else {
+            trigger_is_jumping = false;
+        }
+    }
+    ///
+    bool ENEMY_C_is_jumping() {
+        return trigger_is_jumping;
     }
     /// Play the hit animation
     void play_hit_animation() {
@@ -387,8 +377,14 @@ public class Enemy_Controller : MonoBehaviour {
                         player.knock_back(new Vector2(knock_back_direction.x, knock_back_direction.z));
                     }
                     { // -- toggle has hit enemy so we don't hit more enemies or hit the same enemy multiple times
-                        print("enemy has hit doggo at index: " + attack_combo_index.ToString());
-                        trigger_hit_player = true;
+                        // print("enemy has hit doggo at index: " + attack_combo_index.ToString());
+                        trigger_hit_player = true; // TODO 'ere
+                        // -- jump
+                        print("JUMPED");
+                        dash.dash(transf.position, transf.position - target_transform.position, Dash.TYPES.NORMAL);
+                        trigger_is_jumping = true;
+                        trigger_hit_player = false; // TODO wtf look above
+                        has_maneuvered_long_enough = false; // reset maneuver so we maneuver next time
                         break;
                     }
                 }
