@@ -154,7 +154,7 @@ MonoBehaviour:
   dash:
     normal_dash_range: 5
     combat_dash_range: 1.25
-    knockback_dash_range: 3
+    knockback_dash_range: 1
     speed: 30
     is_in_progress: 0
   bark:
@@ -172,6 +172,7 @@ MonoBehaviour:
     ANIMATION_TRIGGER_WALK: Walk
   attack_hitbox_offset: {x: 0, y: 1, z: 1}
   attack_hitbox_extents: {x: 2, y: 2, z: 4}
+  god_mode: 0
   dash_cool_down_duration: 0.5
   attack_animator: {fileID: 4660239364217155405}
 --- !u!1 &8344202031474306481

@@ -112,16 +112,15 @@ namespace Character_Util {
     }
 
     public static class Vec3_Extension {
-     
-     public static Vector3 rotate(this Vector3 v, float degrees) {
-         float sin = -Mathf.Sin(degrees * Mathf.Deg2Rad);
-         float cos = Mathf.Cos(degrees * Mathf.Deg2Rad);
-         
-         float tx = v.x;
-         float tz = v.z;
-         v.x = (cos * tx) - (sin * tz);
-         v.z = (sin * tx) + (cos * tz);
-         return v;
-     }
- }
+        public static Vector3 rotate(this Vector3 v, float degrees) {
+            float sin = -Mathf.Sin(degrees * Mathf.Deg2Rad);
+            float cos = Mathf.Cos(degrees * Mathf.Deg2Rad);
+            
+            float tx = v.x;
+            float tz = v.z;
+            v.x = (cos * tx) - (sin * tz);
+            v.z = (sin * tx) + (cos * tz);
+            return v;
+        }
+    }
 }

@@ -120,8 +120,10 @@ public class Player_Controller : MonoBehaviour {
             PLAYER_apply_dash();
         } else
         if (inputs.input_vec2.magnitude > 0) {
-            components.animator.SetTrigger(binds.ANIMATION_TRIGGER_WALK);
+            components.animator.SetBool(binds.ANIMATION_BOOL_WALK, true);
             movement.velocity = inputs.input * movement.speed * Time.deltaTime;
+        } else {
+            components.animator.SetBool(binds.ANIMATION_BOOL_WALK, false);
         }
         PLAYER_apply_velocity();
     }
@@ -304,7 +306,7 @@ public class Player_Controller : MonoBehaviour {
         public string ANIMATION_TRIGGER_ATTACK_3 = "Attack3";
         public string ANIMATION_TRIGGER_BARK     = "Bark";
         public string ANIMATION_TRIGGER_DASH     = "Dash";
-        public string ANIMATION_TRIGGER_WALK     = "Walk";
+        public string ANIMATION_BOOL_WALK     = "Walk";
     }
     /// Player Inputs
     private class Player_Inputs{
