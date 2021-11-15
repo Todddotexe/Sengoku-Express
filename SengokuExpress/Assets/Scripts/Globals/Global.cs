@@ -50,4 +50,8 @@ public static class Global {
     public static void set_bark_meter(float value) {
         gui.set_bark_meter(value);
     }
+
+    public static void set_health_text(int value) { // TODO remove this after // @debug & // @test
+        gui.set_health_text(value);
+    }
 }
