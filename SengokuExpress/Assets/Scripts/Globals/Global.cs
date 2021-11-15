@@ -6,6 +6,7 @@ public static class Global {
     /// tags
     public static string tag_environment = "environment";
     public static string tag_player = "Player";
+    public static Enemy_Blackboard blackboard = new Enemy_Blackboard();
     /// layers
     /// pause system
     static GUI_Controller gui = null;
