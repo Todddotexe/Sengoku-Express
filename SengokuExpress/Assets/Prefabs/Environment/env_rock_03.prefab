@@ -9,7 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3035326235589146374}
-  - component: {fileID: -2215583948618799702}
+  - component: {fileID: 2587962017284259778}
+  - component: {fileID: 5224842789197846915}
   m_Layer: 8
   m_Name: env_rock_03
   m_TagString: Untagged
@@ -32,8 +33,8 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!64 &-2215583948618799702
-MeshCollider:
+--- !u!135 &2587962017284259778
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -42,10 +43,22 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -3983063591393173388, guid: abc86f60578bc654a99a57be7ece867a, type: 3}
+  serializedVersion: 2
+  m_Radius: 1.0230103
+  m_Center: {x: 0.053010225, y: 0, z: 0.1}
+--- !u!65 &5224842789197846915
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7925405732840295774}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1.05}
+  m_Center: {x: -1.07, y: 0, z: 0.18}
 --- !u!1001 &7608438735250033817
 PrefabInstance:
   m_ObjectHideFlags: 0
