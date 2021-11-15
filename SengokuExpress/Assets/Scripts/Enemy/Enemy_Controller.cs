@@ -143,8 +143,8 @@ public class Enemy_Controller : MonoBehaviour {
             ai_state_depth = 0;
         }
         // -- set current_active_enemy to null when we're not attacking the player (HACK)
-        // if (ai_state_depth < 9 && blackboard.current_active_enemy == this) 
-            // blackboard.current_active_enemy = null;
+        if (ai_state_depth < 9 && blackboard.current_active_enemy == this) 
+            blackboard.current_active_enemy = null;
         // -- update local delta time
         if (local_delta_time_scaler < 1) {
             local_delta_time_scaler += Time.deltaTime;
