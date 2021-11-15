@@ -63,6 +63,10 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _Normal:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _NormalMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -78,7 +82,7 @@ Material:
     m_Floats:
     - BOOLEAN_DBA0411F: 0
     - Vector1_187D0CB0: 6
-    - Vector1_1EA8DA98: 6
+    - Vector1_1EA8DA98: 20
     - Vector1_21E0CC83: 0
     - Vector1_301F9A53: 0.67
     - Vector1_465E5D8D: 10.14
@@ -86,7 +90,7 @@ Material:
     - Vector1_7D1F5ADA: 0.1
     - Vector1_81C1EA44: 1
     - Vector1_C19185AF: 1000
-    - Vector1_C587F7F2: 15
+    - Vector1_C587F7F2: 28
     - Vector1_D5F18D10: 0.01
     - _AlphaClip: 0
     - _Blend: 0
@@ -122,6 +126,7 @@ Material:
     - _BaseColor: {r: 0.15419188, g: 0.5188679, b: 0.20709771, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _Colour: {r: 0.9811321, g: 0.5584188, b: 0.31007475, a: 0}
+    - _Emission: {r: 0, g: 0, b: 0, a: 0}
     - _EmissionColor: {r: 0, g: 0.103773594, b: 0.020074999, a: 1}
     - _Emmission: {r: 0, g: 0, b: 0, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}

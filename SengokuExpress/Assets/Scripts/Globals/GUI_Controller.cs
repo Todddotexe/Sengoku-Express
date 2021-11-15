@@ -75,4 +75,9 @@ public class GUI_Controller : MonoBehaviour {
         Mathf.Clamp(value, 0, 1);
         game_gui.bark_meter.value = value;
     }
+    ///
+    public void set_health_text(int value) {
+        Mathf.Clamp(value, 0, 6);
+        game_gui.health_text.text = value.ToString();
+    }
 }

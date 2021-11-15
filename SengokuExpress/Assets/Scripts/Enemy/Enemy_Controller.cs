@@ -40,16 +40,19 @@ public class Enemy_Controller : MonoBehaviour {
     Material material_normal = null;
     float hit_animation_timer = 0.2f;
     int maneuver_direction = -1;
+    Enemy_Blackboard blackboard = null; // used for enemies to communicate with one another
+    int ai_state_depth = 0; // used to calculate how deep we are in the ai heirarchy. Used to set values based on the depth such as setting blackboard.current_active_enemy to null when we're not attacking
     [HideInInspector] public Proto_Combat_Arena_Controller arena = null;
     /// init
     void Start() {
         // -- assert
         Debug.Assert(renderer != null);
         Debug.Assert(material_hit != null);
+        blackboard = Global.blackboard;
         // -- init fields
         transf = transform; // cache transform
         stun_timer = stunt_timer_init;
-        target_transform = GameObject.FindGameObjectWithTag("Player").transform;
+        target_transform = blackboard.player.transform;//GameObject.FindGameObjectWithTag("Player").transform;
         maneuver_timer = maneuver_timer_init;
         material_normal = renderer.material;
 
@@ -63,6 +66,8 @@ public class Enemy_Controller : MonoBehaviour {
     }
     /// called every physics frame
     void FixedUpdate() {
+        // -- update blackboard
+        blackboard.update();
         // -- Behaviour
         if (ENEMY_C_is_alive()) {
             if (ENEMY_C_has_spawned()) {
@@ -78,45 +83,63 @@ public class Enemy_Controller : MonoBehaviour {
                                                     if (!ENEMY_C_ATTACK_is_player_hit()) {
                                                         if (!ENEMY_C_ATTACK_end_of_attack_combo()) {
                                                             ENEMY_A_update_current_attack_swing();
+                                                            ai_state_depth = 13;
                                                         } else {
                                                             trigger_finished_attack_combo = false;
+                                                            ai_state_depth = 12;
                                                         }
-                                                    } else {
-                                                        // * note that we moved "jump" to attack_hit() when the player is hit, because when we had that logic here, we encountered a problem where ENEMY_C_is_player_in_combat_range() check returned false before we even got here during the next frame, so we didn't get here in time
+                                                    } else { // -- hit the player in attack_hit()
+                                                        // note that we moved "jump" to attack_hit() when the player is hit, because when we had that logic here, we encountered a problem where ENEMY_C_is_player_in_combat_range() check returned false before we even got here during the next frame, so we didn't get here in time
+                                                        // ! we don't reach this ever so wtf is this doing here? note that we rely on attack_hit() to get called
+                                                        ai_state_depth = 11;
                                                     }
                                                 } else {
                                                     ENEMY_A_queue_another_attack();
+                                                    ai_state_depth = 10;
                                                 }
                                             } else {
                                                 ENEMY_A_get_ready_to_land_attack();
+                                                ai_state_depth = 9;
                                             }
                                         } else {
                                             ENEMY_A_approach_player();
+                                            ai_state_depth = 8;
                                         }
                                     } else {
                                         ENEMY_A_maneuver_player();
+                                        ai_state_depth = 7;
                                     }
                                 } else {
                                     ENEMY_A_approach_player();
+                                    ai_state_depth = 6;
                                 }
                             } else {
                                 // -- STAND GAURD
+                                ai_state_depth = 5;
                             }
                         } else {
                             ENEMY_A_play_stunned_animation();
+                            ai_state_depth = 4;
                         }
                     } else {
                         ENEMY_A_apply_jump();
+                        ai_state_depth = 3;
                     }
                 } else {
                     ENEMY_A_apply_knockback();
+                    ai_state_depth = 2;
                 }
             } else {
                 ENEMY_A_spawn();
+                ai_state_depth = 1;
             }
         } else {
             ENEMY_A_destroy_gameobject();
+            ai_state_depth = 0;
         }
+        // -- set current_active_enemy to null when we're not attacking the player (HACK)
+        // if (ai_state_depth < 9 && blackboard.current_active_enemy == this) 
+            // blackboard.current_active_enemy = null;
         // -- update hit animation
         if (is_hit) {
             play_hit_animation();
@@ -215,7 +238,7 @@ public class Enemy_Controller : MonoBehaviour {
     /// the suspense at the beginning of attacks
     bool ENEMY_C_is_ready_to_land_attack() {
         // TODO
-        return true;
+        return blackboard.current_active_enemy == this;
     }
     ///
     bool ENEMY_C_ATTACK_is_current_swing_over() {
@@ -284,6 +307,9 @@ public class Enemy_Controller : MonoBehaviour {
     /// Get ready to land attack updates the animation for the suspense before landing an attack
     void ENEMY_A_get_ready_to_land_attack() {
         // TODO update the animation for getting ready. Set is_ready_to_land_attack to true afterwards
+        if (!blackboard.queued_attacks.Contains(this)) {
+            blackboard.queued_attacks.Enqueue(this);
+        }
     }
     /// Update current attack swing animation. Update the state of current attack afterwards (was player hit?)
     void ENEMY_A_update_current_attack_swing() {
@@ -385,9 +411,24 @@ public class Enemy_Controller : MonoBehaviour {
                         trigger_is_jumping = true;
                         trigger_hit_player = false; // TODO wtf look above
                         has_maneuvered_long_enough = false; // reset maneuver so we maneuver next time
+                        if (blackboard.current_active_enemy == this) blackboard.current_active_enemy = null;
                         break;
                     }
                 }
+            }
+        }
+    }
+}
+/// blackboard
+public class Enemy_Blackboard {
+    public Player_Controller player = null;
+    public Enemy_Controller current_active_enemy = null;
+    public Queue<Enemy_Controller> queued_attacks = new Queue<Enemy_Controller>(); // used to queue attacks for when enemies are ready to land attack. This is used to restrict the number of enemies attacking the player to 1
+
+    public void update() {
+        if (queued_attacks.Count > 0) {
+            if (current_active_enemy == null) {
+                current_active_enemy = queued_attacks.Dequeue();
             }
         }
     }

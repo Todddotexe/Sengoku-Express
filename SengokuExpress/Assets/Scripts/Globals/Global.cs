@@ -6,6 +6,7 @@ public static class Global {
     /// tags
     public static string tag_environment = "environment";
     public static string tag_player = "Player";
+    public static Enemy_Blackboard blackboard = new Enemy_Blackboard();
     /// layers
     /// pause system
     static GUI_Controller gui = null;
@@ -48,5 +49,9 @@ public static class Global {
 
     public static void set_bark_meter(float value) {
         gui.set_bark_meter(value);
+    }
+
+    public static void set_health_text(int value) { // TODO remove this after // @debug & // @test
+        gui.set_health_text(value);
     }
 }

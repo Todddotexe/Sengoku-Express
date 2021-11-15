@@ -41,10 +41,12 @@ public class Player_Controller : MonoBehaviour {
 
     /// initialise fields
     void Start() {
+        Global.blackboard.player = this;
         // -- setup fields
         transf = transform;
         bark_meter_percentage = 0;
         Global.set_bark_meter(bark_meter_percentage);
+        Global.set_health_text(health);
         // -- setup components
         components.input = GetComponent<PlayerInput>();
         components.character_controller = GetComponent<CharacterController>();
@@ -131,13 +133,14 @@ public class Player_Controller : MonoBehaviour {
     bool is_hit = false;
     bool is_alive = true;
     bool is_knocked_back = false;
-    float health = 3;
-    public void hit(float damage) {
+    int health = 3;
+    public void hit(int damage) {
         is_hit = true;
         // -- start hit animation
         // -- apply damage
         if (!god_mode) {
             health -= damage;
+            Global.set_health_text(health);
             if (health <= 0) {
                 is_alive = false;
             }
