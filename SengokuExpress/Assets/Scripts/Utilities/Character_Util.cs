@@ -110,7 +110,19 @@ namespace Character_Util {
             }
         }
     }
-
+    ///
+    [System.Serializable]
+    public class Dog_Audio {
+        public AudioClip bark     = null;
+        public AudioClip walk     = null;
+        public AudioClip attack_1 = null;
+        public AudioClip attack_2 = null;
+        public AudioClip attack_3 = null;
+        public AudioClip dash     = null;
+        public AudioClip hurt     = null;
+        public AudioClip death    = null;
+    }
+    ///
     public static class Vec3_Extension {
         public static Vector3 rotate(this Vector3 v, float degrees) {
             float sin = -Mathf.Sin(degrees * Mathf.Deg2Rad);

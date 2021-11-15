@@ -23,6 +23,7 @@ public class Player_Controller : MonoBehaviour {
     [SerializeField] Dash dash = new Dash();
     [SerializeField] Player_Bark bark = new Player_Bark();
     [SerializeField] Player_Binding binds = new Player_Binding();
+    [SerializeField] Dog_Audio audio_source = new Dog_Audio();
     Combat combat = new Combat();
     Player_Components components = new Player_Components();
     Player_Inputs inputs = new Player_Inputs();
@@ -48,9 +49,10 @@ public class Player_Controller : MonoBehaviour {
         Global.set_bark_meter(bark_meter_percentage);
         Global.set_health_text(health);
         // -- setup components
-        components.input = GetComponent<PlayerInput>();
+        components.input                = GetComponent<PlayerInput>();
         components.character_controller = GetComponent<CharacterController>();
-        components.animator = GetComponent<Animator>();
+        components.animator             = GetComponent<Animator>();
+        components.audio_source         = GetComponent<AudioSource>();
         // -- setup inputs
         Debug.Assert(components.input.actions != null);
         inputs.walk       = components.input.actions[binds.WALK_INPUT_LABEL];
@@ -170,6 +172,8 @@ public class Player_Controller : MonoBehaviour {
             dash_cool_down = dash_cool_down_duration;
             dash.dash(transf.position, inputs.input_vec2, Dash.TYPES.NORMAL);
             components.animator.SetTrigger(binds.ANIMATION_TRIGGER_DASH);
+            
+            play_audio(audio_source.dash);
             // if (dash_part != null) { // TODO add this back when we have a proper particle system
             //     dash_part.Play();
             // }
@@ -182,6 +186,7 @@ public class Player_Controller : MonoBehaviour {
         bark_meter_percentage = 0;
         Global.set_bark_meter(bark_meter_percentage);
         components.animator.SetTrigger(binds.ANIMATION_TRIGGER_BARK);
+        play_audio(audio_source.bark);
         // -- init collision
         Collider[] colliders = Physics.OverlapSphere(transf.position, bark.radius);
         foreach (Collider collider in colliders) {
@@ -201,6 +206,7 @@ public class Player_Controller : MonoBehaviour {
         print("attack 1 start");
         has_hit_enemy = false;
         attack_animator.SetTrigger("Atk1");
+        play_audio(audio_source.attack_1);
     }
     /// first attack in the combo chain (Update)
     void delegate_attack_1_update() {
@@ -211,6 +217,7 @@ public class Player_Controller : MonoBehaviour {
         has_hit_enemy = false;
         print("attack 2 start");
         attack_animator.SetTrigger("Atk2");
+        play_audio(audio_source.attack_2);
     }
     /// second attack in the combo chain (Update)
     void delegate_attack_2_update() {
@@ -222,6 +229,7 @@ public class Player_Controller : MonoBehaviour {
         var rot = transf.forward;
         dash.dash(transf.position, new Vector2(rot.x, rot.z), Dash.TYPES.COMBAT);
         attack_animator.SetTrigger("Atk3");
+        play_audio(audio_source.attack_3);
     }
     /// third attack in the combo chain (Update)
     void delegate_attack_3_update() {
@@ -287,7 +295,10 @@ public class Player_Controller : MonoBehaviour {
         // -- apply friction
         components.character_controller.Move(movement.velocity);
     }
-
+    void play_audio(AudioClip clip) {
+        components.audio_source.clip = clip;
+        components.audio_source.Play();
+    }
     // !=================================================================
     // !=======================  PRIVATE CLASSES  =======================
     // !=================================================================
@@ -327,6 +338,7 @@ public class Player_Controller : MonoBehaviour {
         public PlayerInput input = null;
         public CharacterController character_controller = null;
         public Animator animator = null;
+        public AudioSource audio_source = null;
     }
 
 }
