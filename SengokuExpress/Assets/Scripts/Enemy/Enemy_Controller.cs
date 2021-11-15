@@ -72,57 +72,62 @@ public class Enemy_Controller : MonoBehaviour {
         if (ENEMY_C_is_alive()) {
             if (ENEMY_C_has_spawned()) {
                 if (!ENEMY_C_is_knocked_back()) {
-                    if (!ENEMY_C_is_jumping()) {
-                        if (!ENEMY_C_is_stunned()) {
-                            if (ENEMY_C_is_player_in_vision_range()) {
-                                if (ENEMY_C_is_player_in_combat_manoeuvre_range()) {
-                                    if (ENEMY_C_has_maneuvered_long_enough()) {
-                                        if (ENEMY_C_is_player_in_combat_range()) {
-                                            if (ENEMY_C_is_ready_to_land_attack()) {
-                                                if (ENEMY_C_is_swinging()) {
-                                                    if (!ENEMY_C_ATTACK_is_player_hit()) {
-                                                        if (!ENEMY_C_ATTACK_end_of_attack_combo()) {
-                                                            ENEMY_A_update_current_attack_swing();
-                                                            ai_state_depth = 13;
-                                                        } else {
-                                                            trigger_finished_attack_combo = false;
+                    if (!is_hit) {
+                        if (!ENEMY_C_is_jumping()) {
+                            if (!ENEMY_C_is_stunned()) {
+                                if (ENEMY_C_is_player_in_vision_range()) {
+                                    if (ENEMY_C_is_player_in_combat_manoeuvre_range()) {
+                                        if (ENEMY_C_has_maneuvered_long_enough()) {
+                                            if (ENEMY_C_is_player_in_combat_range()) {
+                                                if (ENEMY_C_is_ready_to_land_attack()) {
+                                                    if (ENEMY_C_is_swinging()) {
+                                                        if (!ENEMY_C_ATTACK_is_player_hit()) {
+                                                            if (!ENEMY_C_ATTACK_end_of_attack_combo()) {
+                                                                ENEMY_A_update_current_attack_swing();
+                                                                ai_state_depth = 14;
+                                                            } else {
+                                                                trigger_finished_attack_combo = false;
+                                                                ai_state_depth = 13;
+                                                            }
+                                                        } else { // -- hit the player in attack_hit()
+                                                            // note that we moved "jump" to attack_hit() when the player is hit, because when we had that logic here, we encountered a problem where ENEMY_C_is_player_in_combat_range() check returned false before we even got here during the next frame, so we didn't get here in time
+                                                            // ! we don't reach this ever so wtf is this doing here? note that we rely on attack_hit() to get called
                                                             ai_state_depth = 12;
                                                         }
-                                                    } else { // -- hit the player in attack_hit()
-                                                        // note that we moved "jump" to attack_hit() when the player is hit, because when we had that logic here, we encountered a problem where ENEMY_C_is_player_in_combat_range() check returned false before we even got here during the next frame, so we didn't get here in time
-                                                        // ! we don't reach this ever so wtf is this doing here? note that we rely on attack_hit() to get called
+                                                    } else {
+                                                        ENEMY_A_queue_another_attack();
                                                         ai_state_depth = 11;
                                                     }
                                                 } else {
-                                                    ENEMY_A_queue_another_attack();
+                                                    ENEMY_A_get_ready_to_land_attack();
                                                     ai_state_depth = 10;
                                                 }
                                             } else {
-                                                ENEMY_A_get_ready_to_land_attack();
+                                                ENEMY_A_approach_player();
                                                 ai_state_depth = 9;
                                             }
                                         } else {
-                                            ENEMY_A_approach_player();
+                                            ENEMY_A_maneuver_player();
                                             ai_state_depth = 8;
                                         }
                                     } else {
-                                        ENEMY_A_maneuver_player();
+                                        ENEMY_A_approach_player();
                                         ai_state_depth = 7;
                                     }
                                 } else {
-                                    ENEMY_A_approach_player();
+                                    // -- STAND GAURD
                                     ai_state_depth = 6;
                                 }
                             } else {
-                                // -- STAND GAURD
+                                ENEMY_A_play_stunned_animation();
                                 ai_state_depth = 5;
                             }
                         } else {
-                            ENEMY_A_play_stunned_animation();
+                            ENEMY_A_apply_jump();
                             ai_state_depth = 4;
                         }
                     } else {
-                        ENEMY_A_apply_jump();
+                        play_hit_animation();
                         ai_state_depth = 3;
                     }
                 } else {
@@ -140,10 +145,6 @@ public class Enemy_Controller : MonoBehaviour {
         // -- set current_active_enemy to null when we're not attacking the player (HACK)
         // if (ai_state_depth < 9 && blackboard.current_active_enemy == this) 
             // blackboard.current_active_enemy = null;
-        // -- update hit animation
-        if (is_hit) {
-            play_hit_animation();
-        }
         // -- update local delta time
         if (local_delta_time_scaler < 1) {
             local_delta_time_scaler += Time.deltaTime;
