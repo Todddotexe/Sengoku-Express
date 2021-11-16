@@ -42,12 +42,11 @@ public class Player_Controller : MonoBehaviour {
 
     /// initialise fields
     void Start() {
-        Global.blackboard.player = this;
         // -- setup fields
         transf = transform;
         bark_meter_percentage = 0;
         Global.set_bark_meter(bark_meter_percentage);
-        Global.set_health_text(health);
+        Global.set_health(health);
         // -- setup components
         components.input                = GetComponent<PlayerInput>();
         components.character_controller = GetComponent<CharacterController>();
@@ -142,7 +141,7 @@ public class Player_Controller : MonoBehaviour {
         // -- apply damage
         if (!god_mode) {
             health -= damage;
-            Global.set_health_text(health);
+            Global.set_health(health);
             if (health <= 0) {
                 is_alive = false;
             }

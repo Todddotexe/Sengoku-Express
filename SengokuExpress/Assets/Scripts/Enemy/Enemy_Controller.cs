@@ -52,7 +52,7 @@ public class Enemy_Controller : MonoBehaviour {
         // -- init fields
         transf = transform; // cache transform
         stun_timer = stunt_timer_init;
-        target_transform = blackboard.player.transform;//GameObject.FindGameObjectWithTag("Player").transform;
+        target_transform = GameObject.FindGameObjectWithTag("Player").transform;
         maneuver_timer = maneuver_timer_init;
         material_normal = renderer.material;
 
@@ -422,7 +422,6 @@ public class Enemy_Controller : MonoBehaviour {
 }
 /// blackboard
 public class Enemy_Blackboard {
-    public Player_Controller player = null;
     public Enemy_Controller current_active_enemy = null;
     public Queue<Enemy_Controller> queued_attacks = new Queue<Enemy_Controller>(); // used to queue attacks for when enemies are ready to land attack. This is used to restrict the number of enemies attacking the player to 1
 
