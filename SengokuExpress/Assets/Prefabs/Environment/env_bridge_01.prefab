@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4696066314686865841}
   m_Layer: 0
-  m_Name: Bridge
+  m_Name: env_bridge_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -110,6 +110,10 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
+    - target: {fileID: 5567174244975532323, guid: 0fc58777597fa9b47aea5c58cafb9845, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8ff5802fffe64664bb6e43dc19c63391, type: 2}
     - target: {fileID: 5642030689042395481, guid: 0fc58777597fa9b47aea5c58cafb9845, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
@@ -184,7 +188,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9057414960549034705, guid: 0fc58777597fa9b47aea5c58cafb9845, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 2.0169983
       objectReference: {fileID: 0}
     - target: {fileID: 9057414960549034705, guid: 0fc58777597fa9b47aea5c58cafb9845, type: 3}
       propertyPath: m_LocalPosition.y
@@ -192,7 +196,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9057414960549034705, guid: 0fc58777597fa9b47aea5c58cafb9845, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0.6900978
       objectReference: {fileID: 0}
     - target: {fileID: 9057414960549034705, guid: 0fc58777597fa9b47aea5c58cafb9845, type: 3}
       propertyPath: m_LocalRotation.x
