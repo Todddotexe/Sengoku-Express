@@ -130,10 +130,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 531028554}
     m_Modifications:
-    - target: {fileID: -4444196809140039115, guid: fcd8dc63334b30841babb65093140c7b, type: 3}
-      propertyPath: m_Convex
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2175851901916516868, guid: fcd8dc63334b30841babb65093140c7b, type: 3}
       propertyPath: m_Name
       value: Wagon
@@ -182,8 +178,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 6.796
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: -4444196809140039115, guid: fcd8dc63334b30841babb65093140c7b, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fcd8dc63334b30841babb65093140c7b, type: 3}
 --- !u!4 &91348430 stripped
 Transform:

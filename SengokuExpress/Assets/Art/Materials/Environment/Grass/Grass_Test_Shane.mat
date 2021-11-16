@@ -60,7 +60,7 @@ Material:
     - Vector1_AAE1EA15: 1
     - Vector1_F56B3366: -0.1
     - _AlphaClip: 0
-    - _AlphaClipThreshold: 0.31
+    - _AlphaClipThreshold: 0.2
     - _Blend: 0
     - _BumpScale: 1
     - _Cull: 2
@@ -70,8 +70,10 @@ Material:
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
-    - _Grass: 90.24
+    - _Grass: 99.88
+    - _GrassAngleOffset: 2
     - _Metallic: 0
+    - _NoiseScale: 20
     - _OcclusionStrength: 1
     - _QueueOffset: 0
     - _ReceiveShadows: 1
