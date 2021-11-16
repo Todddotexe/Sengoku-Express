@@ -57,7 +57,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Vector1_AAE1EA15: 1.12
+    - Vector1_AAE1EA15: 0.76
     - Vector1_F56B3366: 0.46
     - _AlphaClip: 0
     - _AlphaClipThreshold: 0.2
@@ -70,7 +70,7 @@ Material:
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
-    - _Grass: 99.88
+    - _Grass: 94.05
     - _GrassAngleOffset: 2.47
     - _Metallic: 0
     - _NoiseScale: 19.83
