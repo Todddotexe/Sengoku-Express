@@ -42,7 +42,6 @@ public class Player_Controller : MonoBehaviour {
 
     /// initialise fields
     void Start() {
-        Global.blackboard.player = this;
         // -- setup fields
         transf = transform;
         bark_meter_percentage = 0;
