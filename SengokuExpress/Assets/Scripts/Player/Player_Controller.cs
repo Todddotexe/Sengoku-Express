@@ -126,7 +126,7 @@ public class Player_Controller : MonoBehaviour {
             components.animator.SetBool(binds.ANIMATION_BOOL_WALK, true);
             movement.velocity = inputs.input * movement.speed * Time.deltaTime;
         } else {
-            components.animator.SetBool(binds.ANIMATION_BOOL_WALK, false);
+            // TODO components.animator.SetBool(binds.ANIMATION_BOOL_WALK, false);
         }
         PLAYER_apply_velocity();
     }
