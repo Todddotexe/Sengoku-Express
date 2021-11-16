@@ -51,7 +51,7 @@ public static class Global {
         gui.set_bark_meter(value);
     }
 
-    public static void set_health_text(int value) { // TODO remove this after // @debug & // @test
-        gui.set_health_text(value);
+    public static void set_health(int value) { // TODO remove this after // @debug & // @test
+        gui.set_health(value);
     }
 }
