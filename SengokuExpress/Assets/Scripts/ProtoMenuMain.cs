@@ -26,7 +26,7 @@ public class ProtoMenuMain : MonoBehaviour
     IEnumerator loadPlayScene(float waitTime)
     {
         yield return new WaitForSeconds(waitTime);
-        SceneManager.LoadScene("greybox_level_01");
+        SceneManager.LoadScene("level_main_game");
 
     }
 }
