@@ -123,10 +123,15 @@ public class Player_Controller : MonoBehaviour {
             PLAYER_apply_dash();
         } else
         if (inputs.input_vec2.magnitude > 0) {
+            components.audio_source.loop = true;
+            if (!components.audio_source.isPlaying) {
+                play_audio(audio_source.walk);
+            }
             components.animator.SetBool(binds.ANIMATION_BOOL_WALK, true);
             movement.velocity = inputs.input * movement.speed * Time.deltaTime;
         } else {
-            // TODO components.animator.SetBool(binds.ANIMATION_BOOL_WALK, false);
+            components.audio_source.loop = false;
+            components.animator.SetBool(binds.ANIMATION_BOOL_WALK, false);
         }
         PLAYER_apply_velocity();
     }
