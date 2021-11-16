@@ -48,7 +48,7 @@ ParticleSystem:
   ringBufferLoopRange: {x: 0, y: 1}
   looping: 0
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1
@@ -4880,7 +4880,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7459491163934910200}
-  - component: {fileID: 5053837541245124934}
   - component: {fileID: 4100441598259866514}
   - component: {fileID: 6537570337689556632}
   m_Layer: 0
@@ -4905,102 +4904,6 @@ Transform:
   m_Father: {fileID: 8344202031474306482}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
---- !u!82 &5053837541245124934
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2665321355958665964}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 405954739583897541, guid: e7bfdc30727735643ad270c41a0b4ba9, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 95c260664a311bd4eba549f88fd994eb, type: 3}
-  m_PlayOnAwake: 1
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
 --- !u!199 &4100441598259866514
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -9980,14 +9883,14 @@ MonoBehaviour:
     ANIMATION_TRIGGER_DASH: Dash
     ANIMATION_BOOL_WALK: Walk
   audio_source:
-    bark: {fileID: 0}
-    walk: {fileID: 0}
-    attack_1: {fileID: 0}
-    attack_2: {fileID: 0}
-    attack_3: {fileID: 0}
-    dash: {fileID: 0}
-    hurt: {fileID: 0}
-    death: {fileID: 0}
+    bark: {fileID: 8300000, guid: 95c260664a311bd4eba549f88fd994eb, type: 3}
+    walk: {fileID: 8300000, guid: 295f9dcd644fe1b4e9bea7df3175229d, type: 3}
+    attack_1: {fileID: 8300000, guid: bcc124523671b604180b1111c73c5acb, type: 3}
+    attack_2: {fileID: 8300000, guid: bcc124523671b604180b1111c73c5acb, type: 3}
+    attack_3: {fileID: 8300000, guid: bcc124523671b604180b1111c73c5acb, type: 3}
+    dash: {fileID: 8300000, guid: 9086a75c430b2044e9aaaca7dc7cb182, type: 3}
+    hurt: {fileID: 8300000, guid: ae5b81a20d7d93f4f875214f3d55b99a, type: 3}
+    death: {fileID: 8300000, guid: c3a15052838513141bdf89c112c7126b, type: 3}
   attack_hitbox_offset: {x: 0, y: 1, z: 1}
   attack_hitbox_extents: {x: 2, y: 2, z: 4}
   god_mode: 0
