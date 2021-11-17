@@ -9857,6 +9857,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c179ad1c0254d9429151d9d4eb15479, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  part_dash: {fileID: 306689577541839515}
+  part_bark: {fileID: 6537570337689556632}
   movement:
     speed: 10
     rotation_speed: 10
