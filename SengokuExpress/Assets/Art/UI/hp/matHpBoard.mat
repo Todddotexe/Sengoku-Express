@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: matHpBoard
-  m_Shader: {fileID: -6465566751694194690, guid: 564e13b806d444e4983e906411100024, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: 4ae9940dc55cb314f862df028835fb40, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -19,6 +19,10 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - Texture2D_B3AE625C:
         m_Texture: {fileID: 2800000, guid: 599ac7ed3248a1841a37d72d0cc195d9, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -60,11 +64,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - hp_board:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: a25bdc37f917a9641926a8b58100070d, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - ClipOffset: 0.928
+    - ClipOffset: 0
     - Vector1_7AE5E42F: 0.072
     - Vector1_B31707A1: 0
     - _AlphaClip: 0
@@ -88,6 +92,8 @@ Material:
     - _Surface: 0
     - _WorkflowMode: 1
     - _ZWrite: 1
+    - health: 1
+    - inverse_health: 0
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
