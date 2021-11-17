@@ -14,7 +14,6 @@ public class GUI_Controller : MonoBehaviour {
     public RectTransform gamePanel = null;
     public RectTransform pausePanel = null;
     public GUI_Game game_gui = null;
-    public float hp_shader_clipoffset_increament = 0.024f;
     /// restart level
     public void restart_level() {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
@@ -80,6 +79,7 @@ public class GUI_Controller : MonoBehaviour {
     public void set_health(int health) {
         Mathf.Clamp(health, 0, 6);
         game_gui.health_text.text = health.ToString(); // @debug
-        game_gui.hp_board_material.SetFloat("ClipOffset", 1 - (hp_shader_clipoffset_increament * health));
+        int max_health = 10; // @incomplete put this variable in a proper place
+        game_gui.hp_board_material.SetFloat("inverse_health", ((float)health / (float)max_health));
     }
 }
