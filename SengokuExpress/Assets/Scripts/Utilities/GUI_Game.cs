@@ -7,7 +7,7 @@ using TMPro;
 public class GUI_Game : MonoBehaviour {
     public Slider bark_meter = null;
     public TMP_Text health_text = null;
-    public RawImage hp_board_image = null;
+    public Image hp_board_image = null;
     [HideInInspector] public Material hp_board_material = null;
     void Awake() {
         Debug.Assert(bark_meter  != null);
