@@ -13,7 +13,8 @@ public class Player_Controller : MonoBehaviour {
     // !=================================================================
     // !======================= Player Controller =======================
     // !=================================================================
-    // public ParticleSystem dash_part; // TODO add this back when we have a proper particle system
+    public ParticleSystem part_dash; // TODO add this back when we have a proper particle system
+    public ParticleSystem part_bark; // TODO add this back when we have a proper particle system
 
     /// ===
     /// FIELDS
@@ -181,6 +182,9 @@ public class Player_Controller : MonoBehaviour {
             // if (dash_part != null) { // TODO add this back when we have a proper particle system
             //     dash_part.Play();
             // }
+            if (part_dash != null) {
+                part_dash.Play();
+            }
         }
     }
     /// used as a delegate for Player_Inputs.bark
@@ -191,6 +195,9 @@ public class Player_Controller : MonoBehaviour {
         Global.set_bark_meter(bark_meter_percentage);
         components.animator.SetTrigger(binds.ANIMATION_TRIGGER_BARK);
         play_audio(audio_source.bark);
+        if (part_bark != null) {
+            part_bark.Play();
+        }
         // -- init collision
         Collider[] colliders = Physics.OverlapSphere(transf.position, bark.radius);
         foreach (Collider collider in colliders) {
