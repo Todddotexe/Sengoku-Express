@@ -9857,6 +9857,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c179ad1c0254d9429151d9d4eb15479, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  part_dash: {fileID: 0}
+  part_bark: {fileID: 0}
   movement:
     speed: 10
     rotation_speed: 10
@@ -9892,7 +9894,7 @@ MonoBehaviour:
     hurt: {fileID: 8300000, guid: ae5b81a20d7d93f4f875214f3d55b99a, type: 3}
     death: {fileID: 8300000, guid: c3a15052838513141bdf89c112c7126b, type: 3}
   attack_hitbox_offset: {x: 0, y: 1, z: 0.75}
-  attack_hitbox_extents: {x: 1.25, y: 2, z: 4}
+  attack_hitbox_extents: {x: 1.25, y: 2, z: 1.5}
   god_mode: 0
   dash_cool_down_duration: 0.5
   attack_animator: {fileID: 4660239364217155405}
