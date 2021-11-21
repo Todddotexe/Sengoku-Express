@@ -10634,6 +10634,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 682608596}
     m_Modifications:
+    - target: {fileID: 1912418351284660946, guid: 51182e3f223ad134ab35ee40af0c55b7, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1a0275e0d87259c4f888975961265390, type: 2}
     - target: {fileID: 8344202030470013306, guid: 51182e3f223ad134ab35ee40af0c55b7, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -10681,6 +10685,18 @@ PrefabInstance:
     - target: {fileID: 8344202030470013309, guid: 51182e3f223ad134ab35ee40af0c55b7, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 8344202030470013311, guid: 51182e3f223ad134ab35ee40af0c55b7, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: dc1c436e7ae86a24db483b0e71532d0e, type: 2}
+    - target: {fileID: 8344202030470013311, guid: 51182e3f223ad134ab35ee40af0c55b7, type: 3}
+      propertyPath: m_Avatar
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8344202030470013311, guid: 51182e3f223ad134ab35ee40af0c55b7, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 51182e3f223ad134ab35ee40af0c55b7, type: 3}
