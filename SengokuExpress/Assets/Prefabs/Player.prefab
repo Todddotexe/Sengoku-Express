@@ -9762,25 +9762,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!95 &5554702573574624993
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7418775809386121844}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: dc1c436e7ae86a24db483b0e71532d0e, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &8344202030470013309
 GameObject:
   m_ObjectHideFlags: 0
@@ -9792,7 +9773,6 @@ GameObject:
   - component: {fileID: 8344202030470013306}
   - component: {fileID: 8344202030470013305}
   - component: {fileID: 8344202030470013304}
-  - component: {fileID: 8344202030470013311}
   - component: {fileID: 8344202030470013310}
   - component: {fileID: 389115131761411530}
   m_Layer: 0
@@ -9865,25 +9845,6 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0.55, z: 0}
---- !u!95 &8344202030470013311
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8344202030470013309}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 46ebd34894723bf4a91698446833351d, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 1
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &8344202030470013310
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9932,6 +9893,11 @@ MonoBehaviour:
     dash: {fileID: 8300000, guid: 9086a75c430b2044e9aaaca7dc7cb182, type: 3}
     hurt: {fileID: 8300000, guid: ae5b81a20d7d93f4f875214f3d55b99a, type: 3}
     death: {fileID: 8300000, guid: c3a15052838513141bdf89c112c7126b, type: 3}
+  components:
+    input: {fileID: 0}
+    character_controller: {fileID: 0}
+    animator: {fileID: 2175225432194133463}
+    audio_source: {fileID: 0}
   attack_hitbox_offset: {x: 0, y: 1, z: 0.75}
   attack_hitbox_extents: {x: 1.25, y: 2, z: 4}
   god_mode: 0
@@ -10203,8 +10169,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2181507970533274019, guid: 2dcd64bafb261de4b91533f99b1fca30, type: 3}
   m_PrefabInstance: {fileID: 4649452270600091671}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &7418775809386121844 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2770529050651325027, guid: 2dcd64bafb261de4b91533f99b1fca30, type: 3}
+--- !u!95 &2175225432194133463 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 6821220835812169152, guid: 2dcd64bafb261de4b91533f99b1fca30, type: 3}
   m_PrefabInstance: {fileID: 4649452270600091671}
   m_PrefabAsset: {fileID: 0}

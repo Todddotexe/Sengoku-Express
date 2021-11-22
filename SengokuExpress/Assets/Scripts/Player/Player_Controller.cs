@@ -7,7 +7,7 @@ using Character_Util;
 
 [RequireComponent(typeof(PlayerInput))]
 [RequireComponent(typeof(CharacterController))]
-[RequireComponent(typeof(Animator))]
+// [RequireComponent(typeof(Animator))]
 public class Player_Controller : MonoBehaviour {
 	
     // !=================================================================
@@ -26,7 +26,7 @@ public class Player_Controller : MonoBehaviour {
     [SerializeField] Player_Binding binds = new Player_Binding();
     [SerializeField] Dog_Audio audio_source = new Dog_Audio();
     Combat combat = new Combat();
-    Player_Components components = new Player_Components();
+    [SerializeField] Player_Components components = new Player_Components();
     Player_Inputs inputs = new Player_Inputs();
     bool has_hit_enemy = false;
     public Vector3 attack_hitbox_offset;
@@ -51,7 +51,7 @@ public class Player_Controller : MonoBehaviour {
         // -- setup components
         components.input                = GetComponent<PlayerInput>();
         components.character_controller = GetComponent<CharacterController>();
-        components.animator             = GetComponent<Animator>();
+        // components.animator             = GetComponent<Animator>(); // ! this is now being set through the editor
         components.audio_source         = GetComponent<AudioSource>();
         // -- setup inputs
         Debug.Assert(components.input.actions != null);
@@ -345,11 +345,12 @@ public class Player_Controller : MonoBehaviour {
         public InputAction temp_exit = null;
     }
     /// Player Components
+    [System.Serializable]
     private class Player_Components {
-        public PlayerInput input = null;
-        public CharacterController character_controller = null;
-        public Animator animator = null;
-        public AudioSource audio_source = null;
+        [HideInInspector] public PlayerInput input = null;
+        [HideInInspector] public CharacterController character_controller = null;
+        public Animator animator = null; // ! this is now required to be set through the editor because the animator is on a child object
+        [HideInInspector] public AudioSource audio_source = null;
     }
 
 }
