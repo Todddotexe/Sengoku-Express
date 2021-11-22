@@ -467,6 +467,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2181507970533274019}
+  - component: {fileID: 6821220835812169152}
   m_Layer: 0
   m_Name: Pc_rig_07
   m_TagString: Untagged
@@ -490,6 +491,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &6821220835812169152
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1517032873757109017}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 46ebd34894723bf4a91698446833351d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1532426155952592816
 GameObject:
   m_ObjectHideFlags: 0
@@ -1070,6 +1090,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3096339640848471656}
   - component: {fileID: 5712314138776517847}
+  - component: {fileID: 5554702573574624993}
   m_Layer: 0
   m_Name: dog_mesh
   m_TagString: Untagged
@@ -1179,6 +1200,25 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.283691, y: 0.09263885, z: 0.013516843}
     m_Extent: {x: 0.97181374, y: 1.1122484, z: 0.5197023}
   m_DirtyAABB: 0
+--- !u!95 &5554702573574624993
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2770529050651325027}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: dc1c436e7ae86a24db483b0e71532d0e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &3005764425031746311
 GameObject:
   m_ObjectHideFlags: 0
