@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2175851901916516869}
   - component: {fileID: 9218819456820643984}
   m_Layer: 0
-  m_Name: Wagon
+  m_Name: enem_wagon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -40,7 +40,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2175851901916516868}
-  m_Mesh: {fileID: -24422896164124303, guid: 8b1275110b7ba3a4bba6d89599dddd6a, type: 3}
+  m_Mesh: {fileID: 873172389747916043, guid: 022a83fe2091a544eb4293422497c0ac, type: 3}
 --- !u!23 &2175851901916516869
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -94,4 +94,4 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 7, y: 5, z: 3.5}
-  m_Center: {x: -1.2, y: 2, z: 0.25}
+  m_Center: {x: -1.2, y: 1.44, z: 0.25}
