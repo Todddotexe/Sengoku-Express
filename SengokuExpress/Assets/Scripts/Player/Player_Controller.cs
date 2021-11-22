@@ -52,7 +52,12 @@ public class Player_Controller : MonoBehaviour {
         components.input                = GetComponent<PlayerInput>();
         components.character_controller = GetComponent<CharacterController>();
         // components.animator             = GetComponent<Animator>(); // ! this is now being set through the editor
-        components.audio_source         = GetComponent<AudioSource>();
+        // components.main_audio_source         = GetComponent<AudioSource>(); // ! this is now meant to be set through the editor
+        Debug.Assert(components.main_audio_source != null);
+        Debug.Assert(components.walk_audio_source != null);
+        components.walk_audio_source.clip = audio_source.walk;
+        components.walk_audio_source.loop = true;
+        play_walk_audio(false);
         // -- setup inputs
         Debug.Assert(components.input.actions != null);
         inputs.walk       = components.input.actions[binds.WALK_INPUT_LABEL];
@@ -121,14 +126,11 @@ public class Player_Controller : MonoBehaviour {
             PLAYER_apply_dash();
         } else
         if (inputs.input_vec2.magnitude > 0) {
-            components.audio_source.loop = true;
-            if (!components.audio_source.isPlaying) {
-                play_audio(audio_source.walk);
-            }
+            play_walk_audio(true);
             components.animator.SetBool(binds.ANIMATION_BOOL_WALK, true);
             movement.velocity = inputs.input * movement.speed * Time.deltaTime;
         } else {
-            components.audio_source.loop = false;
+            play_walk_audio(false);
             components.animator.SetBool(binds.ANIMATION_BOOL_WALK, false);
         }
         PLAYER_apply_velocity();
@@ -302,8 +304,11 @@ public class Player_Controller : MonoBehaviour {
         components.character_controller.Move(movement.velocity);
     }
     void play_audio(AudioClip clip) {
-        components.audio_source.clip = clip;
-        components.audio_source.Play();
+        components.main_audio_source.clip = clip;
+        components.main_audio_source.Play();
+    }
+    void play_walk_audio(bool value) {
+        components.walk_audio_source.enabled = value;
     }
     // !=================================================================
     // !=======================  PRIVATE CLASSES  =======================
@@ -343,6 +348,7 @@ public class Player_Controller : MonoBehaviour {
         [HideInInspector] public PlayerInput input = null;
         [HideInInspector] public CharacterController character_controller = null;
         public Animator animator = null; // ! this is now required to be set through the editor because the animator is on a child object
-        [HideInInspector] public AudioSource audio_source = null;
+        public AudioSource main_audio_source = null;
+        public AudioSource walk_audio_source = null;
     }
 }
