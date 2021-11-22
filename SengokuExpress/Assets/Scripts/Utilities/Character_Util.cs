@@ -65,6 +65,7 @@ namespace Character_Util {
     /// Combat
     [System.Serializable]
     public class Combat {
+        public TrailRenderer attack_trail = null;
         [HideInInspector] public bool is_attacking = false;
         [HideInInspector] public int current_combo_index = 0; // starts from 0 - 2 (inclusive)
         [HideInInspector] public bool queued_combo = false;
@@ -108,7 +109,12 @@ namespace Character_Util {
                 current_combo_index = 0; // * if we were not attacking, or in the progress of attacking, the current_combo_index should be zero. This is here to make that clear.
                 attack_functions_start[current_combo_index]();
             }
+            // -- attack trail
+            if (attack_trail != null) {
+                attack_trail.enabled = is_attacking;
+            }
         }
+
     }
     ///
     [System.Serializable]

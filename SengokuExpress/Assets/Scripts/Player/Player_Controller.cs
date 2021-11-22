@@ -25,7 +25,7 @@ public class Player_Controller : MonoBehaviour {
     [SerializeField] Player_Bark bark = new Player_Bark();
     [SerializeField] Player_Binding binds = new Player_Binding();
     [SerializeField] Dog_Audio audio_source = new Dog_Audio();
-    Combat combat = new Combat();
+    [SerializeField] Combat combat = new Combat();
     [SerializeField] Player_Components components = new Player_Components();
     Player_Inputs inputs = new Player_Inputs();
     bool has_hit_enemy = false;
