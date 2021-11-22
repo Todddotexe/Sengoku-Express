@@ -14,7 +14,7 @@ GameObject:
   m_Layer: 0
   m_Name: AttackMover
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -52,7 +52,7 @@ TrailRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 75bf2076177c6ee4bab2618bf1c74737, type: 2}
+  - {fileID: 2100000, guid: 1a0275e0d87259c4f888975961265390, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

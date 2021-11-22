@@ -738,7 +738,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -183530207247392898, guid: 9cf665103d2b0084ea6b9b6c57311e0d, type: 3}
+  - {fileID: 2100000, guid: 1a0275e0d87259c4f888975961265390, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2096,8 +2096,8 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 4638008192267078544, guid: 9cf665103d2b0084ea6b9b6c57311e0d, type: 3}
-  - {fileID: 5215543245220603032, guid: 9cf665103d2b0084ea6b9b6c57311e0d, type: 3}
+  - {fileID: 2100000, guid: 1a0275e0d87259c4f888975961265390, type: 2}
+  - {fileID: 2100000, guid: 2855217dc3482974e80e10cbf2389c4f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2572,6 +2572,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7216653243893254405}
+  - component: {fileID: 4749434539154031377}
   m_Layer: 0
   m_Name: pc_dogRig_09
   m_TagString: Untagged
@@ -2595,6 +2596,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &4749434539154031377
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8029182903099184063}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 46ebd34894723bf4a91698446833351d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &8230519475909476642
 GameObject:
   m_ObjectHideFlags: 0
