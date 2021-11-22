@@ -51,17 +51,17 @@ public class @PlayerInp : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""Reset_Level_Debug"",
+                    ""name"": ""Cancel"",
                     ""type"": ""Button"",
-                    ""id"": ""d9b584f4-0361-4ee3-aa6a-7673ed2eacc1"",
+                    ""id"": ""7ccedf96-0466-4a4d-bb53-e461a91d3197"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""Temp_Exit"",
+                    ""name"": ""Accept"",
                     ""type"": ""Button"",
-                    ""id"": ""98f642b8-1bf3-4104-b9ab-675f29362cc3"",
+                    ""id"": ""78ea4ee5-4960-47db-a369-bf0b824c164a"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
@@ -224,28 +224,6 @@ public class @PlayerInp : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""51a1e410-341f-4e54-9148-b9b31c8c3ee0"",
-                    ""path"": ""<Keyboard>/r"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Reset_Level_Debug"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""51bbac09-84d6-4ae3-b52d-902ab88b2004"",
-                    ""path"": ""<Keyboard>/escape"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Temp_Exit"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""cfbaafeb-f920-4daf-95e9-aa5b96e010d1"",
                     ""path"": ""<Keyboard>/space"",
                     ""interactions"": """",
@@ -265,6 +243,39 @@ public class @PlayerInp : IInputActionCollection, IDisposable
                     ""action"": ""Dash"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""41591542-2976-4622-9f80-1432cd0f42c9"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Cancel"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b09cfef5-db0f-4a41-8f53-7cebfebc11a5"",
+                    ""path"": ""<Keyboard>/enter"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Accept"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c4c2caa8-cb28-459f-9cae-fcddbee73593"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Accept"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -277,8 +288,8 @@ public class @PlayerInp : IInputActionCollection, IDisposable
         m_InGameAP_Dash = m_InGameAP.FindAction("Dash", throwIfNotFound: true);
         m_InGameAP_LightAttack = m_InGameAP.FindAction("LightAttack", throwIfNotFound: true);
         m_InGameAP_Bark = m_InGameAP.FindAction("Bark", throwIfNotFound: true);
-        m_InGameAP_Reset_Level_Debug = m_InGameAP.FindAction("Reset_Level_Debug", throwIfNotFound: true);
-        m_InGameAP_Temp_Exit = m_InGameAP.FindAction("Temp_Exit", throwIfNotFound: true);
+        m_InGameAP_Cancel = m_InGameAP.FindAction("Cancel", throwIfNotFound: true);
+        m_InGameAP_Accept = m_InGameAP.FindAction("Accept", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -332,8 +343,8 @@ public class @PlayerInp : IInputActionCollection, IDisposable
     private readonly InputAction m_InGameAP_Dash;
     private readonly InputAction m_InGameAP_LightAttack;
     private readonly InputAction m_InGameAP_Bark;
-    private readonly InputAction m_InGameAP_Reset_Level_Debug;
-    private readonly InputAction m_InGameAP_Temp_Exit;
+    private readonly InputAction m_InGameAP_Cancel;
+    private readonly InputAction m_InGameAP_Accept;
     public struct InGameAPActions
     {
         private @PlayerInp m_Wrapper;
@@ -342,8 +353,8 @@ public class @PlayerInp : IInputActionCollection, IDisposable
         public InputAction @Dash => m_Wrapper.m_InGameAP_Dash;
         public InputAction @LightAttack => m_Wrapper.m_InGameAP_LightAttack;
         public InputAction @Bark => m_Wrapper.m_InGameAP_Bark;
-        public InputAction @Reset_Level_Debug => m_Wrapper.m_InGameAP_Reset_Level_Debug;
-        public InputAction @Temp_Exit => m_Wrapper.m_InGameAP_Temp_Exit;
+        public InputAction @Cancel => m_Wrapper.m_InGameAP_Cancel;
+        public InputAction @Accept => m_Wrapper.m_InGameAP_Accept;
         public InputActionMap Get() { return m_Wrapper.m_InGameAP; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -365,12 +376,12 @@ public class @PlayerInp : IInputActionCollection, IDisposable
                 @Bark.started -= m_Wrapper.m_InGameAPActionsCallbackInterface.OnBark;
                 @Bark.performed -= m_Wrapper.m_InGameAPActionsCallbackInterface.OnBark;
                 @Bark.canceled -= m_Wrapper.m_InGameAPActionsCallbackInterface.OnBark;
-                @Reset_Level_Debug.started -= m_Wrapper.m_InGameAPActionsCallbackInterface.OnReset_Level_Debug;
-                @Reset_Level_Debug.performed -= m_Wrapper.m_InGameAPActionsCallbackInterface.OnReset_Level_Debug;
-                @Reset_Level_Debug.canceled -= m_Wrapper.m_InGameAPActionsCallbackInterface.OnReset_Level_Debug;
-                @Temp_Exit.started -= m_Wrapper.m_InGameAPActionsCallbackInterface.OnTemp_Exit;
-                @Temp_Exit.performed -= m_Wrapper.m_InGameAPActionsCallbackInterface.OnTemp_Exit;
-                @Temp_Exit.canceled -= m_Wrapper.m_InGameAPActionsCallbackInterface.OnTemp_Exit;
+                @Cancel.started -= m_Wrapper.m_InGameAPActionsCallbackInterface.OnCancel;
+                @Cancel.performed -= m_Wrapper.m_InGameAPActionsCallbackInterface.OnCancel;
+                @Cancel.canceled -= m_Wrapper.m_InGameAPActionsCallbackInterface.OnCancel;
+                @Accept.started -= m_Wrapper.m_InGameAPActionsCallbackInterface.OnAccept;
+                @Accept.performed -= m_Wrapper.m_InGameAPActionsCallbackInterface.OnAccept;
+                @Accept.canceled -= m_Wrapper.m_InGameAPActionsCallbackInterface.OnAccept;
             }
             m_Wrapper.m_InGameAPActionsCallbackInterface = instance;
             if (instance != null)
@@ -387,12 +398,12 @@ public class @PlayerInp : IInputActionCollection, IDisposable
                 @Bark.started += instance.OnBark;
                 @Bark.performed += instance.OnBark;
                 @Bark.canceled += instance.OnBark;
-                @Reset_Level_Debug.started += instance.OnReset_Level_Debug;
-                @Reset_Level_Debug.performed += instance.OnReset_Level_Debug;
-                @Reset_Level_Debug.canceled += instance.OnReset_Level_Debug;
-                @Temp_Exit.started += instance.OnTemp_Exit;
-                @Temp_Exit.performed += instance.OnTemp_Exit;
-                @Temp_Exit.canceled += instance.OnTemp_Exit;
+                @Cancel.started += instance.OnCancel;
+                @Cancel.performed += instance.OnCancel;
+                @Cancel.canceled += instance.OnCancel;
+                @Accept.started += instance.OnAccept;
+                @Accept.performed += instance.OnAccept;
+                @Accept.canceled += instance.OnAccept;
             }
         }
     }
@@ -403,7 +414,7 @@ public class @PlayerInp : IInputActionCollection, IDisposable
         void OnDash(InputAction.CallbackContext context);
         void OnLightAttack(InputAction.CallbackContext context);
         void OnBark(InputAction.CallbackContext context);
-        void OnReset_Level_Debug(InputAction.CallbackContext context);
-        void OnTemp_Exit(InputAction.CallbackContext context);
+        void OnCancel(InputAction.CallbackContext context);
+        void OnAccept(InputAction.CallbackContext context);
     }
 }
