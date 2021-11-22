@@ -1,5 +1,5 @@
 /// -- BUG TO FIX:
-- [ ] audio looping on player
+- [x] audio looping on player
 - [ ] add all global scripts to one prefab called Global
 - [ ] - more investigation...
 /// -- SUGGESTIONS TO ADD:
