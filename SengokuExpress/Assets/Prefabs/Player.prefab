@@ -4871,25 +4871,6 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
---- !u!95 &4749434539154031377
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1789536198268763989}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 46ebd34894723bf4a91698446833351d, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &2665321355958665964
 GameObject:
   m_ObjectHideFlags: 0
@@ -9792,7 +9773,6 @@ GameObject:
   - component: {fileID: 8344202030470013306}
   - component: {fileID: 8344202030470013305}
   - component: {fileID: 8344202030470013304}
-  - component: {fileID: 8344202030470013311}
   - component: {fileID: 8344202030470013310}
   - component: {fileID: 389115131761411530}
   m_Layer: 0
@@ -9865,25 +9845,6 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0.55, z: 0}
---- !u!95 &8344202030470013311
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8344202030470013309}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 46ebd34894723bf4a91698446833351d, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 1
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &8344202030470013310
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9935,7 +9896,7 @@ MonoBehaviour:
   components:
     input: {fileID: 0}
     character_controller: {fileID: 0}
-    animator: {fileID: 4749434539154031377}
+    animator: {fileID: 3914111255901745147}
     audio_source: {fileID: 0}
   attack_hitbox_offset: {x: 0, y: 1, z: 0.75}
   attack_hitbox_extents: {x: 1.25, y: 2, z: 4}
@@ -10082,10 +10043,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: AttackMover
       objectReference: {fileID: 0}
-    - target: {fileID: 7247867423889621992, guid: 9f4522d6bba0dd4409cb5ee76859b39d, type: 3}
-      propertyPath: m_Icon
-      value: 
-      objectReference: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
     - target: {fileID: 7247867423889621994, guid: 9f4522d6bba0dd4409cb5ee76859b39d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -10130,10 +10087,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7247867423889621995, guid: 9f4522d6bba0dd4409cb5ee76859b39d, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 1a0275e0d87259c4f888975961265390, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9f4522d6bba0dd4409cb5ee76859b39d, type: 3}
 --- !u!4 &4660239364217155406 stripped
@@ -10153,14 +10106,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8344202031474306482}
     m_Modifications:
-    - target: {fileID: 3829961162058564721, guid: 673caa51065ad9948a423d8888eb82e6, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 1a0275e0d87259c4f888975961265390, type: 2}
-    - target: {fileID: 3829961162058564721, guid: 673caa51065ad9948a423d8888eb82e6, type: 3}
-      propertyPath: m_Materials.Array.data[1]
-      value: 
-      objectReference: {fileID: 2100000, guid: 2855217dc3482974e80e10cbf2389c4f, type: 2}
     - target: {fileID: 7216653243893254405, guid: 673caa51065ad9948a423d8888eb82e6, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -10209,19 +10154,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: pc_dogRig_09
       objectReference: {fileID: 0}
-    - target: {fileID: 8460880839753277586, guid: 673caa51065ad9948a423d8888eb82e6, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 1a0275e0d87259c4f888975961265390, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 673caa51065ad9948a423d8888eb82e6, type: 3}
---- !u!1 &1789536198268763989 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8029182903099184063, guid: 673caa51065ad9948a423d8888eb82e6, type: 3}
-  m_PrefabInstance: {fileID: 8626881479976086762}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1413678505991038447 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7216653243893254405, guid: 673caa51065ad9948a423d8888eb82e6, type: 3}
+  m_PrefabInstance: {fileID: 8626881479976086762}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &3914111255901745147 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 4749434539154031377, guid: 673caa51065ad9948a423d8888eb82e6, type: 3}
   m_PrefabInstance: {fileID: 8626881479976086762}
   m_PrefabAsset: {fileID: 0}
