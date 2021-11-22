@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: f4226631291aeb04cba3545d937ae480
+guid: f6790179417e41841b715a7479ca5f04
 ModelImporter:
   serializedVersion: 20101
   internalIDToNameTable:
   - first:
-      74: -778210662825369520
-    second: Pc_anim_Slash_02
+      74: -3465740525266378086
+    second: Pc_anim_Slash_01
   externalObjects: {}
   materials:
     materialImportMode: 1
