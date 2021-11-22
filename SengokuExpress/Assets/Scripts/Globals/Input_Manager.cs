@@ -21,5 +21,20 @@ public class Input_Manager : MonoBehaviour {
         cancel     = input.actions[INPUT_LABEL_CANCEL];
         accept     = input.actions[INPUT_LABEL_ACCEPT];
         navigation = input.actions[INPUT_LABEL_NAVIGATION];
+        
+        // -- pause when we press the cancel button when it's appropriate
+        cancel.performed += delegate_on_pause_button_pressed;
+    }
+    ///
+    void delegate_on_pause_button_pressed(InputAction.CallbackContext obj) {
+        // if we're not paused, set state to paused, 
+        switch (Global.get_state()) {
+            case Global.STATES.GAME:
+                Global.set_game_state(Global.STATES.PAUSED);
+            break;
+            case Global.STATES.PAUSED:
+                Global.set_game_state(Global.STATES.GAME);
+            break;
+        }
     }
 }

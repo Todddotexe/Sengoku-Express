@@ -17,10 +17,10 @@ public static class Global {
         if (value) {
             pre_pause_time_scale = Time.timeScale;
             Time.timeScale = 0;
+            gui.gui_display_pause_menu();
         }
         else {
             Time.timeScale = pre_pause_time_scale;
-            gui.gui_display_pause_menu();
         }
     }
     /// set the gui

@@ -71,16 +71,12 @@ public class GUI_Controller : MonoBehaviour {
     public void gui_display_pause_menu() {
         switch_panel(PANELS.PAUSE);
     }
-    ///
-    void delegate_on_pause_button_pressed(InputAction.CallbackContext obj) {
-        // if we're not paused, set state to paused, 
-        switch (Global.get_state()) {
-            case Global.STATES.GAME:
-                Global.set_game_state(Global.STATES.PAUSED);
-            break;
-            case Global.STATES.PAUSED:
-                Global.set_game_state(Global.STATES.GAME);
-            break;
-        }
+    /// used for the button
+    public void on_resume_button_pressed() {
+        Global.set_game_state(Global.STATES.GAME);
+    }
+    /// used for the button
+    public void on_main_menu_button_pressed() {
+        Global.go_to_main_menu();
     }
 }

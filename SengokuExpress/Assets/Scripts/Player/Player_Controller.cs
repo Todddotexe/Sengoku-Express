@@ -85,6 +85,7 @@ public class Player_Controller : MonoBehaviour {
     }
     /// physics update
     void FixedUpdate() {
+        if (Global.get_state() == Global.STATES.PAUSED) return; // don't do anything
         if (!is_alive) {
             Destroy(gameObject);
             Global.set_game_state(Global.STATES.LOST);
