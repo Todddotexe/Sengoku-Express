@@ -87,6 +87,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 671339bd092a1ca4bb9db46385ad1079, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 7830092999244447473}
+  animations:
+    ATTACK1: Attack1
+    ATTACK2: Attack2
+    ATTACK3: Attack3
+    RUN: Run
+    HIT: Hit
+    DEATH: Death
+    JUMPBACK: JumpBack
+    STUNNED: Stunned
+    SIDESTEP: SideStep
   vision_radius: 10
   combat_maneuver_radius: 6
   combat_radius: 3
@@ -221,5 +232,10 @@ Transform:
 --- !u!23 &4801428116242008823 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 6833334361781970823, guid: 548274cbf2fcd4a4f9276a3e3f194b62, type: 3}
+  m_PrefabInstance: {fileID: 2051099406481075568}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &7830092999244447473 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 8132634597238068097, guid: 548274cbf2fcd4a4f9276a3e3f194b62, type: 3}
   m_PrefabInstance: {fileID: 2051099406481075568}
   m_PrefabAsset: {fileID: 0}
