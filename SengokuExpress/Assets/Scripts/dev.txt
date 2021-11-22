@@ -1,0 +1,13 @@
+/// -- BUG TO FIX:
+- [ ] audio looping on player
+- [ ] add all global scripts to one prefab called Global
+- [ ] - more investigation...
+/// -- SUGGESTIONS TO ADD:
+- [ ] player should dash towards where they are facing if no input
+- [ ] cool down on player attacks after finishing a combo to leave him vulnerable
+- [ ] - more investigation...
+/// -- FEATURES YET TO ADD
+- [ ] heavy enemy behaviour
+- [ ] health drops
+- [ ] player death animation integration
+- [ ] interesting enemy spawning animation
