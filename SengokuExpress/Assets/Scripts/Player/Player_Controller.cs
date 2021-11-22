@@ -170,6 +170,7 @@ public class Player_Controller : MonoBehaviour {
     }
     /// used as a delegate for Player_Inputs.dash
     void delegate_dash(InputAction.CallbackContext obj) {
+        if (Global.get_state() == Global.STATES.PAUSED) return; // don't do anything
         if (dash_cool_down <= 0) {
             dash_cool_down = dash_cool_down_duration;
             dash.dash(transf.position, inputs.input_vec2, Dash.TYPES.NORMAL);
@@ -186,6 +187,7 @@ public class Player_Controller : MonoBehaviour {
     }
     /// used as a delegate for Player_Inputs.bark
     void delegate_bark(InputAction.CallbackContext obj) {
+        if (Global.get_state() == Global.STATES.PAUSED) return; // don't do anything
         if (combat.is_attacking || combat.queued_combo) return; // ! don't bark while attacking
         if (bark_meter_percentage < 1) return; // ! don't bark if bark meter is not filled
         bark_meter_percentage = 0;
@@ -207,6 +209,7 @@ public class Player_Controller : MonoBehaviour {
     }
     /// used to queue attack
     void delegate_attack(InputAction.CallbackContext obj) {
+        if (Global.get_state() == Global.STATES.PAUSED) return; // don't do anything
         combat.queued_combo = true;
     }
     /// first attack in the combo chain (Start)
