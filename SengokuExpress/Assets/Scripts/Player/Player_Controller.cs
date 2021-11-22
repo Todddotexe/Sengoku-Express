@@ -59,17 +59,13 @@ public class Player_Controller : MonoBehaviour {
         inputs.dash       = components.input.actions[binds.DASH_INPUT_LABEL];
         inputs.bark       = components.input.actions[binds.BARK_INPUT_LABEL];
         inputs.attack     = components.input.actions[binds.ATTACK_INPUT_LABEL];
-        inputs.temp_exit  = components.input.actions["Temp_Exit"];
-        inputs.reset      = components.input.actions["Reset_Level_Debug"]; // @incomplete @debug remove this from here and the PlayerInp Inputs after debugging is over
         inputs.dash.performed      -= delegate_dash;
         inputs.bark.performed      -= delegate_bark;
         inputs.attack.performed    -= delegate_attack;
-        inputs.temp_exit.performed -= delegate_temp_exit;
         
         inputs.dash.performed += delegate_dash;
         inputs.bark.performed += delegate_bark;
         inputs.attack.performed += delegate_attack;
-        inputs.temp_exit.performed += delegate_temp_exit;
         // -- setup attack combo chain
         combat.attack_functions_start.Add(delegate_attack_1_start);
         combat.attack_functions_start.Add(delegate_attack_2_start);
@@ -89,6 +85,7 @@ public class Player_Controller : MonoBehaviour {
     }
     /// physics update
     void FixedUpdate() {
+        if (Global.get_state() == Global.STATES.PAUSED) return; // don't do anything
         if (!is_alive) {
             Destroy(gameObject);
             Global.set_game_state(Global.STATES.LOST);
@@ -173,6 +170,7 @@ public class Player_Controller : MonoBehaviour {
     }
     /// used as a delegate for Player_Inputs.dash
     void delegate_dash(InputAction.CallbackContext obj) {
+        if (Global.get_state() == Global.STATES.PAUSED) return; // don't do anything
         if (dash_cool_down <= 0) {
             dash_cool_down = dash_cool_down_duration;
             dash.dash(transf.position, inputs.input_vec2, Dash.TYPES.NORMAL);
@@ -189,6 +187,7 @@ public class Player_Controller : MonoBehaviour {
     }
     /// used as a delegate for Player_Inputs.bark
     void delegate_bark(InputAction.CallbackContext obj) {
+        if (Global.get_state() == Global.STATES.PAUSED) return; // don't do anything
         if (combat.is_attacking || combat.queued_combo) return; // ! don't bark while attacking
         if (bark_meter_percentage < 1) return; // ! don't bark if bark meter is not filled
         bark_meter_percentage = 0;
@@ -210,6 +209,7 @@ public class Player_Controller : MonoBehaviour {
     }
     /// used to queue attack
     void delegate_attack(InputAction.CallbackContext obj) {
+        if (Global.get_state() == Global.STATES.PAUSED) return; // don't do anything
         combat.queued_combo = true;
     }
     /// first attack in the combo chain (Start)
@@ -271,11 +271,6 @@ public class Player_Controller : MonoBehaviour {
             }
         }
     }
-    /// temporarily used to exit the game during build
-    void delegate_temp_exit(InputAction.CallbackContext obj) {
-        Application.Quit();
-    }
-
     // !=================================================================
     // !=======================    BEHAVIOURS     =======================
     // !=================================================================
@@ -322,16 +317,16 @@ public class Player_Controller : MonoBehaviour {
     /// Binding with Unity Editor Animation and Input system
     [System.Serializable]
     private class Player_Binding {
-        public string WALK_INPUT_LABEL = "Move";
-        public string DASH_INPUT_LABEL = "Dash";
-        public string BARK_INPUT_LABEL = "Bark";
-        public string ATTACK_INPUT_LABEL = "LightAttack";
+        public string WALK_INPUT_LABEL           = "Move";
+        public string DASH_INPUT_LABEL           = "Dash";
+        public string BARK_INPUT_LABEL           = "Bark";
+        public string ATTACK_INPUT_LABEL         = "LightAttack";
         public string ANIMATION_TRIGGER_ATTACK_1 = "Attack1";
         public string ANIMATION_TRIGGER_ATTACK_2 = "Attack2";
         public string ANIMATION_TRIGGER_ATTACK_3 = "Attack3";
         public string ANIMATION_TRIGGER_BARK     = "Bark";
         public string ANIMATION_TRIGGER_DASH     = "Dash";
-        public string ANIMATION_BOOL_WALK     = "Walk";
+        public string ANIMATION_BOOL_WALK        = "Walk";
     }
     /// Player Inputs
     private class Player_Inputs{
@@ -340,9 +335,7 @@ public class Player_Controller : MonoBehaviour {
         public InputAction walk = null;
         public InputAction dash = null;
         public InputAction bark = null;
-        public InputAction reset = null;
         public InputAction attack = null;
-        public InputAction temp_exit = null;
     }
     /// Player Components
     [System.Serializable]
@@ -352,5 +345,4 @@ public class Player_Controller : MonoBehaviour {
         public Animator animator = null; // ! this is now required to be set through the editor because the animator is on a child object
         [HideInInspector] public AudioSource audio_source = null;
     }
-
 }

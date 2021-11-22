@@ -8,6 +8,7 @@ public class Enemy_Controller : MonoBehaviour {
     /// FIELDS
     /// ===
     Transform transf = null; // cache transform
+    [SerializeField] Enemy_Animations animations = new Enemy_Animations();
     [SerializeField] float vision_radius = 6f;
     [SerializeField] float combat_maneuver_radius = 5f;
     [SerializeField] float combat_radius = 3f;
@@ -99,7 +100,7 @@ public class Enemy_Controller : MonoBehaviour {
                                                         ai_state_depth = 11;
                                                     }
                                                 } else {
-                                                    ENEMY_A_get_ready_to_land_attack();
+                                                    ENEMY_A_get_ready_to_land_attack(); // in case we have the time to work on such animation
                                                     ai_state_depth = 10;
                                                 }
                                             } else {
@@ -166,8 +167,6 @@ public class Enemy_Controller : MonoBehaviour {
     }
     /// simplified lookAt. pass in a Vec3 to look at
     void look_at(Vector3 pos) {
-        Vector3 current_pos = transf.position;
-        current_pos.y = 0;
         Vector3 target_pos = pos;
         target_pos.y = 0;
         transf.LookAt(target_pos, Vector3.up);
@@ -418,6 +417,20 @@ public class Enemy_Controller : MonoBehaviour {
                 }
             }
         }
+    }
+
+    [System.Serializable]
+    private class Enemy_Animations {
+        public string ANIM_TRIGGER_ATTACK1 = "Attack1";
+        public string ANIM_TRIGGER_ATTACK2 = "Attack2";
+        public string ANIM_TRIGGER_ATTACK3 = "Attack3";
+        public string ANIM_RUN      = "Run";
+        public string ANIM_HIT      = "Hit";
+        public string ANIM_DEATH    = "Death";
+        public string ANIM_JUMPBACK = "JumpBack";
+        public string ANIM_STUNNED  = "Stunned";
+        public string ANIM_SIDESTEP = "SideStep";
+        // public string ANIM_SIDESTEP = "SideStep"; // * we probabily don't have time to create an animation for this
     }
 }
 /// blackboard
