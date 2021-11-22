@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public static class Global {
@@ -7,16 +8,20 @@ public static class Global {
     public static string tag_environment = "environment";
     public static string tag_player = "Player";
     public static Enemy_Blackboard blackboard = new Enemy_Blackboard();
+    public static Input_Manager input_manager = null;
     /// layers
     /// pause system
     static GUI_Controller gui = null;
     private static float pre_pause_time_scale = 1; // ! used to reset time scale to what it was before pausing the game, in case we changed it for slow mo effects
-    public static void set_pause(bool value) {
+    private static void set_pause(bool value) { // use set state to set pause outside of Global.cs scope
         if (value) {
             pre_pause_time_scale = Time.timeScale;
             Time.timeScale = 0;
         }
-        else Time.timeScale = pre_pause_time_scale;
+        else {
+            Time.timeScale = pre_pause_time_scale;
+            gui.gui_display_pause_menu();
+        }
     }
     /// set the gui
     public static void set_gui(GUI_Controller _gui) {
@@ -26,8 +31,12 @@ public static class Global {
     public enum STATES {
         GAME, WIN, LOST, PAUSED,
     }
-    public static void set_game_state(STATES state) {
-        switch (state) {
+    static STATES state = STATES.GAME;
+    public static STATES get_state() {return state;}
+
+    public static void set_game_state(STATES _state) {
+        state = _state;
+        switch (_state) {
             case STATES.GAME: {
                 gui.switch_panel(GUI_Controller.PANELS.GAME);
                 set_pause(false);
@@ -53,5 +62,15 @@ public static class Global {
 
     public static void set_health(int value) { // TODO remove this after // @debug & // @test
         gui.set_health(value);
+    }
+    /// restart level
+    static public void restart_level() {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        gui.switch_panel(GUI_Controller.PANELS.GAME);
+    }
+    /// go to main menu
+    static private int mainMenuSceneIndex = 0;
+    static public void go_to_main_menu() {
+        SceneManager.LoadScene(mainMenuSceneIndex);
     }
 }

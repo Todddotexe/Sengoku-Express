@@ -38,17 +38,17 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Reset_Level_Debug",
+                    "name": "Cancel",
                     "type": "Button",
-                    "id": "d9b584f4-0361-4ee3-aa6a-7673ed2eacc1",
+                    "id": "7ccedf96-0466-4a4d-bb53-e461a91d3197",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
                 },
                 {
-                    "name": "Temp_Exit",
+                    "name": "Accept",
                     "type": "Button",
-                    "id": "98f642b8-1bf3-4104-b9ab-675f29362cc3",
+                    "id": "78ea4ee5-4960-47db-a369-bf0b824c164a",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
@@ -211,28 +211,6 @@
                 },
                 {
                     "name": "",
-                    "id": "51a1e410-341f-4e54-9148-b9b31c8c3ee0",
-                    "path": "<Keyboard>/r",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Reset_Level_Debug",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "51bbac09-84d6-4ae3-b52d-902ab88b2004",
-                    "path": "<Keyboard>/escape",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Temp_Exit",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "cfbaafeb-f920-4daf-95e9-aa5b96e010d1",
                     "path": "<Keyboard>/space",
                     "interactions": "",
@@ -250,6 +228,39 @@
                     "processors": "",
                     "groups": "",
                     "action": "Dash",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "41591542-2976-4622-9f80-1432cd0f42c9",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Cancel",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b09cfef5-db0f-4a41-8f53-7cebfebc11a5",
+                    "path": "<Keyboard>/enter",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Accept",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c4c2caa8-cb28-459f-9cae-fcddbee73593",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Accept",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
