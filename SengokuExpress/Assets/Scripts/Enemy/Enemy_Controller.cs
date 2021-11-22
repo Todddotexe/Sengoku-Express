@@ -189,12 +189,12 @@ public class Enemy_Controller : MonoBehaviour {
         local_delta_time_scaler = 0.2f; // ! @incomplete MAGIC NUMBER
     }
     /// knock back and stun enemy
-    // public void knock_back(Vector2 direction) { // ! we're not using this at the moment so wtf
-    //     // animator.SetTrigger(animations.);
-    //     dash.dash(transf.position, direction, Dash.TYPES.KNOCKBACK);
-    //     is_knocked_back = true;
-    //     //is_stunned = true;
-    // }
+    public void knock_back(Vector2 direction) { // ! we're not using this at the moment so wtf
+        // animator.SetTrigger(animations.);
+        dash.dash(transf.position, direction, Dash.TYPES.KNOCKBACK);
+        is_knocked_back = true;
+        //is_stunned = true;
+    }
     /// stun the enemy and reset the timer
     public void stun() {
         animator.SetTrigger(animations.STUNNED);
