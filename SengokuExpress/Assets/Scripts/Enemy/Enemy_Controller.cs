@@ -168,7 +168,7 @@ public class Enemy_Controller : MonoBehaviour {
     /// simplified lookAt. pass in a Vec3 to look at
     void look_at(Vector3 pos) {
         Vector3 target_pos = pos;
-        target_pos.y = 0;
+        target_pos.y = transf.position.y; // no longer look down
         transf.LookAt(target_pos, Vector3.up);
     }
     /// hit this enemy

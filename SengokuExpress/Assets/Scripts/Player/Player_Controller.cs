@@ -216,7 +216,7 @@ public class Player_Controller : MonoBehaviour {
     void delegate_attack_1_start() {
         print("attack 1 start");
         has_hit_enemy = false;
-        attack_animator.SetTrigger("Atk1");
+        components.animator.SetTrigger(binds.ANIMATION_TRIGGER_ATTACK_1);
         play_audio(audio_source.attack_1);
     }
     /// first attack in the combo chain (Update)
@@ -227,7 +227,7 @@ public class Player_Controller : MonoBehaviour {
     void delegate_attack_2_start() {
         has_hit_enemy = false;
         print("attack 2 start");
-        attack_animator.SetTrigger("Atk2");
+        components.animator.SetTrigger(binds.ANIMATION_TRIGGER_ATTACK_2);
         play_audio(audio_source.attack_2);
     }
     /// second attack in the combo chain (Update)
@@ -239,7 +239,7 @@ public class Player_Controller : MonoBehaviour {
         has_hit_enemy = false;
         var rot = transf.forward;
         dash.dash(transf.position, new Vector2(rot.x, rot.z), Dash.TYPES.COMBAT);
-        attack_animator.SetTrigger("Atk3");
+        components.animator.SetTrigger(binds.ANIMATION_TRIGGER_ATTACK_3);
         play_audio(audio_source.attack_3);
     }
     /// third attack in the combo chain (Update)
