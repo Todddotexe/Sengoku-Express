@@ -8,6 +8,7 @@ public class Enemy_Controller : MonoBehaviour {
     /// FIELDS
     /// ===
     Transform transf = null; // cache transform
+    [SerializeField] Animator animator = null; // ! meant to be assigned in the editor
     [SerializeField] Enemy_Animations animations = new Enemy_Animations();
     [SerializeField] float vision_radius = 6f;
     [SerializeField] float combat_maneuver_radius = 5f;
@@ -175,9 +176,11 @@ public class Enemy_Controller : MonoBehaviour {
     public void hit(float damage) {
         is_hit = true;
         // -- start hit animation
+        animator.SetTrigger(animations.HIT);
         health -= damage;
         if (health <= 0) {
             is_alive = false;
+            animator.SetTrigger(animations.DEATH);
             if (arena != null) {
                 arena.update_status(); // refresh arena to register this enemy's death
             }
@@ -186,13 +189,15 @@ public class Enemy_Controller : MonoBehaviour {
         local_delta_time_scaler = 0.2f; // ! @incomplete MAGIC NUMBER
     }
     /// knock back and stun enemy
-    public void knock_back(Vector2 direction) {
-        dash.dash(transf.position, direction, Dash.TYPES.KNOCKBACK);
-        is_knocked_back = true;
-        //is_stunned = true;
-    }
+    // public void knock_back(Vector2 direction) { // ! we're not using this at the moment so wtf
+    //     // animator.SetTrigger(animations.);
+    //     dash.dash(transf.position, direction, Dash.TYPES.KNOCKBACK);
+    //     is_knocked_back = true;
+    //     //is_stunned = true;
+    // }
     /// stun the enemy and reset the timer
     public void stun() {
+        animator.SetTrigger(animations.STUNNED);
         stun_timer = stunt_timer_init;
         is_stunned = true;
     }
@@ -270,7 +275,7 @@ public class Enemy_Controller : MonoBehaviour {
         Destroy(gameObject);
     }
     /// Updates the stunned Play the stunt animation
-    void ENEMY_A_play_stunned_animation() {
+    void ENEMY_A_play_stunned_animation() { // TODO change from timer to the duration of the animation itself
         if (stun_timer > 0) {
             stun_timer -= Time.deltaTime;
         } else {
@@ -288,6 +293,8 @@ public class Enemy_Controller : MonoBehaviour {
         apply_velocity();
         // -- face the target
         look_at(target_transform.position);
+        // -- play animation
+        animator.SetTrigger(animations.RUN);
     }
     /// The player is close enough, move around him a little before initiating attack.
     void ENEMY_A_maneuver_player() {
@@ -303,6 +310,8 @@ public class Enemy_Controller : MonoBehaviour {
         // -- maneuver player (move the enemy in a straight line adjacent to the player)
         transf.RotateAround(target_transform.position, Vector3.up, maneuver_direction * maneuver_speed_deg_per_second * Time.deltaTime);
         look_at(target_transform.position);
+        // -- animation
+        animator.SetTrigger(animations.SIDESTEP);
     }
     /// Get ready to land attack updates the animation for the suspense before landing an attack
     void ENEMY_A_get_ready_to_land_attack() {
@@ -310,6 +319,7 @@ public class Enemy_Controller : MonoBehaviour {
         if (!blackboard.queued_attacks.Contains(this)) {
             blackboard.queued_attacks.Enqueue(this);
         }
+        // animator.SetTrigger(animations.ANIM_SIDESTEP); // ! we may not have time to implement this
     }
     /// Update current attack swing animation. Update the state of current attack afterwards (was player hit?)
     void ENEMY_A_update_current_attack_swing() {
@@ -342,7 +352,7 @@ public class Enemy_Controller : MonoBehaviour {
         return trigger_is_jumping;
     }
     /// Play the hit animation
-    void play_hit_animation() {
+    void play_hit_animation() { // todo change this to the duration of the actual animation
         if (is_hit) {
             if (hit_animation_timer > 0) {
                 hit_animation_timer -= Time.deltaTime;
@@ -372,18 +382,21 @@ public class Enemy_Controller : MonoBehaviour {
     // ! == ATTACK DELEGATES == ! //
     /// attack 1
     void delegate_attack_1_start() {
+        animator.SetTrigger(animations.ATTACK1);
     }
     void delegate_attack_1_update() {
         attack_hit(1);
     }
     /// attack 2
     void delegate_attack_2_start() {
+        animator.SetTrigger(animations.ATTACK2);
     }
     void delegate_attack_2_update() {
         attack_hit(2);
     }
     /// attack 3
     void delegate_attack_3_start() {
+        animator.SetTrigger(animations.ATTACK3);
     }
     void delegate_attack_3_update() {
         attack_hit(3);
@@ -406,6 +419,7 @@ public class Enemy_Controller : MonoBehaviour {
                         // print("enemy has hit doggo at index: " + attack_combo_index.ToString());
                         trigger_hit_player = true; // TODO 'ere
                         // -- jump
+                        animator.SetTrigger(animations.JUMPBACK);
                         print("JUMPED");
                         dash.dash(transf.position, transf.position - target_transform.position, Dash.TYPES.NORMAL);
                         trigger_is_jumping = true;
@@ -421,15 +435,15 @@ public class Enemy_Controller : MonoBehaviour {
 
     [System.Serializable]
     private class Enemy_Animations {
-        public string ANIM_TRIGGER_ATTACK1 = "Attack1";
-        public string ANIM_TRIGGER_ATTACK2 = "Attack2";
-        public string ANIM_TRIGGER_ATTACK3 = "Attack3";
-        public string ANIM_RUN      = "Run";
-        public string ANIM_HIT      = "Hit";
-        public string ANIM_DEATH    = "Death";
-        public string ANIM_JUMPBACK = "JumpBack";
-        public string ANIM_STUNNED  = "Stunned";
-        public string ANIM_SIDESTEP = "SideStep";
+        public string ATTACK1 = "Attack1";
+        public string ATTACK2 = "Attack2";
+        public string ATTACK3 = "Attack3";
+        public string RUN      = "Run";
+        public string HIT      = "Hit";
+        public string DEATH    = "Death";
+        public string JUMPBACK = "JumpBack";
+        public string STUNNED  = "Stunned";
+        public string SIDESTEP = "SideStep";
         // public string ANIM_SIDESTEP = "SideStep"; // * we probabily don't have time to create an animation for this
     }
 }
