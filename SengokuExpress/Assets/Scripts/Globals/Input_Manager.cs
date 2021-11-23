@@ -18,12 +18,16 @@ public class Input_Manager : MonoBehaviour {
     
     void Start() {
         Debug.Assert(input != null); // we should have assigned this through the editor
+        // cancel.RemoveAction();
         cancel     = input.actions[INPUT_LABEL_CANCEL];
         accept     = input.actions[INPUT_LABEL_ACCEPT];
         navigation = input.actions[INPUT_LABEL_NAVIGATION];
         
         // -- pause when we press the cancel button when it's appropriate
-        cancel.performed += delegate_on_pause_button_pressed;
+        if (!Global.has_init_input_manager) { // ! we need to check for this, otherwise cancel.performed will call delegate_on_pause_button_pressed twice. WE NEED TO RUN THE FOLLOWING PROCEDURE ONLY ONCE
+            cancel.performed += delegate_on_pause_button_pressed;
+            Global.has_init_input_manager = true; // ! set Global.has_init to true
+        }
     }
     ///
     void delegate_on_pause_button_pressed(InputAction.CallbackContext obj) {
