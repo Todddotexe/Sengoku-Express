@@ -79,4 +79,8 @@ public class GUI_Controller : MonoBehaviour {
     public void on_main_menu_button_pressed() {
         Global.go_to_main_menu();
     }
+    /// used for the button
+    public void on_restart_button_pressed() {
+        Global.restart_level();
+    }
 }
