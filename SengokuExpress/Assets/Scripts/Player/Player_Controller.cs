@@ -39,7 +39,6 @@ public class Player_Controller : MonoBehaviour {
     float timer_knockback = 0.1f;
     float bark_meter_percentage = 0f; // goes from 0 - 1
     const float BARK_METER_POINT = 0.1f;
-    public Animator attack_animator = null; // @temp this is temporary and used for a basic trail renderer for alpha milestone
 
     /// initialise fields
     void Start() {
@@ -108,13 +107,6 @@ public class Player_Controller : MonoBehaviour {
             } else {
                 timer_knockback = timer_knockback_init;
                 is_knocked_back = false;
-            }
-        }
-        { // -- turn combat trail on and off
-            if (combat.is_attacking || combat.queued_combo) {
-                attack_animator.gameObject.SetActive(true);
-            } else {
-                attack_animator.gameObject.SetActive(false);
             }
         }
         

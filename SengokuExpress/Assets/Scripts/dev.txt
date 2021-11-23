@@ -3,6 +3,7 @@
 - [/] add all global scripts to one prefab called Global
 - [/] fixed pause menu showing up when winning or losing
 - [/] fixed the bugs on buttons not being able to be pressed again
+- [/] removed attack_animator from the player_controller because it was not in use anymore
 - [ ] tweak attack trail on player and make sure we disable and enable it at the right time
 - [ ] restarting the level resets some input controller. pause the game, restart level, and try to pause again. nothing happens.
 - [ ] - more investigation...
