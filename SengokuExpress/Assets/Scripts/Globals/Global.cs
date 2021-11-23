@@ -13,11 +13,10 @@ public static class Global {
     /// pause system
     static GUI_Controller gui = null;
     private static float pre_pause_time_scale = 1; // ! used to reset time scale to what it was before pausing the game, in case we changed it for slow mo effects
-    private static void set_pause(bool value) { // use set state to set pause outside of Global.cs scope
+    private static void set_pause(bool value) { // use to set state to set pause outside of Global.cs scope. // ! does not and should not switch GUI panel
         if (value) {
             pre_pause_time_scale = Time.timeScale;
             Time.timeScale = 0;
-            gui.gui_display_pause_menu();
         }
         else {
             Time.timeScale = pre_pause_time_scale;
