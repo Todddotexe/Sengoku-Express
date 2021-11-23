@@ -45,8 +45,8 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1.73
-  m_Center: {x: -0.3, y: -0.72, z: 0.17}
+  m_Radius: 1.85
+  m_Center: {x: -0.3, y: 0, z: 0.17}
 --- !u!65 &4343878306426199843
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -59,7 +59,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 2.68, y: 4.51, z: 2.55}
-  m_Center: {x: -0.54, y: 1.6, z: 0.19}
+  m_Center: {x: -0.54, y: 2.65, z: 0.19}
 --- !u!33 &414004829817424923
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -87,7 +87,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 59b32672a8628b84b8ebab4f84923981, type: 2}
+  - {fileID: 2100000, guid: 4de80b8ef98c1ff40b7b679fa3e9be10, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
