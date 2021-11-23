@@ -56,10 +56,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Vector1_27E34F3E: 1
-    - Vector1_B25F144A: 4
-    - Vector1_D82ECB66: 1
-    - Vector1_F7434D35: 4
+    - Vector1_27E34F3E: 2
+    - Vector1_B25F144A: 2
+    - Vector1_D82ECB66: 2
+    - Vector1_DF395550: 0
+    - Vector1_F7434D35: 2
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
@@ -82,9 +83,10 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
+    - Vector2_801E191A: {r: 0, g: 0, b: 0, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _Colour: {r: 1, g: 1, b: 1, a: 1}
+    - _Colour: {r: 0, g: 0.84313726, b: 1, a: 0.95686275}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []
