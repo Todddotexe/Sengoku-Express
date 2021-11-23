@@ -5,7 +5,7 @@
 - [/] fixed the bugs on buttons not being able to be pressed again
 - [/] removed attack_animator from the player_controller because it was not in use anymore
 - [ ] tweak attack trail on player and make sure we disable and enable it at the right time
-- [ ] restarting the level resets some input controller. pause the game, restart level, and try to pause again. nothing happens.
+- [/] restarting the level resets some input controller. pause the game, restart level, and try to pause again. nothing happens. FIXED global input manager calling Input Actions twice after restarting the level
 - [ ] - more investigation...
 /// -- SUGGESTIONS TO ADD:
 - [ ] player should dash towards where they are facing if no input
