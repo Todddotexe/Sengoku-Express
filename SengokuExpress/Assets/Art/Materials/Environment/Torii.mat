@@ -8,55 +8,64 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Torii
-  m_Shader: {fileID: -6465566751694194690, guid: f5d6a17d5a438ed429ac6beb94e134ab, type: 3}
-  m_ShaderKeywords: 
+  m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
+  m_ShaderKeywords: _METALLICSPECGLOSSMAP _NORMALMAP _OCCLUSIONMAP _SPECULAR_SETUP
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
+  m_CustomRenderQueue: 2000
+  stringTagMap:
+    RenderType: Opaque
   disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
     - Texture2D_479DA19A:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 744701b0c57fba74ea73a84f1fd173d2, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - Texture2D_9B18B13E:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: d4e32714ce9472b4cb4732dc17911345, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - Texture2D_E0AFF5D0:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: ae6285b8e207e044eaf716c99c519efa, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _AlphaGradient:
+        m_Texture: {fileID: 2800000, guid: 74facb99c45da0a4389ef963981b84d8, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BaseMap:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: d4e32714ce9472b4cb4732dc17911345, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 744701b0c57fba74ea73a84f1fd173d2, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissionMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _GrassTexture:
+        m_Texture: {fileID: 2800000, guid: 74facb99c45da0a4389ef963981b84d8, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: d4e32714ce9472b4cb4732dc17911345, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: ca10e008e637ce64897162ea4b6b30c5, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: ae6285b8e207e044eaf716c99c519efa, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SpecGlossMap:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: ca10e008e637ce64897162ea4b6b30c5, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
@@ -65,9 +74,12 @@ Material:
     - Vector1_502C65BD: 0.05
     - Vector1_7D1F5ADA: 0.19
     - Vector1_81C1EA44: 10.3
+    - Vector1_AAE1EA15: 0
     - Vector1_C19185AF: 1000
     - Vector1_D5F18D10: 0.04
+    - Vector1_F56B3366: 0
     - _AlphaClip: 0
+    - _AlphaClipThreshold: 0
     - _Blend: 0
     - _BumpScale: 1
     - _Cull: 2
@@ -77,8 +89,11 @@ Material:
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
+    - _Grass: 10
+    - _GrassAngleOffset: 2
     - _Metallic: 0
-    - _OcclusionStrength: 1
+    - _NoiseScale: 20
+    - _OcclusionStrength: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
     - _Smoothness: 0
@@ -86,17 +101,21 @@ Material:
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _Surface: 0
-    - _WorkflowMode: 1
+    - _SwayHeight: 1
+    - _SwayNoiseScale: 0.16
+    - _SwaySpeed: 1.1
+    - _WorkflowMode: 0
     - _ZWrite: 1
     m_Colors:
     - Color_1F0F8399: {r: 0.4339623, g: 0, b: 0, a: 0}
     - Color_2BF5C84A: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 0}
-    - Color_37919CD9: {r: 1, g: 0, b: 0, a: 0}
-    - Color_B18E2BB9: {r: 1, g: 0, b: 0, a: 0}
+    - Color_37919CD9: {r: 0.5566038, g: 0.17065683, b: 0.17065683, a: 0}
+    - Color_B18E2BB9: {r: 1, g: 1, b: 1, a: 0}
     - Color_FA4AA570: {r: 0.5, g: 0, b: 0, a: 0}
-    - _BaseColor: {r: 1, g: 0, b: 0, a: 1}
+    - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _GrassColour: {r: 0.13656998, g: 0.8773585, b: 0.22005576, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []
 --- !u!114 &7241347063321038665

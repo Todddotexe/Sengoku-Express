@@ -30,14 +30,6 @@
                     "interactions": ""
                 },
                 {
-                    "name": "HeavyAttack",
-                    "type": "Button",
-                    "id": "2eb5ac65-c3b7-4f76-ba64-51307d0538b9",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
                     "name": "Bark",
                     "type": "Button",
                     "id": "9af4ac93-4b8f-4f51-9b6b-016efeaa723b",
@@ -46,17 +38,17 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Reset_Level_Debug",
+                    "name": "Cancel",
                     "type": "Button",
-                    "id": "d9b584f4-0361-4ee3-aa6a-7673ed2eacc1",
+                    "id": "7ccedf96-0466-4a4d-bb53-e461a91d3197",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
                 },
                 {
-                    "name": "Temp_Exit",
+                    "name": "Accept",
                     "type": "Button",
-                    "id": "98f642b8-1bf3-4104-b9ab-675f29362cc3",
+                    "id": "78ea4ee5-4960-47db-a369-bf0b824c164a",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
@@ -120,6 +112,17 @@
                 },
                 {
                     "name": "",
+                    "id": "b02d05c5-1f07-4bae-b7df-4106be49cf04",
+                    "path": "<Gamepad>/leftStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "b723dde6-f28e-40ed-ae74-00497fa6da93",
                     "path": "<Keyboard>/leftArrow",
                     "interactions": "",
@@ -131,12 +134,34 @@
                 },
                 {
                     "name": "",
-                    "id": "28b33c08-b531-4570-a8a1-ca83df786261",
-                    "path": "<Keyboard>/upArrow",
+                    "id": "50f37e3e-6ee3-4c66-8cca-6b6abf0ea6c3",
+                    "path": "<Gamepad>/buttonWest",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "HeavyAttack",
+                    "action": "LightAttack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b0c8412b-a27c-4f18-88b1-bf69b14fd8e9",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LightAttack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "49622089-03c1-4a7c-85e7-1dcdb83d9b4e",
+                    "path": "<Keyboard>/downArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LightAttack",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -153,7 +178,40 @@
                 },
                 {
                     "name": "",
-                    "id": "7e9e4510-893e-47cd-8edb-de48afb7dccd",
+                    "id": "3287ed44-11c8-40f2-b5a6-08ee2ccf8df1",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Bark",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "cfa420f2-8633-49b7-8b66-a7e98aad5938",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Bark",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c9bc9622-67f4-46ed-b5be-d4134aeb0c29",
+                    "path": "<Keyboard>/upArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Bark",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "cfbaafeb-f920-4daf-95e9-aa5b96e010d1",
                     "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
@@ -164,23 +222,45 @@
                 },
                 {
                     "name": "",
-                    "id": "51a1e410-341f-4e54-9148-b9b31c8c3ee0",
-                    "path": "<Keyboard>/r",
+                    "id": "aea97162-66f9-4744-9c69-88b915672f92",
+                    "path": "<Gamepad>/buttonSouth",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Reset_Level_Debug",
+                    "action": "Dash",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "51bbac09-84d6-4ae3-b52d-902ab88b2004",
+                    "id": "41591542-2976-4622-9f80-1432cd0f42c9",
                     "path": "<Keyboard>/escape",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Temp_Exit",
+                    "action": "Cancel",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b09cfef5-db0f-4a41-8f53-7cebfebc11a5",
+                    "path": "<Keyboard>/enter",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Accept",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c4c2caa8-cb28-459f-9cae-fcddbee73593",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Accept",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -43,14 +43,6 @@ public class @PlayerInp : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""HeavyAttack"",
-                    ""type"": ""Button"",
-                    ""id"": ""2eb5ac65-c3b7-4f76-ba64-51307d0538b9"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """"
-                },
-                {
                     ""name"": ""Bark"",
                     ""type"": ""Button"",
                     ""id"": ""9af4ac93-4b8f-4f51-9b6b-016efeaa723b"",
@@ -59,17 +51,17 @@ public class @PlayerInp : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""Reset_Level_Debug"",
+                    ""name"": ""Cancel"",
                     ""type"": ""Button"",
-                    ""id"": ""d9b584f4-0361-4ee3-aa6a-7673ed2eacc1"",
+                    ""id"": ""7ccedf96-0466-4a4d-bb53-e461a91d3197"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""Temp_Exit"",
+                    ""name"": ""Accept"",
                     ""type"": ""Button"",
-                    ""id"": ""98f642b8-1bf3-4104-b9ab-675f29362cc3"",
+                    ""id"": ""78ea4ee5-4960-47db-a369-bf0b824c164a"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
@@ -133,6 +125,17 @@ public class @PlayerInp : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""b02d05c5-1f07-4bae-b7df-4106be49cf04"",
+                    ""path"": ""<Gamepad>/leftStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""b723dde6-f28e-40ed-ae74-00497fa6da93"",
                     ""path"": ""<Keyboard>/leftArrow"",
                     ""interactions"": """",
@@ -144,12 +147,34 @@ public class @PlayerInp : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""28b33c08-b531-4570-a8a1-ca83df786261"",
-                    ""path"": ""<Keyboard>/upArrow"",
+                    ""id"": ""50f37e3e-6ee3-4c66-8cca-6b6abf0ea6c3"",
+                    ""path"": ""<Gamepad>/buttonWest"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""HeavyAttack"",
+                    ""action"": ""LightAttack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b0c8412b-a27c-4f18-88b1-bf69b14fd8e9"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LightAttack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""49622089-03c1-4a7c-85e7-1dcdb83d9b4e"",
+                    ""path"": ""<Keyboard>/downArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LightAttack"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -166,7 +191,40 @@ public class @PlayerInp : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""7e9e4510-893e-47cd-8edb-de48afb7dccd"",
+                    ""id"": ""3287ed44-11c8-40f2-b5a6-08ee2ccf8df1"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Bark"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""cfa420f2-8633-49b7-8b66-a7e98aad5938"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Bark"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c9bc9622-67f4-46ed-b5be-d4134aeb0c29"",
+                    ""path"": ""<Keyboard>/upArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Bark"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""cfbaafeb-f920-4daf-95e9-aa5b96e010d1"",
                     ""path"": ""<Keyboard>/space"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -177,23 +235,45 @@ public class @PlayerInp : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""51a1e410-341f-4e54-9148-b9b31c8c3ee0"",
-                    ""path"": ""<Keyboard>/r"",
+                    ""id"": ""aea97162-66f9-4744-9c69-88b915672f92"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Reset_Level_Debug"",
+                    ""action"": ""Dash"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""51bbac09-84d6-4ae3-b52d-902ab88b2004"",
+                    ""id"": ""41591542-2976-4622-9f80-1432cd0f42c9"",
                     ""path"": ""<Keyboard>/escape"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Temp_Exit"",
+                    ""action"": ""Cancel"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b09cfef5-db0f-4a41-8f53-7cebfebc11a5"",
+                    ""path"": ""<Keyboard>/enter"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Accept"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c4c2caa8-cb28-459f-9cae-fcddbee73593"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Accept"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -207,10 +287,9 @@ public class @PlayerInp : IInputActionCollection, IDisposable
         m_InGameAP_Move = m_InGameAP.FindAction("Move", throwIfNotFound: true);
         m_InGameAP_Dash = m_InGameAP.FindAction("Dash", throwIfNotFound: true);
         m_InGameAP_LightAttack = m_InGameAP.FindAction("LightAttack", throwIfNotFound: true);
-        m_InGameAP_HeavyAttack = m_InGameAP.FindAction("HeavyAttack", throwIfNotFound: true);
         m_InGameAP_Bark = m_InGameAP.FindAction("Bark", throwIfNotFound: true);
-        m_InGameAP_Reset_Level_Debug = m_InGameAP.FindAction("Reset_Level_Debug", throwIfNotFound: true);
-        m_InGameAP_Temp_Exit = m_InGameAP.FindAction("Temp_Exit", throwIfNotFound: true);
+        m_InGameAP_Cancel = m_InGameAP.FindAction("Cancel", throwIfNotFound: true);
+        m_InGameAP_Accept = m_InGameAP.FindAction("Accept", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -263,10 +342,9 @@ public class @PlayerInp : IInputActionCollection, IDisposable
     private readonly InputAction m_InGameAP_Move;
     private readonly InputAction m_InGameAP_Dash;
     private readonly InputAction m_InGameAP_LightAttack;
-    private readonly InputAction m_InGameAP_HeavyAttack;
     private readonly InputAction m_InGameAP_Bark;
-    private readonly InputAction m_InGameAP_Reset_Level_Debug;
-    private readonly InputAction m_InGameAP_Temp_Exit;
+    private readonly InputAction m_InGameAP_Cancel;
+    private readonly InputAction m_InGameAP_Accept;
     public struct InGameAPActions
     {
         private @PlayerInp m_Wrapper;
@@ -274,10 +352,9 @@ public class @PlayerInp : IInputActionCollection, IDisposable
         public InputAction @Move => m_Wrapper.m_InGameAP_Move;
         public InputAction @Dash => m_Wrapper.m_InGameAP_Dash;
         public InputAction @LightAttack => m_Wrapper.m_InGameAP_LightAttack;
-        public InputAction @HeavyAttack => m_Wrapper.m_InGameAP_HeavyAttack;
         public InputAction @Bark => m_Wrapper.m_InGameAP_Bark;
-        public InputAction @Reset_Level_Debug => m_Wrapper.m_InGameAP_Reset_Level_Debug;
-        public InputAction @Temp_Exit => m_Wrapper.m_InGameAP_Temp_Exit;
+        public InputAction @Cancel => m_Wrapper.m_InGameAP_Cancel;
+        public InputAction @Accept => m_Wrapper.m_InGameAP_Accept;
         public InputActionMap Get() { return m_Wrapper.m_InGameAP; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -296,18 +373,15 @@ public class @PlayerInp : IInputActionCollection, IDisposable
                 @LightAttack.started -= m_Wrapper.m_InGameAPActionsCallbackInterface.OnLightAttack;
                 @LightAttack.performed -= m_Wrapper.m_InGameAPActionsCallbackInterface.OnLightAttack;
                 @LightAttack.canceled -= m_Wrapper.m_InGameAPActionsCallbackInterface.OnLightAttack;
-                @HeavyAttack.started -= m_Wrapper.m_InGameAPActionsCallbackInterface.OnHeavyAttack;
-                @HeavyAttack.performed -= m_Wrapper.m_InGameAPActionsCallbackInterface.OnHeavyAttack;
-                @HeavyAttack.canceled -= m_Wrapper.m_InGameAPActionsCallbackInterface.OnHeavyAttack;
                 @Bark.started -= m_Wrapper.m_InGameAPActionsCallbackInterface.OnBark;
                 @Bark.performed -= m_Wrapper.m_InGameAPActionsCallbackInterface.OnBark;
                 @Bark.canceled -= m_Wrapper.m_InGameAPActionsCallbackInterface.OnBark;
-                @Reset_Level_Debug.started -= m_Wrapper.m_InGameAPActionsCallbackInterface.OnReset_Level_Debug;
-                @Reset_Level_Debug.performed -= m_Wrapper.m_InGameAPActionsCallbackInterface.OnReset_Level_Debug;
-                @Reset_Level_Debug.canceled -= m_Wrapper.m_InGameAPActionsCallbackInterface.OnReset_Level_Debug;
-                @Temp_Exit.started -= m_Wrapper.m_InGameAPActionsCallbackInterface.OnTemp_Exit;
-                @Temp_Exit.performed -= m_Wrapper.m_InGameAPActionsCallbackInterface.OnTemp_Exit;
-                @Temp_Exit.canceled -= m_Wrapper.m_InGameAPActionsCallbackInterface.OnTemp_Exit;
+                @Cancel.started -= m_Wrapper.m_InGameAPActionsCallbackInterface.OnCancel;
+                @Cancel.performed -= m_Wrapper.m_InGameAPActionsCallbackInterface.OnCancel;
+                @Cancel.canceled -= m_Wrapper.m_InGameAPActionsCallbackInterface.OnCancel;
+                @Accept.started -= m_Wrapper.m_InGameAPActionsCallbackInterface.OnAccept;
+                @Accept.performed -= m_Wrapper.m_InGameAPActionsCallbackInterface.OnAccept;
+                @Accept.canceled -= m_Wrapper.m_InGameAPActionsCallbackInterface.OnAccept;
             }
             m_Wrapper.m_InGameAPActionsCallbackInterface = instance;
             if (instance != null)
@@ -321,18 +395,15 @@ public class @PlayerInp : IInputActionCollection, IDisposable
                 @LightAttack.started += instance.OnLightAttack;
                 @LightAttack.performed += instance.OnLightAttack;
                 @LightAttack.canceled += instance.OnLightAttack;
-                @HeavyAttack.started += instance.OnHeavyAttack;
-                @HeavyAttack.performed += instance.OnHeavyAttack;
-                @HeavyAttack.canceled += instance.OnHeavyAttack;
                 @Bark.started += instance.OnBark;
                 @Bark.performed += instance.OnBark;
                 @Bark.canceled += instance.OnBark;
-                @Reset_Level_Debug.started += instance.OnReset_Level_Debug;
-                @Reset_Level_Debug.performed += instance.OnReset_Level_Debug;
-                @Reset_Level_Debug.canceled += instance.OnReset_Level_Debug;
-                @Temp_Exit.started += instance.OnTemp_Exit;
-                @Temp_Exit.performed += instance.OnTemp_Exit;
-                @Temp_Exit.canceled += instance.OnTemp_Exit;
+                @Cancel.started += instance.OnCancel;
+                @Cancel.performed += instance.OnCancel;
+                @Cancel.canceled += instance.OnCancel;
+                @Accept.started += instance.OnAccept;
+                @Accept.performed += instance.OnAccept;
+                @Accept.canceled += instance.OnAccept;
             }
         }
     }
@@ -342,9 +413,8 @@ public class @PlayerInp : IInputActionCollection, IDisposable
         void OnMove(InputAction.CallbackContext context);
         void OnDash(InputAction.CallbackContext context);
         void OnLightAttack(InputAction.CallbackContext context);
-        void OnHeavyAttack(InputAction.CallbackContext context);
         void OnBark(InputAction.CallbackContext context);
-        void OnReset_Level_Debug(InputAction.CallbackContext context);
-        void OnTemp_Exit(InputAction.CallbackContext context);
+        void OnCancel(InputAction.CallbackContext context);
+        void OnAccept(InputAction.CallbackContext context);
     }
 }
