@@ -8,7 +8,7 @@
 - [/] restarting the level resets some input controller. pause the game, restart level, and try to pause again. nothing happens. FIXED global input manager calling Input Actions twice after restarting the level
 - [ ] - more investigation...
 /// -- SUGGESTIONS TO ADD:
-- [ ] player should dash towards where they are facing if no input
+- [/] player should dash towards where they are facing if no input
 - [ ] cool down on player attacks after finishing a combo to leave him vulnerable
 - [ ] - more investigation...
 /// -- FEATURES YET TO ADD
