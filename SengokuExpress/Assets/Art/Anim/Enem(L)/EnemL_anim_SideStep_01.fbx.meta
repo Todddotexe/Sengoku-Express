@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: d0fe9b35f1f473b4ebb6829553e137a7
+guid: a1a89101371cf3e41aaa3ee880e1307f
 ModelImporter:
   serializedVersion: 20101
   internalIDToNameTable:
   - first:
-      74: -943771281967857675
-    second: EnemL_Animation_JumpBack_01
+      74: 1827226128182048838
+    second: Take 001
   externalObjects: {}
   materials:
     materialImportMode: 1
