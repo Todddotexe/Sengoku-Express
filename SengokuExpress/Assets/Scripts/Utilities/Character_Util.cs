@@ -73,24 +73,18 @@ namespace Character_Util {
         [HideInInspector] public delegate void Attack_Function_Update();
         [HideInInspector] public List<Attack_Function_Start> attack_functions_start = new List<Attack_Function_Start>();
         [HideInInspector] public List<Attack_Function_Update> attack_functions_update = new List<Attack_Function_Update>();
-        // !Temp @temp
-        [HideInInspector] public float temp_attack_duration; // set to init value in the constructor
-        public float temp_attack_duration_init = 0.2f;
 
-        public Combat() {
-            temp_attack_duration = temp_attack_duration_init;
-        }
+        // set this to true to indicate current attack combo is finished. This allows for outside timers or triggers
+        [HideInInspector] public bool toggle_attack_current_combo_finished = false; 
 
         public void update() {
             if (attack_functions_start.Count == 0) return;
             // TODO -- check if attack animation is finished. If so, set is_attacking to false and set current_combo to 0.
             if (is_attacking) {
-                if (temp_attack_duration > 0) {
-                    temp_attack_duration -= Time.deltaTime;
-                    // * this is where attacks update()
+                if (!toggle_attack_current_combo_finished) {
                     attack_functions_update[current_combo_index]();
                 } else {
-                    temp_attack_duration = temp_attack_duration_init;
+                    toggle_attack_current_combo_finished = false; // @debug this is stupid why = false?
                     if (queued_combo) { // if another attack is queued, increase current_combo and keep is_attacking true
                         // * this is where attacks start()
                         queued_combo = false;
@@ -114,7 +108,6 @@ namespace Character_Util {
                 attack_trail.enabled = is_attacking;
             }
         }
-
     }
     ///
     [System.Serializable]

@@ -218,17 +218,23 @@ public class Player_Controller : MonoBehaviour {
     /// first attack in the combo chain (Update)
     void delegate_attack_1_update() {
         attack_hit(1);
+        if (components.animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1 && !components.animator.IsInTransition(0)) {
+            combat.toggle_attack_current_combo_finished = true;
+        }
     }
     /// second attack in the combo chain (Start)
     void delegate_attack_2_start() {
         has_hit_enemy = false;
         print("attack 2 start");
-        components.animator.SetTrigger(binds.ANIMATION_TRIGGER_ATTACK_2);
+        components.animator.SetTrigger(binds.ANIMATION_TRIGGER_ATTACK_2); // ! this is an error. Why do we set trigger from
         play_audio(audio_source.attack_2);
     }
     /// second attack in the combo chain (Update)
     void delegate_attack_2_update() {
         attack_hit(2);
+        if (components.animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1 && !components.animator.IsInTransition(0)) {
+            combat.toggle_attack_current_combo_finished = true;
+        }
     }
     /// third attack in the combo chain (Start)
     void delegate_attack_3_start() {
@@ -242,6 +248,9 @@ public class Player_Controller : MonoBehaviour {
     void delegate_attack_3_update() {
         PLAYER_apply_dash();
         attack_hit(3);
+        if (components.animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1 && !components.animator.IsInTransition(0)) {
+            combat.toggle_attack_current_combo_finished = true;
+        }
     }
     /// this is called when the attack hits an enemy
     void attack_hit(uint attack_combo_index) {
