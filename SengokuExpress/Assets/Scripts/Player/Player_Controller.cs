@@ -207,37 +207,44 @@ public class Player_Controller : MonoBehaviour {
     void delegate_attack(InputAction.CallbackContext obj) {
         if (Global.get_state() == Global.STATES.PAUSED) return; // don't do anything
         combat.queued_combo = true;
+        components.animator.SetBool(PAS.internal_animation_queued_combo, true); // tell the animator that we've queued another combo
     }
     /// first attack in the combo chain (Start)
     void delegate_attack_1_start() {
         print("attack 1 start");
         has_hit_enemy = false;
         components.animator.SetTrigger(binds.ANIMATION_TRIGGER_ATTACK_1);
+        // components.animator.SetBool(Player_Attack_State.internal_animation_queued_combo, true);
         play_audio(audio_source.attack_1);
     }
     /// first attack in the combo chain (Update)
     void delegate_attack_1_update() {
+        print("attack 1 update");
         attack_hit(1);
-        if (components.animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1 && !components.animator.IsInTransition(0)) {
+        if (components.animator.GetBool(PAS.internal_code_current_combo_finished)) {
             combat.toggle_attack_current_combo_finished = true;
+            components.animator.SetBool(PAS.internal_code_current_combo_finished, false); // reset is_queued
         }
     }
     /// second attack in the combo chain (Start)
     void delegate_attack_2_start() {
-        has_hit_enemy = false;
         print("attack 2 start");
-        components.animator.SetTrigger(binds.ANIMATION_TRIGGER_ATTACK_2); // ! this is an error. Why do we set trigger from
+        has_hit_enemy = false; // TODO investigate why we only have this here
+        // components.animator.SetTrigger(binds.ANIMATION_TRIGGER_ATTACK_2);
         play_audio(audio_source.attack_2);
     }
     /// second attack in the combo chain (Update)
     void delegate_attack_2_update() {
+        print("attack 2 update");
         attack_hit(2);
-        if (components.animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1 && !components.animator.IsInTransition(0)) {
+        if (components.animator.GetBool(PAS.internal_code_current_combo_finished)) {
             combat.toggle_attack_current_combo_finished = true;
+            components.animator.SetBool(PAS.internal_code_current_combo_finished, false); // reset is_queued
         }
     }
     /// third attack in the combo chain (Start)
     void delegate_attack_3_start() {
+        print("attack 3 start");
         has_hit_enemy = false;
         var rot = transf.forward;
         dash.dash(transf.position, new Vector2(rot.x, rot.z), Dash.TYPES.COMBAT);
@@ -246,10 +253,12 @@ public class Player_Controller : MonoBehaviour {
     }
     /// third attack in the combo chain (Update)
     void delegate_attack_3_update() {
+        print("attack 3 update");
         PLAYER_apply_dash();
         attack_hit(3);
-        if (components.animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1 && !components.animator.IsInTransition(0)) {
+        if (components.animator.GetBool(PAS.internal_code_current_combo_finished)) {
             combat.toggle_attack_current_combo_finished = true;
+            components.animator.SetBool(PAS.internal_code_current_combo_finished, false); // reset is_queued
         }
     }
     /// this is called when the attack hits an enemy
@@ -355,3 +364,26 @@ public class Player_Controller : MonoBehaviour {
         public AudioSource walk_audio_source = null;
     }
 }
+// /// Player Combat system -> todo generalize to be applied to the enemies
+// [System.Serializable]
+// public class CombatV2 {
+//     // -- visual
+//     public TrailRenderer swing_trail = null; // meant to be assigned in the editor
+//     // -- interface
+//     [HideInInspector] bool is_attacking = false; // whether we are updating any attacks
+//     [HideInInspector] public bool is_queued    = false; // whether another combo is queued, or whether we want to start attacking.
+//     [HideInInspector] public delegate void On_Hit_Delegate();
+//     [HideInInspector] public On_Hit_Delegate on_hit = null;
+//     // -- internal
+//     [SerializeField] List<Combo> combos = new List<Combo>(); // the possible combos
+
+//     [System.Serializable]
+//     private class Combo {
+//         public float combo_chain_valid_window_percentage = 0.6f; // use this to allow the player to chain their attacks, only when they press attack after the value assigned as a percentage
+//         public float duration = 1f; // the duration of combo in seconds
+//         public 
+//         public void update() {
+
+//         }
+//     }
+// }

@@ -75,7 +75,7 @@ namespace Character_Util {
         [HideInInspector] public List<Attack_Function_Update> attack_functions_update = new List<Attack_Function_Update>();
 
         // set this to true to indicate current attack combo is finished. This allows for outside timers or triggers
-        [HideInInspector] public bool toggle_attack_current_combo_finished = false; 
+        public bool toggle_attack_current_combo_finished = true; // ! meant to be set externally
 
         public void update() {
             if (attack_functions_start.Count == 0) return;
@@ -84,14 +84,13 @@ namespace Character_Util {
                 if (!toggle_attack_current_combo_finished) {
                     attack_functions_update[current_combo_index]();
                 } else {
-                    toggle_attack_current_combo_finished = false; // @debug this is stupid why = false?
-                    if (queued_combo) { // if another attack is queued, increase current_combo and keep is_attacking true
+                    if (queued_combo) { // -- if another attack is queued, increase current_combo and keep is_attacking true
                         // * this is where attacks start()
                         queued_combo = false;
                         if (current_combo_index < attack_functions_start.Count - 1) current_combo_index++; // if overflowing the maximum number of combos, reset back to zero
                         else current_combo_index = 0;
                         attack_functions_start[current_combo_index]();
-                    } else { // if no other attack is queued, no more attacking
+                    } else { // -- if no other attack is queued, no more attacking
                         is_attacking = false;
                         current_combo_index = 0;
                     }
