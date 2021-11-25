@@ -27,10 +27,11 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3183367226183983194}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -6.175995, y: 4.6973076, z: -9.637134}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 9105633693602799250}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -86,7 +87,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 671339bd092a1ca4bb9db46385ad1079, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 0}
+  animator: {fileID: 6815012443854846878}
   animations:
     ATTACK1: Attack1
     ATTACK2: Attack2
@@ -103,7 +104,7 @@ MonoBehaviour:
   stunt_timer_init: 1
   maneuver_timer_init: 1
   maneuver_speed_deg_per_second: 40
-  health: 5
+  health: 4
   hit_animation_timer_init: 0.2
   movement:
     speed: 15
@@ -118,8 +119,80 @@ MonoBehaviour:
     speed: 30
     is_in_progress: 0
   material_hit: {fileID: 2100000, guid: 4c35eb22fc857994992bbca17ead04b7, type: 2}
-  renderer: {fileID: 0}
+  renderer: {fileID: 1824781500129470538}
   attack_hitbox_offset: {x: 0, y: 0, z: 1}
   attack_hitbox_extents: {x: 2, y: 3, z: 3}
   is_alive: 1
   arena: {fileID: 0}
+--- !u!1001 &6392466823504825869
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 3183367226183983195}
+    m_Modifications:
+    - target: {fileID: 2804387062474363039, guid: 267df1620f7c42147bf58251024fcdac, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2804387062474363039, guid: 267df1620f7c42147bf58251024fcdac, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2804387062474363039, guid: 267df1620f7c42147bf58251024fcdac, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2804387062474363039, guid: 267df1620f7c42147bf58251024fcdac, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2804387062474363039, guid: 267df1620f7c42147bf58251024fcdac, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2804387062474363039, guid: 267df1620f7c42147bf58251024fcdac, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2804387062474363039, guid: 267df1620f7c42147bf58251024fcdac, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2804387062474363039, guid: 267df1620f7c42147bf58251024fcdac, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2804387062474363039, guid: 267df1620f7c42147bf58251024fcdac, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2804387062474363039, guid: 267df1620f7c42147bf58251024fcdac, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2804387062474363039, guid: 267df1620f7c42147bf58251024fcdac, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3287908654640794149, guid: 267df1620f7c42147bf58251024fcdac, type: 3}
+      propertyPath: m_Name
+      value: enemL_rig_02
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 267df1620f7c42147bf58251024fcdac, type: 3}
+--- !u!4 &9105633693602799250 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2804387062474363039, guid: 267df1620f7c42147bf58251024fcdac, type: 3}
+  m_PrefabInstance: {fileID: 6392466823504825869}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &6815012443854846878 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 442851401097033107, guid: 267df1620f7c42147bf58251024fcdac, type: 3}
+  m_PrefabInstance: {fileID: 6392466823504825869}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &1824781500129470538 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 4748051497413142087, guid: 267df1620f7c42147bf58251024fcdac, type: 3}
+  m_PrefabInstance: {fileID: 6392466823504825869}
+  m_PrefabAsset: {fileID: 0}
