@@ -7,26 +7,49 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: env_grass
-  m_Shader: {fileID: -6465566751694194690, guid: 382e4bfa94b71f449b2df3592543b295, type: 3}
+  m_Name: env_grassSupport
+  m_Shader: {fileID: -6465566751694194690, guid: d53b268e6370ddb4c8f65fb76d5b5f30, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
   stringTagMap: {}
-  disabledShaderPasses:
-  - SHADOWCASTER
+  disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - _AlphaGradient:
+    - Texture2D_36371A4B:
         m_Texture: {fileID: 2800000, guid: 74facb99c45da0a4389ef963981b84d8, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - Texture2D_5A0AC467:
+        m_Texture: {fileID: 2800000, guid: 7aa5b4b6d4042554f97c0fdce14e27da, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_60A0CEB:
+        m_Texture: {fileID: 2800000, guid: e231e4c02c48ee14aafa55f7b1a843c1, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_785DA374:
+        m_Texture: {fileID: 2800000, guid: 7aa5b4b6d4042554f97c0fdce14e27da, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_96F74807:
+        m_Texture: {fileID: 2800000, guid: 7cd2cd823d1b00740ac1dfa120d2680e, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_EA5322D6:
+        m_Texture: {fileID: 2800000, guid: 4a133a288bccf7140ba8c27d2944cf8e, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_FEF555B1:
+        m_Texture: {fileID: 2800000, guid: 4a133a288bccf7140ba8c27d2944cf8e, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _BaseMap:
-        m_Texture: {fileID: 2800000, guid: 72b15fa8bb2d4654abf2ed177df3202d, type: 3}
-        m_Scale: {x: 0.5, y: 0.5}
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
         m_Texture: {fileID: 0}
@@ -36,13 +59,9 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _GrassTexture:
-        m_Texture: {fileID: 2800000, guid: 835bcadec93dde54195f2be65f079592, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 72b15fa8bb2d4654abf2ed177df3202d, type: 3}
-        m_Scale: {x: 0.5, y: 0.5}
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
         m_Texture: {fileID: 0}
@@ -56,70 +75,47 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _VertexGradient:
-        m_Texture: {fileID: 2800000, guid: 74facb99c45da0a4389ef963981b84d8, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Vector1_22B80EFB: 0.52
-    - Vector1_38967303: 0.1
-    - Vector1_3FB8067B: -0.2
-    - Vector1_431DBB01: 0
-    - Vector1_57848546: 0.22
-    - Vector1_AAE1EA15: -0.39
-    - Vector1_AFD0E201: 0
-    - Vector1_D30268FE: 0.7
-    - Vector1_D5DD7C55: 0
-    - Vector1_F56B3366: 0.46
+    - Vector1_33F2DAE3: 0.46
+    - Vector1_367223AD: 0.18
+    - Vector1_484AA434: 1
+    - Vector1_5EC84E8F: 0.5
+    - Vector1_82D070F5: 1
+    - Vector1_9D75784F: -0.2
+    - Vector1_A1D80570: 2
+    - Vector1_D0D025CD: 2.18
+    - Vector1_DE2563C7: 4.34
+    - Vector1_EC50053C: 0.5
     - _AlphaClip: 0
-    - _AlphaClipThreshold: 0.14
     - _Blend: 0
     - _BumpScale: 1
-    - _CrashEdge: -0.09
     - _Cull: 2
     - _Cutoff: 0.5
-    - _DstBlend: 10
+    - _DstBlend: 0
     - _EnvironmentReflections: 1
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
-    - _Grass: 1000
-    - _GrassAngleOffset: 280
     - _Metallic: 0
-    - _NoiseScale: 19.83
-    - _NoiseScale2: 29.75
     - _OcclusionStrength: 1
     - _QueueOffset: 0
     - _ReceiveShadows: 1
-    - _Smoothness: 0
+    - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
-    - _SrcBlend: 5
-    - _Surface: 1
-    - _SwayHeight: 0.6
-    - _SwayNoiseScale: 0.16
-    - _SwaySpeed: 1.4
-    - _VertOffsetMultiplier: -0.45
-    - _VertOffsetOffset: -0.04
-    - _VerticalOffset: -1.1
-    - _VerticalScale: -0.98
-    - _WindNoiseScale: 17.5
-    - _WindSpeedDensityU: 0.1
-    - _WindSpeedDensityV: -0.19
-    - _WindSpeedVertOffsetU: 0.17
-    - _WindSpeedVertOffsetV: -0.29
+    - _SrcBlend: 1
+    - _Surface: 0
     - _WorkflowMode: 1
-    - _ZWrite: 0
-    - _crashDistanec: 0.6
+    - _ZWrite: 1
     m_Colors:
-    - _BaseColor: {r: 0.7277926, g: 0.8584906, b: 0.38470095, a: 1}
+    - Color_9CE2700E: {r: 1, g: 1, b: 1, a: 1}
+    - Color_E51775FB: {r: 1, g: 1, b: 1, a: 0}
+    - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _CrashColour: {r: 0.74022686, g: 1, b: 0, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _GrassColour: {r: 0.5722053, g: 1, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []
---- !u!114 &8425602269112962258
+--- !u!114 &3306787061998884835
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
