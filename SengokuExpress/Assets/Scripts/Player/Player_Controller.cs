@@ -39,7 +39,6 @@ public class Player_Controller : MonoBehaviour {
     float timer_knockback = 0.1f;
     float bark_meter_percentage = 0f; // goes from 0 - 1
     const float BARK_METER_POINT = 0.1f;
-    public Animator attack_animator = null; // @temp this is temporary and used for a basic trail renderer for alpha milestone
 
     /// initialise fields
     void Start() {
@@ -110,13 +109,6 @@ public class Player_Controller : MonoBehaviour {
                 is_knocked_back = false;
             }
         }
-        { // -- turn combat trail on and off
-            if (combat.is_attacking || combat.queued_combo) {
-                attack_animator.gameObject.SetActive(true);
-            } else {
-                attack_animator.gameObject.SetActive(false);
-            }
-        }
         
         if (combat.is_attacking || combat.queued_combo) {
             combat.update();
@@ -156,7 +148,6 @@ public class Player_Controller : MonoBehaviour {
     public void knock_back(Vector2 direction) {
         dash.dash(transf.position, direction, Dash.TYPES.KNOCKBACK);
         is_knocked_back = true;
-        //is_stunned = true;
     }
     /// draw debugging aids
     void OnDrawGizmos() {
@@ -175,13 +166,16 @@ public class Player_Controller : MonoBehaviour {
         if (Global.get_state() == Global.STATES.PAUSED) return; // don't do anything
         if (dash_cool_down <= 0) {
             dash_cool_down = dash_cool_down_duration;
-            dash.dash(transf.position, inputs.input_vec2, Dash.TYPES.NORMAL);
+            // -- get dash direction
+            var dash_direction = inputs.input_vec2;
+            if (dash_direction.magnitude == 0) dash_direction = new Vector2(transf.forward.x, transf.forward.z); // dash towards where the player is facing if no input is present.
+            // -- apply dash
+            dash.dash(transf.position, dash_direction, Dash.TYPES.NORMAL);
+            // -- animation
             components.animator.SetTrigger(binds.ANIMATION_TRIGGER_DASH);
-            
+            // -- audio
             play_audio(audio_source.dash);
-            // if (dash_part != null) { // TODO add this back when we have a proper particle system
-            //     dash_part.Play();
-            // }
+            // -- particle for dash
             if (part_dash != null) {
                 part_dash.Play();
             }
