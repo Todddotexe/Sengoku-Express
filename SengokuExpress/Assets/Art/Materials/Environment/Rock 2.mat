@@ -90,14 +90,14 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - BOOLEAN_DBA0411F: 1
-    - Vector1_1EA8DA98: 100
+    - Vector1_1EA8DA98: 10
     - Vector1_21E0CC83: 0.1
     - Vector1_502C65BD: 0.16
     - Vector1_7D1F5ADA: 0.1
     - Vector1_81C1EA44: 1
     - Vector1_A1F0F859: 0.25
     - Vector1_C19185AF: 1000
-    - Vector1_C587F7F2: 100
+    - Vector1_C587F7F2: 15
     - Vector1_D5F18D10: 0
     - _AlphaClip: 0
     - _Blend: 0
