@@ -6,13 +6,15 @@
 - [/] removed attack_animator from the player_controller because it was not in use anymore
 - [ ] tweak attack trail on player and make sure we disable and enable it at the right time
 - [/] restarting the level resets some input controller. pause the game, restart level, and try to pause again. nothing happens. FIXED global input manager calling Input Actions twice after restarting the level
-- [ ] - more investigation...
+- [ ] fix player attack delay buffers being seperate from the animation // ! this is a major game breaking bug, don't push to main until this is finished !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+- [ ] refactor combat system to work with animations better
 /// -- SUGGESTIONS TO ADD:
 - [/] player should dash towards where they are facing if no input
 - [ ] cool down on player attacks after finishing a combo to leave him vulnerable
-- [ ] - more investigation...
+- [ ] Enemies should get knocked back after 3rd hit of combo
 /// -- FEATURES YET TO ADD
 - [ ] heavy enemy behaviour
 - [ ] health drops
 - [ ] player death animation integration
 - [ ] interesting enemy spawning animation
+- [ ] dog collides with bushes and particles should go off
