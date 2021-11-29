@@ -13,9 +13,8 @@ public class Player_Controller : MonoBehaviour {
     // !=================================================================
     // !======================= Player Controller =======================
     // !=================================================================
-    public ParticleSystem part_dash; // TODO add this back when we have a proper particle system
     public ParticleSystem part_bark; // TODO add this back when we have a proper particle system
-
+    public TrailRenderer dash_trail;
     /// ===
     /// FIELDS
     /// ===
@@ -110,12 +109,14 @@ public class Player_Controller : MonoBehaviour {
                 is_knocked_back = false;
             }
         }
-        
+
+        // -- STATES        
         if (combat.is_attacking || combat.queued_combo) {
             combat.update();
         } else
         if (dash.is_in_progress) {
             // -- if dash is in progress, apply and update dash.
+            dash_trail.gameObject.SetActive(true);
             PLAYER_apply_dash();
         } else
         if (inputs.input_vec2.magnitude > 0) {
@@ -127,6 +128,12 @@ public class Player_Controller : MonoBehaviour {
             components.animator.SetBool(binds.ANIMATION_BOOL_WALK, false);
         }
         PLAYER_apply_velocity();
+
+        // -- enable and disable particles
+        if (!dash.is_in_progress) {
+            // dash_trail.enabled = false;
+            dash_trail.gameObject.SetActive(false);
+        }
     }
     /// hit this enemy
     bool is_hit = false;
@@ -176,10 +183,10 @@ public class Player_Controller : MonoBehaviour {
             components.animator.SetTrigger(binds.ANIMATION_TRIGGER_DASH);
             // -- audio
             play_audio(audio_source.dash);
-            // -- particle for dash
-            if (part_dash != null) {
-                part_dash.Play();
-            }
+            // // -- particle for dash
+            // if (part_dash != null) {
+            //     part_dash.Play();
+            // }
         }
     }
     /// used as a delegate for Player_Inputs.bark
