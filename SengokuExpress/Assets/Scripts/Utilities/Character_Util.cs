@@ -30,7 +30,7 @@ namespace Character_Util {
         // TODO add dash fx and combat dash fx. turn them on in dash() depedning on whether this is a combat dash or a normal dash. turn them off in update after is_in_progress is changed to false;
 
         /// updates the dash variables for a dash move. Use update() to perform the dash
-        public void dash(Vector3 _start, Vector2 direction, TYPES type) {
+        public void dash(Vector3 _start, Vector2 direction, TYPES type, float additional_magnitude = 0f) {
             if (!is_in_progress) { // ? not sure why this check should be here. Do we want the player to be able to reset dash once this function is called or not? I think this is here to stop the player from being able to fly forward lol
                 direction = direction.normalized;
                 is_in_progress = true;
@@ -44,7 +44,7 @@ namespace Character_Util {
                     case TYPES.KNOCKBACK: range = knockback_dash_range; break;
                 }
                 start = _start;
-                end = start + input * range;
+                end = start + input * (range + additional_magnitude);
                 progression = 0;
             }
         }
