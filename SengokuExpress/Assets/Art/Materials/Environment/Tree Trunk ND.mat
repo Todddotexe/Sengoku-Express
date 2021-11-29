@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Tree Trunk Dither
+  m_Name: Tree Trunk ND
   m_Shader: {fileID: -6465566751694194690, guid: 9788b1eca437a3d44bee72df577f261c, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4

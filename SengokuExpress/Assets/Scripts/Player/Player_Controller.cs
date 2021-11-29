@@ -193,8 +193,9 @@ public class Player_Controller : MonoBehaviour {
     void delegate_bark(InputAction.CallbackContext obj) {
         if (Global.get_state() == Global.STATES.PAUSED) return; // don't do anything
         if (combat.is_attacking || combat.queued_combo) return; // ! don't bark while attacking
-        if (bark_meter_percentage < 1) return; // ! don't bark if bark meter is not filled
+        if (bark_meter_percentage < 1 && !god_mode) return; // ! don't bark if bark meter is not filled
         bark_meter_percentage = 0;
+        if (god_mode) bark_meter_percentage = 1; // if in god mode, fill bark_meter and bark
         Global.set_bark_meter(bark_meter_percentage);
         components.animator.SetTrigger(binds.ANIMATION_TRIGGER_BARK);
         play_audio(audio_source.bark);
@@ -294,7 +295,8 @@ public class Player_Controller : MonoBehaviour {
                     Global.set_bark_meter(bark_meter_percentage);
                     {   // -- apply knockback
                         var knock_back_direction = enemy.transform.position - transf.position;
-                        enemy.knock_back(new Vector2(knock_back_direction.x, knock_back_direction.z));
+                        // @incomplete passing magic number
+                        enemy.knock_back(new Vector2(knock_back_direction.x, knock_back_direction.z), 1f);
                     }
                     {   // -- toggle has hit enemy so we don't hit more enemies or hit the same enemy multiple times
                         print("hit enemy attack combo index: " + attack_combo_index.ToString());

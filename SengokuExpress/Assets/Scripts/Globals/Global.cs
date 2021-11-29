@@ -57,6 +57,10 @@ public static class Global {
         }
     }
 
+    public static GUI_Controller.PANELS get_gui_state() {
+        return gui.get_state();
+    }
+
     public static void set_bark_meter(float value) {
         gui.set_bark_meter(value);
     }

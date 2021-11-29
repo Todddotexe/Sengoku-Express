@@ -4,14 +4,20 @@
 - [/] fixed pause menu showing up when winning or losing
 - [/] fixed the bugs on buttons not being able to be pressed again
 - [/] removed attack_animator from the player_controller because it was not in use anymore
-- [ ] tweak attack trail on player and make sure we disable and enable it at the right time
+- [/] tweak attack trail on player and make sure we disable and enable it at the right time
 - [/] restarting the level resets some input controller. pause the game, restart level, and try to pause again. nothing happens. FIXED global input manager calling Input Actions twice after restarting the level
-- [ ] fix player attack delay buffers being seperate from the animation // ! this is a major game breaking bug, don't push to main until this is finished !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-- [ ] refactor combat system to work with animations better
+- [//] fix player attack delay buffers being seperate from the animation // ! this is a major game breaking bug, don't push to main until this is finished !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+- [//] refactor combat system to work with animations better
+- [//] investigate whether stunning enemies works or not. It works
+- [ ] dash + attacks breaks dash range
+- [ ] dash sound is played even when the player is attacking
+- [ ] fix menu controller not working with controller or keyboard to select buttons in main menu and pause menu etc.
+- [ ] pausing the game when walking does not stop audio
 /// -- SUGGESTIONS TO ADD:
 - [/] player should dash towards where they are facing if no input
 - [ ] cool down on player attacks after finishing a combo to leave him vulnerable
-- [ ] Enemies should get knocked back after 3rd hit of combo
+- [//] Enemies should get knocked back after 3rd hit of combo (TESTING)
+- [//] Added a particle player for environmental particles
 /// -- FEATURES YET TO ADD
 - [ ] heavy enemy behaviour
 - [ ] health drops

@@ -101,7 +101,7 @@ MonoBehaviour:
   vision_radius: 10
   combat_maneuver_radius: 6
   combat_radius: 3
-  stunt_timer_init: 1
+  stunt_timer_init: 3
   maneuver_timer_init: 1
   maneuver_speed_deg_per_second: 40
   health: 4
