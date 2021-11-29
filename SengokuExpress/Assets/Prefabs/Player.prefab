@@ -4986,8 +4986,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c179ad1c0254d9429151d9d4eb15479, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  part_dash: {fileID: 0}
   part_bark: {fileID: 6537570337689556632}
+  dash_trail: {fileID: 2349287994078426563}
   movement:
     speed: 10
     rotation_speed: 10
@@ -5027,8 +5027,7 @@ MonoBehaviour:
     is_attacking: 0
     current_combo_index: 0
     queued_combo: 0
-    temp_attack_duration: 0.2
-    temp_attack_duration_init: 0.2
+    toggle_attack_current_combo_finished: 1
   components:
     input: {fileID: 0}
     character_controller: {fileID: 0}
@@ -5039,7 +5038,6 @@ MonoBehaviour:
   attack_hitbox_extents: {x: 1.25, y: 2, z: 4}
   god_mode: 0
   dash_cool_down_duration: 0.5
-  attack_animator: {fileID: 0}
 --- !u!82 &389115131761411530
 AudioSource:
   m_ObjectHideFlags: 0
@@ -5446,6 +5444,11 @@ PrefabInstance:
 --- !u!4 &8872522849034839792 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8496677424255728391, guid: 619196c751e046c4db8b44419e2ea6e5, type: 3}
+  m_PrefabInstance: {fileID: 1066169609248693751}
+  m_PrefabAsset: {fileID: 0}
+--- !u!96 &2349287994078426563 stripped
+TrailRenderer:
+  m_CorrespondingSourceObject: {fileID: 3337610871994558516, guid: 619196c751e046c4db8b44419e2ea6e5, type: 3}
   m_PrefabInstance: {fileID: 1066169609248693751}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8626881479976086762
