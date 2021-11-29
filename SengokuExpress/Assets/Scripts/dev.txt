@@ -23,7 +23,7 @@
 - [//] Enemies should get knocked back after 3rd hit of combo (TESTING)
 - [//] Added a particle player for environmental particles
 /// -- FEATURES YET TO ADD
-- [ ] integrate GUI graphics
+- [ ] ! integrate GUI graphics
 - [ ] health drops
 - [ ] player death animation integration
 - [ ] interesting enemy spawning animation
