@@ -81,9 +81,10 @@ namespace Character_Util {
             if (attack_functions_start.Count == 0) return;
             // TODO -- check if attack animation is finished. If so, set is_attacking to false and set current_combo to 0.
             if (is_attacking) {
-                if (!toggle_attack_current_combo_finished) {
+                if (toggle_attack_current_combo_finished == false) {
                     attack_functions_update[current_combo_index]();
                 } else {
+                    toggle_attack_current_combo_finished = false; // reset toggle
                     if (queued_combo) { // -- if another attack is queued, increase current_combo and keep is_attacking true
                         // * this is where attacks start()
                         queued_combo = false;
