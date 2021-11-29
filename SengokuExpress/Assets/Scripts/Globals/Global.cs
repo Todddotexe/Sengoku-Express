@@ -10,6 +10,7 @@ public static class Global {
     public static Enemy_Blackboard blackboard = new Enemy_Blackboard();
     public static Input_Manager input_manager = null;
     public static bool has_init_input_manager = false;
+    public static Player_Controller player_controller = null;
     /// layers
     /// pause system
     static GUI_Controller gui = null;
