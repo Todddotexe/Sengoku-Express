@@ -12926,6 +12926,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6033397549253027142, guid: bcd662cccea759542a1401a5f9ba4d72, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 123
+      objectReference: {fileID: 0}
+    - target: {fileID: 7003700658283753580, guid: bcd662cccea759542a1401a5f9ba4d72, type: 3}
+      propertyPath: ShapeModule.m_Position.y
+      value: 1.85
+      objectReference: {fileID: 0}
+    - target: {fileID: 8399375955068619987, guid: bcd662cccea759542a1401a5f9ba4d72, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 123
+      objectReference: {fileID: 0}
+    - target: {fileID: 8471418917147851680, guid: bcd662cccea759542a1401a5f9ba4d72, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 123
+      objectReference: {fileID: 0}
+    - target: {fileID: 9132901241239332458, guid: bcd662cccea759542a1401a5f9ba4d72, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 123
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bcd662cccea759542a1401a5f9ba4d72, type: 3}
 --- !u!4 &1986513192 stripped
