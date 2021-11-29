@@ -154,6 +154,7 @@ public class Enemy_Controller : MonoBehaviour {
             local_delta_time_scaler = 1;
         }
         // TODO: update animation's speed based on local_delta_time_scaler
+        Debug.Log("state: " + ai_state_depth);
     }
     /// draw gizmos in the Unity editor to visualize some parameters
     void OnDrawGizmos() {
@@ -328,6 +329,7 @@ public class Enemy_Controller : MonoBehaviour {
     /// Queue the next attack in the combo chain if not already queued
     void ENEMY_A_queue_another_attack() {
         combat.queued_combo = true;
+        combat.update(); // update combat to allow it to know that we've queued another attack
     }
     /// Apply dash velocity when it's knock back
     void ENEMY_A_apply_knockback() {
@@ -376,7 +378,7 @@ public class Enemy_Controller : MonoBehaviour {
     /// return true if combat requires updating
     [AI_Function_Attribute]
     bool ENEMY_C_is_swinging() {
-        return combat.is_attacking || combat.queued_combo;
+        return combat.is_attacking;// || combat.queued_combo;
     }
     
     // ! == ATTACK DELEGATES == ! //
@@ -386,6 +388,9 @@ public class Enemy_Controller : MonoBehaviour {
     }
     void delegate_attack_1_update() {
         attack_hit(1);
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName(animations.ANIMATION_ATTACK1) && animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1) {
+            combat.toggle_attack_current_combo_finished = true;
+        }
     }
     /// attack 2
     void delegate_attack_2_start() {
@@ -393,6 +398,9 @@ public class Enemy_Controller : MonoBehaviour {
     }
     void delegate_attack_2_update() {
         attack_hit(2);
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName(animations.ANIMATION_ATTACK2) && animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1) {
+            combat.toggle_attack_current_combo_finished = true;
+        }
     }
     /// attack 3
     void delegate_attack_3_start() {
@@ -400,7 +408,10 @@ public class Enemy_Controller : MonoBehaviour {
     }
     void delegate_attack_3_update() {
         attack_hit(3);
-        trigger_finished_attack_combo = true; // @incomplete have this at the end of animation
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName(animations.ANIMATION_ATTACK3) && animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1) {
+            combat.toggle_attack_current_combo_finished = true; 
+            trigger_finished_attack_combo = true; // should be at the end of animation
+        }
     }
     /// attack hit
     void attack_hit(uint attack_combo_index) {
@@ -438,6 +449,9 @@ public class Enemy_Controller : MonoBehaviour {
         public string ATTACK1 = "Attack1";
         public string ATTACK2 = "Attack2";
         public string ATTACK3 = "Attack3";
+        public string ANIMATION_ATTACK1 = "Attack 1";
+        public string ANIMATION_ATTACK2 = "Attack 2";
+        public string ANIMATION_ATTACK3 = "Attack 3";
         public string RUN      = "Run";
         public string HIT      = "Hit";
         public string DEATH    = "Death";
