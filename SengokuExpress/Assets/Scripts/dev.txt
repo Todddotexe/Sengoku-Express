@@ -11,16 +11,20 @@
 - [//] investigate whether stunning enemies works or not. It works
 - [ ] dash + attacks breaks dash range
 - [ ] dash sound is played even when the player is attacking
-- [ ] fix menu controller not working with controller or keyboard to select buttons in main menu and pause menu etc.
+- [//] fix menu controller not working with controller or keyboard to select buttons in main menu and pause menu etc.
+- [ ] enhance the controller input experience with GUI
 - [ ] pausing the game when walking does not stop audio
+- [ ] ! fix enemy animation and combat
+- [ ] fix game starting with trail renderer being active
+- [ ] add enemy particle being played when they get hit
 /// -- SUGGESTIONS TO ADD:
 - [/] player should dash towards where they are facing if no input
 - [ ] cool down on player attacks after finishing a combo to leave him vulnerable
 - [//] Enemies should get knocked back after 3rd hit of combo (TESTING)
 - [//] Added a particle player for environmental particles
 /// -- FEATURES YET TO ADD
-- [ ] heavy enemy behaviour
+- [ ] integrate GUI graphics
 - [ ] health drops
 - [ ] player death animation integration
 - [ ] interesting enemy spawning animation
-- [ ] dog collides with bushes and particles should go off
+- [/] dog collides with bushes and particles should go off
