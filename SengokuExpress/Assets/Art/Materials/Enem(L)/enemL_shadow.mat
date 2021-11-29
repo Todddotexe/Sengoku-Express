@@ -63,7 +63,7 @@ Material:
     m_Floats:
     - Vector1_3D7E8304: 0.26
     - Vector1_43DD5874: 0.15
-    - Vector1_FCE78340: 0
+    - Vector1_FCE78340: 0.2
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
@@ -93,4 +93,6 @@ Material:
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
     - _color: {r: 0, g: 0.0000057940206, b: 0.26415092, a: 0.5450981}
     - _emisiion: {r: 0.002002491, g: 0.006676894, b: 0.0471698, a: 1}
+    - _max: {r: 0.5, g: 0.6, b: 0, a: 0}
+    - _min: {r: -1, g: 1, b: 0, a: 0}
   m_BuildTextureStacks: []
