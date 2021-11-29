@@ -8,6 +8,8 @@ public class GUI_Controller : MonoBehaviour {
     public enum PANELS {
         LOST, WIN, GAME, PAUSE,
     }
+    PANELS active_panel = PANELS.GAME;
+    public PANELS get_state() {return active_panel;}
     // !== public delegates the Unity Editor Buttons can use ==! //
     public RectTransform lostPanel = null;
     public RectTransform winPanel = null;

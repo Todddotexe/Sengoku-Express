@@ -189,9 +189,9 @@ public class Enemy_Controller : MonoBehaviour {
         local_delta_time_scaler = 0.2f; // ! @incomplete MAGIC NUMBER
     }
     /// knock back and stun enemy
-    public void knock_back(Vector2 direction) { // ! we're not using this at the moment so wtf
+    public void knock_back(Vector2 direction, float additional_magnitude = 0f) { // ! we're not using this at the moment so wtf
         // animator.SetTrigger(animations.);
-        dash.dash(transf.position, direction, Dash.TYPES.KNOCKBACK);
+        dash.dash(transf.position, direction, Dash.TYPES.KNOCKBACK, additional_magnitude);
         is_knocked_back = true;
         //is_stunned = true;
     }

@@ -309,6 +309,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8835207566845305537, guid: 54fb71bada0487547b7519a950328a9b, type: 3}
+      propertyPath: event_system
+      value: 
+      objectReference: {fileID: 261731184}
+    - target: {fileID: 8835207566845305537, guid: 54fb71bada0487547b7519a950328a9b, type: 3}
+      propertyPath: main_menu_initial_selected
+      value: 
+      objectReference: {fileID: 1578651746}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 54fb71bada0487547b7519a950328a9b, type: 3}
 --- !u!1 &261731182
@@ -368,7 +376,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 0}
+  m_FirstSelected: {fileID: 1578651746}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
 --- !u!4 &261731185
