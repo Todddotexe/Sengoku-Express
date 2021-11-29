@@ -87,7 +87,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 671339bd092a1ca4bb9db46385ad1079, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 0}
+  animator: {fileID: 255440564902494925}
   animations:
     ATTACK1: Attack1
     ATTACK2: Attack2
@@ -184,6 +184,11 @@ PrefabInstance:
 --- !u!4 &288574154400281005 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4792330977146354484, guid: 9514513b7c42e984bbbe3045285da54b, type: 3}
+  m_PrefabInstance: {fileID: 5080340790011202201}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &255440564902494925 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 4975209710588692564, guid: 9514513b7c42e984bbbe3045285da54b, type: 3}
   m_PrefabInstance: {fileID: 5080340790011202201}
   m_PrefabAsset: {fileID: 0}
 --- !u!137 &6635205662729691016 stripped
