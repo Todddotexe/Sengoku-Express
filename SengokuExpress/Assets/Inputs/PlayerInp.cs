@@ -180,6 +180,17 @@ public class @PlayerInp : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""c482ab63-5cb5-40c3-a53b-7205b7ad818b"",
+                    ""path"": ""<Keyboard>/k"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LightAttack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""381dc49f-72cf-4cc3-aca3-7146d0d9d181"",
                     ""path"": ""<Keyboard>/rightArrow"",
                     ""interactions"": """",
@@ -224,6 +235,17 @@ public class @PlayerInp : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""4f6b575a-cbf3-45ab-8e7d-953612775006"",
+                    ""path"": ""<Keyboard>/l"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Bark"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""cfbaafeb-f920-4daf-95e9-aa5b96e010d1"",
                     ""path"": ""<Keyboard>/space"",
                     ""interactions"": """",
@@ -257,6 +279,17 @@ public class @PlayerInp : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""e3416ca5-624e-4f60-b6ed-7421130659a5"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Cancel"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""b09cfef5-db0f-4a41-8f53-7cebfebc11a5"",
                     ""path"": ""<Keyboard>/enter"",
                     ""interactions"": """",
@@ -270,6 +303,17 @@ public class @PlayerInp : IInputActionCollection, IDisposable
                     ""name"": """",
                     ""id"": ""c4c2caa8-cb28-459f-9cae-fcddbee73593"",
                     ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Accept"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""16b1379c-6cc4-42c9-ae08-e7e128d956d7"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
