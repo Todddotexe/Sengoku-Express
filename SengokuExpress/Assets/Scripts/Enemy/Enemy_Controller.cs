@@ -103,20 +103,25 @@ public class Enemy_Controller : MonoBehaviour {
                                                     ENEMY_A_get_ready_to_land_attack(); // in case we have the time to work on such animation
                                                     ai_state_depth = 10;
                                                 }
+                                                animator.SetBool(animations.RUN, false); // reset boolean parameter
                                             } else {
+                                                // animator.SetBool(animations.SIDESTEP, false); // reset boolean parameter
                                                 ENEMY_A_approach_player();
                                                 ai_state_depth = 9;
                                             }
                                         } else {
+                                            animator.SetBool(animations.RUN, false); // reset boolean parameter
                                             ENEMY_A_maneuver_player();
                                             ai_state_depth = 8;
                                         }
                                     } else {
+                                        // animator.SetBool(animations.SIDESTEP, false); // reset boolean parameter
                                         ENEMY_A_approach_player();
                                         ai_state_depth = 7;
                                     }
                                 } else {
                                     // -- STAND GAURD
+                                    animator.SetBool(animations.RUN, false); // reset boolean parameter
                                     ai_state_depth = 6;
                                 }
                             } else {
@@ -153,6 +158,7 @@ public class Enemy_Controller : MonoBehaviour {
             local_delta_time_scaler = 1;
         }
         // TODO: update animation's speed based on local_delta_time_scaler
+        print("state: " + ai_state_depth);
     }
     /// draw gizmos in the Unity editor to visualize some parameters
     void OnDrawGizmos() {
@@ -299,7 +305,7 @@ public class Enemy_Controller : MonoBehaviour {
         // -- face the target
         look_at(target_transform.position);
         // -- play animation
-        animator.SetTrigger(animations.RUN);
+        animator.SetBool(animations.RUN, true);
     }
     /// The player is close enough, move around him a little before initiating attack.
     void ENEMY_A_maneuver_player() {
@@ -386,8 +392,12 @@ public class Enemy_Controller : MonoBehaviour {
     }
     void delegate_attack_1_update() {
         attack_hit(1);
-        if (animator.GetCurrentAnimatorStateInfo(0).IsName(animations.ANIMATION_ATTACK1) && animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1) {
-            combat.toggle_attack_current_combo_finished = true;
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName(animations.ANIMATION_ATTACK1)) {
+            if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1) {
+                combat.toggle_attack_current_combo_finished = true;
+            }
+        } else {
+                combat.toggle_attack_current_combo_finished = true;
         }
     }
     /// attack 2
@@ -396,8 +406,12 @@ public class Enemy_Controller : MonoBehaviour {
     }
     void delegate_attack_2_update() {
         attack_hit(2);
-        if (animator.GetCurrentAnimatorStateInfo(0).IsName(animations.ANIMATION_ATTACK2) && animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1) {
-            combat.toggle_attack_current_combo_finished = true;
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName(animations.ANIMATION_ATTACK2)) {
+            if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1) {
+                combat.toggle_attack_current_combo_finished = true;
+            }
+        } else {
+                combat.toggle_attack_current_combo_finished = true;
         }
     }
     /// attack 3
@@ -406,9 +420,14 @@ public class Enemy_Controller : MonoBehaviour {
     }
     void delegate_attack_3_update() {
         attack_hit(3);
-        if (animator.GetCurrentAnimatorStateInfo(0).IsName(animations.ANIMATION_ATTACK3) && animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1) {
-            combat.toggle_attack_current_combo_finished = true; 
-            trigger_finished_attack_combo = true; // should be at the end of animation
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName(animations.ANIMATION_ATTACK1)) {
+            if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1) {
+                combat.toggle_attack_current_combo_finished = true;
+                trigger_finished_attack_combo = true; // should be at the end of animation
+            }
+        } else {
+                combat.toggle_attack_current_combo_finished = true;
+                trigger_finished_attack_combo = true; // should be at the end of animation
         }
     }
     /// attack hit
@@ -457,6 +476,7 @@ public class Enemy_Controller : MonoBehaviour {
         public string JUMPBACK = "JumpBack";
         public string STUNNED  = "Stunned";
         public string SIDESTEP = "SideStep";
+        // public string IDLE     = "Idle";
         // public string ANIM_SIDESTEP = "SideStep"; // * we probabily don't have time to create an animation for this
     }
 }
