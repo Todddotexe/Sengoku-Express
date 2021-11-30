@@ -12,12 +12,12 @@ GameObject:
   - component: {fileID: 5532036822945662706}
   - component: {fileID: 1321641223317817548}
   - component: {fileID: 4817397511073112405}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: env_toro_mesh_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1462389550270675397
 Transform:
@@ -26,7 +26,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2233964776660149119}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.8902454, y: 0.6857139, z: -10.184193}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -106,12 +106,12 @@ GameObject:
   m_Component:
   - component: {fileID: 4389583159529403453}
   - component: {fileID: 7148847919221299351}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &4389583159529403453
 Transform:
