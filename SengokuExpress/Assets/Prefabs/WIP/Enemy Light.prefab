@@ -110,13 +110,13 @@ MonoBehaviour:
     SIDESTEP: SideStep
   vision_radius: 15
   combat_maneuver_radius: 6
-  combat_radius: 3
+  combat_radius: 2.66
   stunt_timer_init: 3
   maneuver_timer_init: 1
   maneuver_speed_deg_per_second: 40
   health: 4
   movement:
-    speed: 15
+    speed: 10
     rotation_speed: 10
     friction: 10
     gravity: 10
@@ -128,8 +128,8 @@ MonoBehaviour:
     speed: 30
     is_in_progress: 0
   renderer: {fileID: 6635205662729691016}
-  attack_hitbox_offset: {x: 0, y: 0, z: 1}
-  attack_hitbox_extents: {x: 2, y: 3, z: 3}
+  attack_hitbox_offset: {x: 0, y: 0, z: 0.75}
+  attack_hitbox_extents: {x: 2, y: 3, z: 2}
   is_alive: 1
   arena: {fileID: 0}
 --- !u!1001 &1452308271881636749
@@ -139,6 +139,38 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3183367226183983195}
     m_Modifications:
+    - target: {fileID: 364082671405287564, guid: b9ec4d58d5895104888f5b3cbfa43f57, type: 3}
+      propertyPath: lengthInSec
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 364082671405287564, guid: b9ec4d58d5895104888f5b3cbfa43f57, type: 3}
+      propertyPath: InitialModule.startSpeed.scalar
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 364082671405287564, guid: b9ec4d58d5895104888f5b3cbfa43f57, type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 928174687845486737, guid: b9ec4d58d5895104888f5b3cbfa43f57, type: 3}
+      propertyPath: InitialModule.startSpeed.scalar
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 928174687845486737, guid: b9ec4d58d5895104888f5b3cbfa43f57, type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4588172729982357442, guid: b9ec4d58d5895104888f5b3cbfa43f57, type: 3}
+      propertyPath: lengthInSec
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4588172729982357442, guid: b9ec4d58d5895104888f5b3cbfa43f57, type: 3}
+      propertyPath: InitialModule.startSpeed.scalar
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 4588172729982357442, guid: b9ec4d58d5895104888f5b3cbfa43f57, type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6517590152908047116, guid: b9ec4d58d5895104888f5b3cbfa43f57, type: 3}
       propertyPath: m_Name
       value: ShadowPart
@@ -149,7 +181,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6517590152908047117, guid: b9ec4d58d5895104888f5b3cbfa43f57, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 6517590152908047117, guid: b9ec4d58d5895104888f5b3cbfa43f57, type: 3}
       propertyPath: m_LocalPosition.z
