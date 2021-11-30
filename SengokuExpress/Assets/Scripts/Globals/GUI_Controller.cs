@@ -11,11 +11,13 @@ public class GUI_Controller : MonoBehaviour {
     PANELS active_panel = PANELS.GAME;
     public PANELS get_state() {return active_panel;}
     // !== public delegates the Unity Editor Buttons can use ==! //
-    public RectTransform lostPanel = null;
-    public RectTransform winPanel = null;
-    public RectTransform gamePanel = null;
+    public RectTransform lostPanel  = null;
+    public RectTransform winPanel   = null;
+    public RectTransform gamePanel  = null;
     public RectTransform pausePanel = null;
-    public GUI_Game      game_gui = null;
+    public GUI_Game      game_gui   = null;
+    public GameObject    dialog_ui  = null;
+    bool should_we_reanable_dialog_ui = false;
 
     // !== public methods not meant to be used by the Unity Editor ==! //
     public void switch_panel(PANELS panel) {
@@ -25,24 +27,47 @@ public class GUI_Controller : MonoBehaviour {
                 if (winPanel  != null) winPanel.gameObject.SetActive  (false);
                 if (gamePanel != null) gamePanel.gameObject.SetActive (false);
                 if (gamePanel != null) pausePanel.gameObject.SetActive(false);
-            } break;
+                    if (dialog_ui != null)
+                    {
+                        should_we_reanable_dialog_ui = dialog_ui.activeSelf;
+                        dialog_ui.SetActive(false);
+                    }
+                } break;
             case PANELS.WIN: {
                 if (lostPanel != null) lostPanel.gameObject.SetActive (false);
                 if (winPanel  != null) winPanel.gameObject.SetActive  (true);
                 if (gamePanel != null) gamePanel.gameObject.SetActive (false);
                 if (gamePanel != null) pausePanel.gameObject.SetActive(false);
-            } break;
+                    if (dialog_ui != null)
+                    {
+                        should_we_reanable_dialog_ui = dialog_ui.activeSelf;
+                        dialog_ui.SetActive(false);
+                    }
+                } break;
             case PANELS.GAME: {
                 if (lostPanel != null) lostPanel.gameObject.SetActive (false);
                 if (winPanel  != null) winPanel.gameObject.SetActive  (false);
                 if (gamePanel != null) gamePanel.gameObject.SetActive (true);
                 if (gamePanel != null) pausePanel.gameObject.SetActive(false);
+                    if (dialog_ui != null)
+                    {
+                        if (should_we_reanable_dialog_ui)
+                        {
+                            dialog_ui.SetActive(true);
+                            should_we_reanable_dialog_ui = false; // reset
+                        }
+                    }
             } break;
             case PANELS.PAUSE: {
                 if (lostPanel != null) lostPanel.gameObject.SetActive (false);
                 if (winPanel  != null) winPanel.gameObject.SetActive  (false);
                 if (gamePanel != null) gamePanel.gameObject.SetActive (false);
                 if (gamePanel != null) pausePanel.gameObject.SetActive(true);
+                    if (dialog_ui != null)
+                    {
+                        should_we_reanable_dialog_ui = dialog_ui.activeSelf;
+                        dialog_ui.SetActive(false);
+                    }
             } break;
         }
     }
