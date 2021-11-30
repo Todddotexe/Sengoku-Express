@@ -18,11 +18,12 @@
 - [///] ! fix game starting with trail renderer being active
 - [///] ! add enemy particle being played when they get hit
 - [ ] ! enemy does not go back to idle state when the player dashes out of its range
-- [ ] ! when you play the game and go back to main menu, the start button does not work
+- [///] ! when you play the game and go back to main menu, the start button does not work
 - [ ] ! Unity does not select a button by default in the settings and pause menu (and potentially win and lost menus)
-- [ ] ! enemy should hit the player at the right time during the animation
+- [///] ! enemy should hit the player at the right time during the animation
 - [///] ! after dying and reloading the game, player could not pause the game
 - [///] ! hit box size on player and enemies need to be tweaked
+- [ ] ! disable attack trail when the player wants to put the sword back
 /// -- SUGGESTIONS TO ADD:
 - [/] player should dash towards where they are facing if no input
 - [ ] cool down on player attacks after finishing a combo to leave him vulnerable
