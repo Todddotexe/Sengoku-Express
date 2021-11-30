@@ -316,7 +316,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 109279064}
-  m_RootOrder: 13
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: -2.364, y: 33, z: 5.779}
 --- !u!65 &32067252
 BoxCollider:
@@ -650,6 +650,7 @@ Transform:
   - {fileID: 891439962}
   - {fileID: 1721810748}
   - {fileID: 1720808420}
+  - {fileID: 32067251}
   - {fileID: 1132016392}
   - {fileID: 1435250537}
   - {fileID: 777354298}
@@ -657,7 +658,6 @@ Transform:
   - {fileID: 2125697912}
   - {fileID: 1906777598}
   - {fileID: 2109422134}
-  - {fileID: 32067251}
   - {fileID: 1941480626}
   - {fileID: 100076133}
   - {fileID: 1433892483}
@@ -5925,6 +5925,10 @@ PrefabInstance:
       propertyPath: combat_radius
       value: 2.66
       objectReference: {fileID: 0}
+    - target: {fileID: 973927722657849086, guid: 47697cd823c6ee3469a44b4252650d50, type: 3}
+      propertyPath: movement.speed
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 1237040668189197057, guid: 47697cd823c6ee3469a44b4252650d50, type: 3}
       propertyPath: InitialModule.startSpeed.scalar
       value: 12
@@ -10413,7 +10417,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8344202030470013310, guid: 51182e3f223ad134ab35ee40af0c55b7, type: 3}
       propertyPath: god_mode
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8344202030470013310, guid: 51182e3f223ad134ab35ee40af0c55b7, type: 3}
       propertyPath: attack_hitbox_extents.z
