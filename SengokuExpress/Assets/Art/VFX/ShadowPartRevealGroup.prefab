@@ -10,11 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 6517590152908047117}
   m_Layer: 0
-  m_Name: ShadowPart
+  m_Name: ShadowPartRevealGroup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &6517590152908047117
 Transform:
@@ -43,6 +43,10 @@ PrefabInstance:
     - target: {fileID: 1506616591203313061, guid: 51d5d7a4414212c4fb07f0def3feb3e3, type: 3}
       propertyPath: m_Name
       value: ShadowReveal Off
+      objectReference: {fileID: 0}
+    - target: {fileID: 1506616591203313061, guid: 51d5d7a4414212c4fb07f0def3feb3e3, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 3335371020954349769, guid: 51d5d7a4414212c4fb07f0def3feb3e3, type: 3}
       propertyPath: lengthInSec
@@ -117,6 +121,10 @@ PrefabInstance:
     - target: {fileID: 1920589655522788931, guid: 45aef905efb0c0947bd1b2a19b440e89, type: 3}
       propertyPath: m_Name
       value: ShadowReveal Middle
+      objectReference: {fileID: 0}
+    - target: {fileID: 1920589655522788931, guid: 45aef905efb0c0947bd1b2a19b440e89, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 4291611142992496463, guid: 45aef905efb0c0947bd1b2a19b440e89, type: 3}
       propertyPath: m_LocalPosition.x
@@ -423,6 +431,10 @@ PrefabInstance:
     - target: {fileID: 7340682123646657727, guid: a5405926f263a21469ce502a889e7cb0, type: 3}
       propertyPath: m_Name
       value: ShadowReveal
+      objectReference: {fileID: 0}
+    - target: {fileID: 7340682123646657727, guid: a5405926f263a21469ce502a889e7cb0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a5405926f263a21469ce502a889e7cb0, type: 3}

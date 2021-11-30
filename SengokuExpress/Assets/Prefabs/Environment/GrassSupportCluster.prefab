@@ -14,7 +14,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &2087895997498305587
 Transform:
@@ -94,6 +94,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: env_grassSupport_mesh (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 5510201132250664250, guid: d842552de7737464f9a52d861498d6ad, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 8114397486220498981, guid: d842552de7737464f9a52d861498d6ad, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -159,6 +163,10 @@ PrefabInstance:
     - target: {fileID: 5510201132250664250, guid: d842552de7737464f9a52d861498d6ad, type: 3}
       propertyPath: m_Name
       value: env_grassSupport_mesh (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5510201132250664250, guid: d842552de7737464f9a52d861498d6ad, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 8114397486220498981, guid: d842552de7737464f9a52d861498d6ad, type: 3}
       propertyPath: m_Mesh
@@ -226,6 +234,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: env_grassSupport_mesh (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5510201132250664250, guid: d842552de7737464f9a52d861498d6ad, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 8114397486220498981, guid: d842552de7737464f9a52d861498d6ad, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -292,6 +304,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: env_grassSupport_mesh (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 5510201132250664250, guid: d842552de7737464f9a52d861498d6ad, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 8114397486220498981, guid: d842552de7737464f9a52d861498d6ad, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -313,6 +329,10 @@ PrefabInstance:
     - target: {fileID: 774736382059526421, guid: 701f29d6ad1faee459baaa8e9ceadbfa, type: 3}
       propertyPath: m_Name
       value: LeafPlayer
+      objectReference: {fileID: 0}
+    - target: {fileID: 774736382059526421, guid: 701f29d6ad1faee459baaa8e9ceadbfa, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 1588160644415300885, guid: 701f29d6ad1faee459baaa8e9ceadbfa, type: 3}
       propertyPath: m_LocalPosition.x
@@ -420,6 +440,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: env_grassSupport_mesh (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 5510201132250664250, guid: d842552de7737464f9a52d861498d6ad, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 8114397486220498981, guid: d842552de7737464f9a52d861498d6ad, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -485,6 +509,10 @@ PrefabInstance:
     - target: {fileID: 5510201132250664250, guid: d842552de7737464f9a52d861498d6ad, type: 3}
       propertyPath: m_Name
       value: env_grassSupport_mesh (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5510201132250664250, guid: d842552de7737464f9a52d861498d6ad, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 8114397486220498981, guid: d842552de7737464f9a52d861498d6ad, type: 3}
       propertyPath: m_Mesh
@@ -552,6 +580,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: env_grassSupport_mesh
       objectReference: {fileID: 0}
+    - target: {fileID: 5510201132250664250, guid: d842552de7737464f9a52d861498d6ad, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 8114397486220498981, guid: d842552de7737464f9a52d861498d6ad, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -617,6 +649,10 @@ PrefabInstance:
     - target: {fileID: 5510201132250664250, guid: d842552de7737464f9a52d861498d6ad, type: 3}
       propertyPath: m_Name
       value: env_grassSupport_mesh (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5510201132250664250, guid: d842552de7737464f9a52d861498d6ad, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 8114397486220498981, guid: d842552de7737464f9a52d861498d6ad, type: 3}
       propertyPath: m_Mesh
