@@ -25,6 +25,7 @@
 - [///] ! hit box size on player and enemies need to be tweaked
 - [ ] ! disable attack trail when the player wants to put the sword back
 - [////] ! enemy getting stuck in between run and sidestep
+- [////] ! serialize player intial hp field
 /// -- SUGGESTIONS TO ADD:
 - [/] player should dash towards where they are facing if no input
 - [ ] cool down on player attacks after finishing a combo to leave him vulnerable

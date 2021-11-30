@@ -141,7 +141,7 @@ public class Player_Controller : MonoBehaviour {
     bool is_hit = false;
     bool is_alive = true;
     bool is_knocked_back = false;
-    int health = 3;
+    [SerializeField] int health = 6;
     public void hit(int damage) {
         is_hit = true;
         // -- start hit animation
