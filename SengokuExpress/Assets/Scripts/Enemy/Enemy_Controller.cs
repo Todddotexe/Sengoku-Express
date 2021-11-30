@@ -67,6 +67,11 @@ public class Enemy_Controller : MonoBehaviour {
         combat.attack_functions_update.Add(delegate_attack_1_update);
         combat.attack_functions_update.Add(delegate_attack_2_update);
         combat.attack_functions_update.Add(delegate_attack_3_update);
+
+        // -- audio sources
+        walk_audio_source.clip = audio_source.walk;
+        walk_audio_source.loop = true;
+        play_walk_audio(false);
     }
     /// called every physics frame
     void FixedUpdate() {
