@@ -3506,9 +3506,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1086522089}
     m_Modifications:
+    - target: {fileID: 871781636, guid: 5aaf91136d4ba8d4dadb54fd50f9f98f, type: 3}
+      propertyPath: MinDistance
+      value: 490
+      objectReference: {fileID: 0}
     - target: {fileID: 1888601884, guid: 5aaf91136d4ba8d4dadb54fd50f9f98f, type: 3}
       propertyPath: Loop
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1888601884, guid: 5aaf91136d4ba8d4dadb54fd50f9f98f, type: 3}
+      propertyPath: MinDistance
+      value: 490
       objectReference: {fileID: 0}
     - target: {fileID: 672591291467628306, guid: 5aaf91136d4ba8d4dadb54fd50f9f98f, type: 3}
       propertyPath: m_AnchorMin.x
@@ -12038,6 +12046,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 674972828}
     m_Modifications:
+    - target: {fileID: 1820272682, guid: bcd662cccea759542a1401a5f9ba4d72, type: 3}
+      propertyPath: MinDistance
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 5146878046066568397, guid: bcd662cccea759542a1401a5f9ba4d72, type: 3}
       propertyPath: m_Name
       value: Level (1)
