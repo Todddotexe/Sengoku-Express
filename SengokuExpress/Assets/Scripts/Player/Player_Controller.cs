@@ -41,6 +41,7 @@ public class Player_Controller : MonoBehaviour {
 
     /// initialise fields
     void Start() {
+        dash_trail.gameObject.SetActive(false);
         Global.player_controller = this;
         // -- setup fields
         transf = transform;
