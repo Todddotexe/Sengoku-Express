@@ -64,13 +64,6 @@ public class Enemy_Controller : MonoBehaviour {
         combat.attack_functions_update.Add(delegate_attack_1_update);
         combat.attack_functions_update.Add(delegate_attack_2_update);
         combat.attack_functions_update.Add(delegate_attack_3_update);
-
-        // -- spawn particle
-        if (part_spawn.Count > 0) {
-            foreach (ParticleSystem particle in part_spawn) {
-                particle.Play();
-            }
-        }
     }
     /// called every physics frame
     void FixedUpdate() {
@@ -274,6 +267,12 @@ public class Enemy_Controller : MonoBehaviour {
     /// returns false at all times
     void ENEMY_A_spawn() {
         is_spawned = true; // TODO add animation for spawning. set spawned to true once the animation is over
+        // -- spawn particle
+        if (part_spawn.Count > 0) {
+            foreach (ParticleSystem particle in part_spawn) {
+                particle.Play();
+            }
+        }
     }
     /// Destory this game object
     /// returns false
@@ -360,8 +359,9 @@ public class Enemy_Controller : MonoBehaviour {
     }
     /// Play the hit animation
     void play_hit_animation() { // todo change this to the duration of the actual animation
-        if (is_hit && part_hit != null) {
-            part_hit.Play();
+        if (is_hit) {
+            if (part_hit != null) part_hit.Play();
+            is_hit = false;
         }
     }
 
