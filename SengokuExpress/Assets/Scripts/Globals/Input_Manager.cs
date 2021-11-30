@@ -32,10 +32,11 @@ public class Input_Manager : MonoBehaviour {
         navigation = input.actions[INPUT_LABEL_NAVIGATION];
         
         // -- pause when we press the cancel button when it's appropriate
-        if (!Global.has_init_input_manager) { // ! we need to check for this, otherwise cancel.performed will call delegate_on_pause_button_pressed twice. WE NEED TO RUN THE FOLLOWING PROCEDURE ONLY ONCE
-            cancel.performed += delegate_on_pause_button_pressed;
-            Global.has_init_input_manager = true; // ! set Global.has_init to true
-        }
+        // ! REMINDER, ON SOME MACHINES, WE NEED THIS FLAG HERE BECAUSE IT'LL PREVENT THE DELEGATE FROM BEING ADDED TWICE, ON SOME MACHINES, UNITY HANDLES THIS FINE AND WITH THIS FLAG HERE WE WOULDN'T HAVE ADDED THE DELEGATE EVEN ONCE.
+        // if (!Global.has_init_input_manager) { // ! we need to check for this, otherwise cancel.performed will call delegate_on_pause_button_pressed twice. WE NEED TO RUN THE FOLLOWING PROCEDURE ONLY ONCE
+            // cancel.performed += delegate_on_pause_button_pressed;
+            // Global.has_init_input_manager = true; // ! set Global.has_init to true
+        // }
     }
     ///
     void Update() {
@@ -55,9 +56,28 @@ public class Input_Manager : MonoBehaviour {
                 } break;
             }
         }
+
+        // -- check for escape (to pause)
+        if (Gamepad.current != null && Gamepad.current.startButton.wasPressedThisFrame) {
+            delegate_on_pause_button_pressed();
+        }
+        if (Keyboard.current != null && Keyboard.current.escapeKey.wasPressedThisFrame) {
+            delegate_on_pause_button_pressed();
+        }
     }
     ///
-    void delegate_on_pause_button_pressed(InputAction.CallbackContext obj) {
+    // void delegate_on_pause_button_pressed(InputAction.CallbackContext obj) {
+    //     // if we're not paused, set state to paused, 
+    //     switch (Global.get_state()) {
+    //         case Global.STATES.GAME:
+    //             Global.set_game_state(Global.STATES.PAUSED);
+    //         break;
+    //         case Global.STATES.PAUSED:
+    //             Global.set_game_state(Global.STATES.GAME);
+    //         break;
+    //     }
+    // }
+    void delegate_on_pause_button_pressed() {
         // if we're not paused, set state to paused, 
         switch (Global.get_state()) {
             case Global.STATES.GAME:
