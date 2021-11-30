@@ -6,10 +6,24 @@ using UnityEngine.SceneManagement;
 public class ProtoMenuMain : MonoBehaviour
 {
     public AudioSource playSound;
+    float timer_init = .75f;
+    float timer = .75f;
+    bool want_to_play = false;
+    void Update() {
+        if (want_to_play) {
+            if (!playSound.isPlaying) playSound.Play();
+            if (timer > 0) {
+                timer -= Time.unscaledDeltaTime;
+            } else {
+                timer = timer_init;
+                SceneManager.LoadScene("level_main_game");
+            }
+
+        }
+    }
     public void loadPlay()
     {
-        playSound.Play();
-        StartCoroutine (loadPlayScene(.75f));
+        want_to_play = true;
     }
     public void mainMenu()
     {
@@ -22,11 +36,5 @@ public class ProtoMenuMain : MonoBehaviour
     public void ExitGame()
     {
         Application.Quit();
-    }
-    IEnumerator loadPlayScene(float waitTime)
-    {
-        yield return new WaitForSeconds(waitTime);
-        SceneManager.LoadScene("level_main_game");
-
     }
 }

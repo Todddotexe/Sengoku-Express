@@ -413,6 +413,7 @@ public class Enemy_Controller : MonoBehaviour {
     }
     /// attack hit
     void attack_hit(uint attack_combo_index) {
+        if (!animator.GetBool(EACH.check_for_hit)) return; // if animation is not at a point where we want it to be for collision checking, return
         if (!trigger_hit_player) {
             Collider[] colliders = Physics.OverlapBox(transf.position + (attack_hitbox_offset).rotate(transf.rotation.eulerAngles.y), attack_hitbox_extents, transf.rotation);
             foreach (Collider collider in colliders) {
