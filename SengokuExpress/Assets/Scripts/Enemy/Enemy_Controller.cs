@@ -169,7 +169,7 @@ public class Enemy_Controller : MonoBehaviour {
         // -- disable looping audio
         if (ai_state_depth != 7 && ai_state_depth != 8 && ai_state_depth != 9) play_walk_audio(false); // don't walk when not approaching or sidesteping
         // TODO: update animation's speed based on local_delta_time_scaler
-        print("state: " + ai_state_depth);
+        // print("state: " + ai_state_depth);
     }
     /// draw gizmos in the Unity editor to visualize some parameters
     void OnDrawGizmos() {
@@ -297,7 +297,16 @@ public class Enemy_Controller : MonoBehaviour {
     /// Destory this game object
     /// returns false
     void ENEMY_A_destroy_gameobject() {
-        Destroy(gameObject);
+        print("--------------------- died ");
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName("Death")) {
+            if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1) {
+                Destroy(gameObject);
+                Debug.LogError("over");
+            }
+        } else {
+            animator.Play("Death");
+            Debug.LogError("play death");
+        }
     }
     /// Updates the stunned Play the stunt animation
     void ENEMY_A_play_stunned_animation() { // TODO change from timer to the duration of the animation itself
@@ -467,7 +476,6 @@ public class Enemy_Controller : MonoBehaviour {
                         trigger_hit_player = true; // TODO 'ere
                         // -- jump
                         animator.SetTrigger(animations.JUMPBACK);
-                        print("JUMPED");
                         dash.dash(transf.position, transf.position - target_transform.position, Dash.TYPES.NORMAL);
                         trigger_is_jumping = true;
                         trigger_hit_player = false; // TODO wtf look above
