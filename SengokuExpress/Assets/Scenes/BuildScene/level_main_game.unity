@@ -3745,6 +3745,18 @@ PrefabInstance:
       propertyPath: health
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 973927722657849086, guid: 47697cd823c6ee3469a44b4252650d50, type: 3}
+      propertyPath: audio_source.get_hit
+      value: 
+      objectReference: {fileID: 8300000, guid: 4e9c5c76daa39d44c841a0bd6cd6d146, type: 3}
+    - target: {fileID: 973927722657849086, guid: 47697cd823c6ee3469a44b4252650d50, type: 3}
+      propertyPath: audio_source.walk
+      value: 
+      objectReference: {fileID: 8300000, guid: a77f73929c5345a458c633a99f54a8cc, type: 3}
+    - target: {fileID: 973927722657849086, guid: 47697cd823c6ee3469a44b4252650d50, type: 3}
+      propertyPath: audio_source.death
+      value: 
+      objectReference: {fileID: 8300000, guid: d92de64adae226a499f4a5c7c350fd29, type: 3}
     - target: {fileID: 3183367226183983194, guid: 47697cd823c6ee3469a44b4252650d50, type: 3}
       propertyPath: m_Name
       value: Enemy Light (2)
@@ -3792,6 +3804,14 @@ PrefabInstance:
     - target: {fileID: 3183367226183983195, guid: 47697cd823c6ee3469a44b4252650d50, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7734177057172035895, guid: 47697cd823c6ee3469a44b4252650d50, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8464399302679131474, guid: 47697cd823c6ee3469a44b4252650d50, type: 3}
+      propertyPath: m_audioClip
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 47697cd823c6ee3469a44b4252650d50, type: 3}
@@ -5563,10 +5583,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 772063543}
     m_Modifications:
-    - target: {fileID: 973927722657849086, guid: 47697cd823c6ee3469a44b4252650d50, type: 3}
-      propertyPath: health
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 3183367226183983194, guid: 47697cd823c6ee3469a44b4252650d50, type: 3}
       propertyPath: m_Name
       value: Enemy Light (1)

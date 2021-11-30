@@ -92,9 +92,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audio_source:
-    get_hit: {fileID: 0}
-    walk: {fileID: 0}
-    death: {fileID: 0}
+    get_hit: {fileID: 8300000, guid: 4e9c5c76daa39d44c841a0bd6cd6d146, type: 3}
+    walk: {fileID: 8300000, guid: a77f73929c5345a458c633a99f54a8cc, type: 3}
+    death: {fileID: 8300000, guid: d92de64adae226a499f4a5c7c350fd29, type: 3}
   part_hit: {fileID: 4304035432792330865}
   part_spawn:
   - {fileID: 3137835092754711631}
@@ -150,7 +150,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 7795023831628578339, guid: e7bfdc30727735643ad270c41a0b4ba9, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 02afe21a57951684e9757374168cf161, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -246,7 +246,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 7795023831628578339, guid: e7bfdc30727735643ad270c41a0b4ba9, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 4e9c5c76daa39d44c841a0bd6cd6d146, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
