@@ -297,15 +297,12 @@ public class Enemy_Controller : MonoBehaviour {
     /// Destory this game object
     /// returns false
     void ENEMY_A_destroy_gameobject() {
-        print("--------------------- died ");
         if (animator.GetCurrentAnimatorStateInfo(0).IsName("Death")) {
             if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1) {
                 Destroy(gameObject);
-                Debug.LogError("over");
             }
         } else {
             animator.Play("Death");
-            Debug.LogError("play death");
         }
     }
     /// Updates the stunned Play the stunt animation
