@@ -8,6 +8,7 @@ public class Enemy_Controller : MonoBehaviour {
     /// FIELDS
     /// ===
     Transform transf = null; // cache transform
+    [SerializeField] Enemy_Audio audio_source = new Enemy_Audio();
     [SerializeField] ParticleSystem part_hit = null; // ! should be set through the editor
     [SerializeField] List<ParticleSystem> part_spawn = new List<ParticleSystem>();
     [SerializeField] Animator animator = null;       // ! meant to be assigned in the editor
@@ -25,6 +26,8 @@ public class Enemy_Controller : MonoBehaviour {
     Combat combat = new Combat();
     [SerializeField] Vector3 attack_hitbox_offset = new Vector3();
     [SerializeField] Vector3 attack_hitbox_extents = new Vector3();
+    [SerializeField] AudioSource main_audio_source = null; // ! to be set through the editor
+    [SerializeField] AudioSource walk_audio_source = null; // ! to be set through the editor
 
     Transform target_transform = null;
     float stun_timer;
@@ -145,6 +148,7 @@ public class Enemy_Controller : MonoBehaviour {
                 ai_state_depth = 1;
             }
         } else {
+            // TODO play death animation
             ENEMY_A_destroy_gameobject();
             ai_state_depth = 0;
         }
@@ -157,6 +161,8 @@ public class Enemy_Controller : MonoBehaviour {
         } else {
             local_delta_time_scaler = 1;
         }
+        // -- disable looping audio
+        if (ai_state_depth != 7 && ai_state_depth != 8 && ai_state_depth != 9) play_walk_audio(false); // don't walk when not approaching or sidesteping
         // TODO: update animation's speed based on local_delta_time_scaler
         print("state: " + ai_state_depth);
     }
@@ -185,10 +191,13 @@ public class Enemy_Controller : MonoBehaviour {
         health -= damage;
         if (health <= 0) {
             is_alive = false;
+            play_audio(audio_source.death);
             animator.SetTrigger(animations.DEATH);
             if (arena != null) {
                 arena.update_status(); // refresh arena to register this enemy's death
             }
+        } else {
+            play_audio(audio_source.get_hit);
         }
         // -- slow down
         local_delta_time_scaler = 0.2f; // ! @incomplete MAGIC NUMBER
@@ -306,6 +315,8 @@ public class Enemy_Controller : MonoBehaviour {
         look_at(target_transform.position);
         // -- play animation
         animator.SetBool(animations.RUN, true);
+        // -- audio
+        play_walk_audio(true);
     }
     /// The player is close enough, move around him a little before initiating attack.
     void ENEMY_A_maneuver_player() {
@@ -323,6 +334,8 @@ public class Enemy_Controller : MonoBehaviour {
         look_at(target_transform.position);
         // -- animation
         animator.SetTrigger(animations.SIDESTEP);
+        // -- audio
+        play_walk_audio(true);
     }
     /// Get ready to land attack updates the animation for the suspense before landing an attack
     void ENEMY_A_get_ready_to_land_attack() {
@@ -462,6 +475,15 @@ public class Enemy_Controller : MonoBehaviour {
         }
     }
 
+    /// play a non looping audio
+    void play_audio(AudioClip clip) {
+        main_audio_source.clip = clip;
+        main_audio_source.Play();
+    }
+    void play_walk_audio(bool value) {
+        walk_audio_source.enabled = value;
+    }
+
     [System.Serializable]
     private class Enemy_Animations {
         public string ATTACK1 = "Attack1";
@@ -478,6 +500,13 @@ public class Enemy_Controller : MonoBehaviour {
         public string SIDESTEP = "SideStep";
         // public string IDLE     = "Idle";
         // public string ANIM_SIDESTEP = "SideStep"; // * we probabily don't have time to create an animation for this
+    }
+
+    [System.Serializable]
+    private class Enemy_Audio {
+        public AudioClip get_hit = null;
+        public AudioClip walk    = null;
+        public AudioClip death   = null;
     }
 }
 /// blackboard

@@ -43,7 +43,6 @@ public class Player_Controller : MonoBehaviour {
     }
     /// initialise fields
     void Start() {
-        dash_trail.gameObject.SetActive(false);
         Global.player_controller = this;
         // -- setup fields
         bark_meter_percentage = 0;
@@ -79,6 +78,9 @@ public class Player_Controller : MonoBehaviour {
         combat.attack_functions_update.Add(delegate_attack_1_update);
         combat.attack_functions_update.Add(delegate_attack_2_update);
         combat.attack_functions_update.Add(delegate_attack_3_update);
+        // -- disable particles and trails on start
+        dash_trail.gameObject.SetActive(false);
+        combat.attack_trail.enabled = false;
     }
     /// Update to read input values
     void Update() {
@@ -144,6 +146,7 @@ public class Player_Controller : MonoBehaviour {
     [SerializeField] int health = 6;
     public void hit(int damage) {
         is_hit = true;
+        play_audio(audio_source.hurt);
         // -- start hit animation
         // -- apply damage
         if (!god_mode) {
@@ -388,26 +391,3 @@ public class Player_Controller : MonoBehaviour {
         public AudioSource walk_audio_source = null;
     }
 }
-// /// Player Combat system -> todo generalize to be applied to the enemies
-// [System.Serializable]
-// public class CombatV2 {
-//     // -- visual
-//     public TrailRenderer swing_trail = null; // meant to be assigned in the editor
-//     // -- interface
-//     [HideInInspector] bool is_attacking = false; // whether we are updating any attacks
-//     [HideInInspector] public bool is_queued    = false; // whether another combo is queued, or whether we want to start attacking.
-//     [HideInInspector] public delegate void On_Hit_Delegate();
-//     [HideInInspector] public On_Hit_Delegate on_hit = null;
-//     // -- internal
-//     [SerializeField] List<Combo> combos = new List<Combo>(); // the possible combos
-
-//     [System.Serializable]
-//     private class Combo {
-//         public float combo_chain_valid_window_percentage = 0.6f; // use this to allow the player to chain their attacks, only when they press attack after the value assigned as a percentage
-//         public float duration = 1f; // the duration of combo in seconds
-//         public 
-//         public void update() {
-
-//         }
-//     }
-// }
