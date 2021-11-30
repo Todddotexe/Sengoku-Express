@@ -154,7 +154,6 @@ public class Enemy_Controller : MonoBehaviour {
             local_delta_time_scaler = 1;
         }
         // TODO: update animation's speed based on local_delta_time_scaler
-        Debug.Log("state: " + ai_state_depth);
     }
     /// draw gizmos in the Unity editor to visualize some parameters
     void OnDrawGizmos() {

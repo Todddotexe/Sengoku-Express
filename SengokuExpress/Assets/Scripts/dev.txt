@@ -13,8 +13,8 @@
 - [ ] ! dash sound is played even when the player is attacking
 - [//] fix menu controller not working with controller or keyboard to select buttons in main menu and pause menu etc.
 - [ ] enhance the controller input experience with GUI
-- [ ] ! pausing the game when walking does not stop audio
-- [ ] ! fix enemy animation and combat
+- [///] ! pausing the game when walking does not stop audio (pausing the game did not pause audio)
+- [///] ! fix enemy animation and combat
 - [ ] ! fix game starting with trail renderer being active
 - [ ] ! add enemy particle being played when they get hit
 /// -- SUGGESTIONS TO ADD:
@@ -23,7 +23,6 @@
 - [//] Enemies should get knocked back after 3rd hit of combo (TESTING)
 - [//] Added a particle player for environmental particles
 /// -- FEATURES YET TO ADD
-- [ ] ! integrate GUI graphics
 - [ ] health drops
 - [ ] player death animation integration
 - [ ] interesting enemy spawning animation

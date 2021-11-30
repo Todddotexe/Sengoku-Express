@@ -19,9 +19,11 @@ public static class Global {
         if (value) {
             pre_pause_time_scale = Time.timeScale;
             Time.timeScale = 0;
+            AudioListener.pause = true;
         }
         else {
             Time.timeScale = pre_pause_time_scale;
+            AudioListener.pause = false;
         }
     }
     /// set the gui
