@@ -43,7 +43,6 @@ public class Player_Controller : MonoBehaviour {
     }
     /// initialise fields
     void Start() {
-        dash_trail.gameObject.SetActive(false);
         Global.player_controller = this;
         // -- setup fields
         bark_meter_percentage = 0;
@@ -79,6 +78,9 @@ public class Player_Controller : MonoBehaviour {
         combat.attack_functions_update.Add(delegate_attack_1_update);
         combat.attack_functions_update.Add(delegate_attack_2_update);
         combat.attack_functions_update.Add(delegate_attack_3_update);
+        // -- disable particles and trails on start
+        dash_trail.gameObject.SetActive(false);
+        combat.attack_trail.enabled = false;
     }
     /// Update to read input values
     void Update() {
@@ -141,9 +143,10 @@ public class Player_Controller : MonoBehaviour {
     bool is_hit = false;
     bool is_alive = true;
     bool is_knocked_back = false;
-    int health = 3;
+    [SerializeField] int health = 6;
     public void hit(int damage) {
         is_hit = true;
+        play_audio(audio_source.hurt);
         // -- start hit animation
         // -- apply damage
         if (!god_mode) {
@@ -216,7 +219,6 @@ public class Player_Controller : MonoBehaviour {
     }
     /// used to queue attack
     void delegate_attack(InputAction.CallbackContext obj) {
-        print("delegate attack is called");
         if (Global.get_state() == Global.STATES.PAUSED) return; // don't do anything
         combat.queued_combo = true; // @nocheckin // ! where is queued combo set to false? during combat.update?
         /*if (combat.is_attacking) {
@@ -227,7 +229,6 @@ public class Player_Controller : MonoBehaviour {
     }
     /// first attack in the combo chain (Start)
     void delegate_attack_1_start() {
-        print("attack 1 start");
         has_hit_enemy = false;
         components.animator.Play("Attack1");
         combat.toggle_attack_current_combo_finished = false;
@@ -238,7 +239,6 @@ public class Player_Controller : MonoBehaviour {
     /// first attack in the combo chain (Update)
     void delegate_attack_1_update() { // @nocheckin // ! update is not called after attacked once
         // @nocheckin // ! where is internal_animation_queued_combo set to true? @delegate_attack
-        print("attack 1 update");
         attack_hit(1);
         /*if (components.animator.GetBool(PAS.internal_code_current_combo_finished)) {
             combat.toggle_attack_current_combo_finished = true;
@@ -247,7 +247,6 @@ public class Player_Controller : MonoBehaviour {
     }
     /// second attack in the combo chain (Start)
     void delegate_attack_2_start() {
-        print("attack 2 start");
         combat.toggle_attack_current_combo_finished = false;
         has_hit_enemy = false; // TODO investigate why we only have this here
         components.animator.Play("Attack2");
@@ -256,7 +255,6 @@ public class Player_Controller : MonoBehaviour {
     }
     /// second attack in the combo chain (Update)
     void delegate_attack_2_update() {
-        print("attack 2 update");
         attack_hit(2);
         /*if (components.animator.GetBool(PAS.internal_code_current_combo_finished)) {
             combat.toggle_attack_current_combo_finished = true;
@@ -265,7 +263,6 @@ public class Player_Controller : MonoBehaviour {
     }
     /// third attack in the combo chain (Start)
     void delegate_attack_3_start() {
-        print("attack 3 start");
         combat.toggle_attack_current_combo_finished = false;
         has_hit_enemy = false;
         var rot = transform.forward;
@@ -276,7 +273,6 @@ public class Player_Controller : MonoBehaviour {
     }
     /// third attack in the combo chain (Update)
     void delegate_attack_3_update() {
-        print("attack 3 update");
         PLAYER_apply_dash();
         attack_hit(3);
         /*if (components.animator.GetBool(PAS.internal_code_current_combo_finished)) {
@@ -301,7 +297,7 @@ public class Player_Controller : MonoBehaviour {
                         enemy.knock_back(new Vector2(knock_back_direction.x, knock_back_direction.z), 1f);
                     }
                     {   // -- toggle has hit enemy so we don't hit more enemies or hit the same enemy multiple times
-                        print("hit enemy attack combo index: " + attack_combo_index.ToString());
+                        // print("hit enemy attack combo index: " + attack_combo_index.ToString());
                         has_hit_enemy = true;
                         break;
                     }
@@ -388,26 +384,3 @@ public class Player_Controller : MonoBehaviour {
         public AudioSource walk_audio_source = null;
     }
 }
-// /// Player Combat system -> todo generalize to be applied to the enemies
-// [System.Serializable]
-// public class CombatV2 {
-//     // -- visual
-//     public TrailRenderer swing_trail = null; // meant to be assigned in the editor
-//     // -- interface
-//     [HideInInspector] bool is_attacking = false; // whether we are updating any attacks
-//     [HideInInspector] public bool is_queued    = false; // whether another combo is queued, or whether we want to start attacking.
-//     [HideInInspector] public delegate void On_Hit_Delegate();
-//     [HideInInspector] public On_Hit_Delegate on_hit = null;
-//     // -- internal
-//     [SerializeField] List<Combo> combos = new List<Combo>(); // the possible combos
-
-//     [System.Serializable]
-//     private class Combo {
-//         public float combo_chain_valid_window_percentage = 0.6f; // use this to allow the player to chain their attacks, only when they press attack after the value assigned as a percentage
-//         public float duration = 1f; // the duration of combo in seconds
-//         public 
-//         public void update() {
-
-//         }
-//     }
-// }

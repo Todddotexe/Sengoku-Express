@@ -101,8 +101,8 @@ Material:
     - _SwaySpeed: 1.4
     - _VertOffsetMultiplier: -0.45
     - _VertOffsetOffset: -0.04
-    - _VerticalOffset: -1.1
-    - _VerticalScale: -0.98
+    - _VerticalOffset: -1
+    - _VerticalScale: -1.11
     - _WindNoiseScale: 17.5
     - _WindSpeedDensityU: 0.1
     - _WindSpeedDensityV: -0.19

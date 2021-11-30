@@ -93,7 +93,7 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     - health: 1
-    - inverse_health: 0.1
+    - inverse_health: 0.6
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
