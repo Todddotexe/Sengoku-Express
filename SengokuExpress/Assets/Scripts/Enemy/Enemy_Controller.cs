@@ -8,7 +8,9 @@ public class Enemy_Controller : MonoBehaviour {
     /// FIELDS
     /// ===
     Transform transf = null; // cache transform
-    [SerializeField] Animator animator = null; // ! meant to be assigned in the editor
+    [SerializeField] ParticleSystem part_hit = null; // ! should be set through the editor
+    [SerializeField] List<ParticleSystem> part_spawn = new List<ParticleSystem>();
+    [SerializeField] Animator animator = null;       // ! meant to be assigned in the editor
     [SerializeField] Enemy_Animations animations = new Enemy_Animations();
     [SerializeField] float vision_radius = 6f;
     [SerializeField] float combat_maneuver_radius = 5f;
@@ -17,10 +19,8 @@ public class Enemy_Controller : MonoBehaviour {
     [SerializeField] float maneuver_timer_init = 0.5f; // used in ENEMY_C_has_maneuvered_long_enough
     [SerializeField] float maneuver_speed_deg_per_second = 40f;
     [SerializeField] float health = 4;
-    [SerializeField] float hit_animation_timer_init = 0.2f;
     [SerializeField] Movement movement = new Movement();
     [SerializeField] Dash dash = new Dash();
-    [SerializeField] Material material_hit = null; // used to demo enemy getting hit. Flash enemy to this material when is_hit == true
     [SerializeField] new Renderer renderer = null;
     Combat combat = new Combat();
     [SerializeField] Vector3 attack_hitbox_offset = new Vector3();
@@ -49,7 +49,6 @@ public class Enemy_Controller : MonoBehaviour {
     void Start() {
         // -- assert
         Debug.Assert(renderer != null);
-        Debug.Assert(material_hit != null);
         blackboard = Global.blackboard;
         // -- init fields
         transf = transform; // cache transform
@@ -65,6 +64,13 @@ public class Enemy_Controller : MonoBehaviour {
         combat.attack_functions_update.Add(delegate_attack_1_update);
         combat.attack_functions_update.Add(delegate_attack_2_update);
         combat.attack_functions_update.Add(delegate_attack_3_update);
+
+        // -- spawn particle
+        if (part_spawn.Count > 0) {
+            foreach (ParticleSystem particle in part_spawn) {
+                particle.Play();
+            }
+        }
     }
     /// called every physics frame
     void FixedUpdate() {
@@ -354,15 +360,8 @@ public class Enemy_Controller : MonoBehaviour {
     }
     /// Play the hit animation
     void play_hit_animation() { // todo change this to the duration of the actual animation
-        if (is_hit) {
-            if (hit_animation_timer > 0) {
-                hit_animation_timer -= Time.deltaTime;
-                renderer.material = material_hit;
-            } else {
-                hit_animation_timer = hit_animation_timer_init;
-                renderer.material = material_normal;
-                is_hit = false;
-            }
+        if (is_hit && part_hit != null) {
+            part_hit.Play();
         }
     }
 
