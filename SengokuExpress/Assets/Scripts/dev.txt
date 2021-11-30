@@ -17,6 +17,9 @@
 - [///] ! fix enemy animation and combat
 - [ ] ! fix game starting with trail renderer being active
 - [ ] ! add enemy particle being played when they get hit
+- [ ] ! enemy does not go back to idle state when the player dashes out of its range
+- [ ] ! when you play the game and go back to main menu, the start button does not work
+- [ ] ! Unity does not select a button by default in the settings and pause menu (and potentially win and lost menus)
 /// -- SUGGESTIONS TO ADD:
 - [/] player should dash towards where they are facing if no input
 - [ ] cool down on player attacks after finishing a combo to leave him vulnerable
