@@ -25,7 +25,7 @@
 - [ ] ! disable attack trail when the player wants to put the sword back
 - [////] ! put sound on enemies
 - [////] ! add a get hit sfx on player
-- [ ] ! play death animation on enemies
+- [////] ! play death animation on enemies
 - [////] ! disable attack trail at the start of the game
 - [////] ! enemy does not go back to idle state when the player dashes out of its range
 - [////] ! enemy getting stuck in between run and sidestep
