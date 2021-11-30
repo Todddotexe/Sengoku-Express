@@ -18,7 +18,7 @@ public class Player_Controller : MonoBehaviour {
     /// ===
     /// FIELDS
     /// ===
-    Transform transf = null; // cached transform
+    // Transform transform = null; // cached transform
     [SerializeField] Movement movement = new Movement();   // ! the reason we initialise these here is because I'm testing whether we can change the values in Unity Editor and keep it. If we initialise them in Start(), all the changes in UnityEditor will be lost. Especially if there's an asset field like the Dash_Particle alex tried to put in.
     [SerializeField] Dash dash = new Dash();
     [SerializeField] Player_Bark bark = new Player_Bark();
@@ -38,13 +38,14 @@ public class Player_Controller : MonoBehaviour {
     float timer_knockback = 0.1f;
     float bark_meter_percentage = 0f; // goes from 0 - 1
     const float BARK_METER_POINT = 0.1f;
-
+    void Awake() {
+        // transform = base.transform;
+    }
     /// initialise fields
     void Start() {
         dash_trail.gameObject.SetActive(false);
         Global.player_controller = this;
         // -- setup fields
-        transf = transform;
         bark_meter_percentage = 0;
         Global.set_bark_meter(bark_meter_percentage);
         Global.set_health(health);
@@ -155,20 +156,20 @@ public class Player_Controller : MonoBehaviour {
     }
     /// knock back and stun enemy
     public void knock_back(Vector2 direction) {
-        dash.dash(transf.position, direction, Dash.TYPES.KNOCKBACK);
+        dash.dash(transform.position, direction, Dash.TYPES.KNOCKBACK);
         is_knocked_back = true;
     }
     /// draw debugging aids
     void OnDrawGizmos() {
         // -- bark area
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, bark.radius);
+        Gizmos.DrawWireSphere(base.transform.position, bark.radius);
         // -- dash range
-        Vector3 dash_offset = new Vector3(0, 1, 0) + transform.position;
+        Vector3 dash_offset = new Vector3(0, 1, 0) + base.transform.position;
         Gizmos.color = Color.blue;
-        Gizmos.DrawLine(dash_offset, dash_offset + transform.forward * dash.normal_dash_range);
+        Gizmos.DrawLine(dash_offset, dash_offset + base.transform.forward * dash.normal_dash_range);
         // -- attack hitbox
-        Gizmos.DrawWireCube(transform.position + (attack_hitbox_offset).rotate(transform.rotation.eulerAngles.y), attack_hitbox_extents);
+        Gizmos.DrawWireCube(base.transform.position + (attack_hitbox_offset).rotate(base.transform.rotation.eulerAngles.y), attack_hitbox_extents);
     }
     /// used as a delegate for Player_Inputs.dash
     void delegate_dash(InputAction.CallbackContext obj) {
@@ -177,9 +178,9 @@ public class Player_Controller : MonoBehaviour {
             dash_cool_down = dash_cool_down_duration;
             // -- get dash direction
             var dash_direction = inputs.input_vec2;
-            if (dash_direction.magnitude == 0) dash_direction = new Vector2(transf.forward.x, transf.forward.z); // dash towards where the player is facing if no input is present.
+            if (dash_direction.magnitude == 0) dash_direction = new Vector2(transform.forward.x, transform.forward.z); // dash towards where the player is facing if no input is present.
             // -- apply dash
-            dash.dash(transf.position, dash_direction, Dash.TYPES.NORMAL);
+            dash.dash(transform.position, dash_direction, Dash.TYPES.NORMAL);
             // -- animation
             components.animator.SetTrigger(binds.ANIMATION_TRIGGER_DASH);
             // -- audio
@@ -204,7 +205,7 @@ public class Player_Controller : MonoBehaviour {
             part_bark.Play();
         }
         // -- init collision
-        Collider[] colliders = Physics.OverlapSphere(transf.position, bark.radius);
+        Collider[] colliders = Physics.OverlapSphere(transform.position, bark.radius);
         foreach (Collider collider in colliders) {
             Enemy_Controller enemy = collider.gameObject.GetComponent<Enemy_Controller>();
             if (enemy != null) {
@@ -267,8 +268,8 @@ public class Player_Controller : MonoBehaviour {
         print("attack 3 start");
         combat.toggle_attack_current_combo_finished = false;
         has_hit_enemy = false;
-        var rot = transf.forward;
-        dash.dash(transf.position, new Vector2(rot.x, rot.z), Dash.TYPES.COMBAT);
+        var rot = transform.forward;
+        dash.dash(transform.position, new Vector2(rot.x, rot.z), Dash.TYPES.COMBAT);
         /*components.animator.SetTrigger(binds.ANIMATION_TRIGGER_ATTACK_3);*/
         components.animator.Play("Attack3");
         play_audio(audio_source.attack_3);
@@ -286,7 +287,7 @@ public class Player_Controller : MonoBehaviour {
     /// this is called when the attack hits an enemy
     void attack_hit(uint attack_combo_index) {
         if (!has_hit_enemy) {
-            Collider[] colliders = Physics.OverlapBox(transf.position + (attack_hitbox_offset).rotate(transf.rotation.eulerAngles.y), attack_hitbox_extents, transf.rotation);
+            Collider[] colliders = Physics.OverlapBox(transform.position + (attack_hitbox_offset).rotate(transform.rotation.eulerAngles.y), attack_hitbox_extents, transform.rotation);
             foreach (Collider collider in colliders) {
                 Enemy_Controller enemy = collider.gameObject.GetComponent<Enemy_Controller>();
                 if (enemy != null) {
@@ -295,7 +296,7 @@ public class Player_Controller : MonoBehaviour {
                     bark_meter_percentage += BARK_METER_POINT;
                     Global.set_bark_meter(bark_meter_percentage);
                     {   // -- apply knockback
-                        var knock_back_direction = enemy.transform.position - transf.position;
+                        var knock_back_direction = enemy.transform.position - transform.position;
                         // @incomplete passing magic number
                         enemy.knock_back(new Vector2(knock_back_direction.x, knock_back_direction.z), 1f);
                     }
@@ -316,14 +317,14 @@ public class Player_Controller : MonoBehaviour {
     /// Returns false if dash is completed or the player is no longer dashing (dash.is_dashing() == true)
     void PLAYER_apply_dash() {
         if (dash.is_in_progress) {
-            movement.velocity = dash.update(movement.velocity, transf);
+            movement.velocity = dash.update(movement.velocity, transform);
         }
     }
     /// apply velocity to the player. Returns true at all times
     void PLAYER_apply_velocity() {
         // -- update face dir to point at input direction not velocity
         Vector3 face_dir = inputs.input;
-        transf.forward = Vector3.Slerp(transf.forward, face_dir, movement.rotation_speed * Time.deltaTime);
+        transform.forward = Vector3.Slerp(transform.forward, face_dir, movement.rotation_speed * Time.deltaTime);
         // -- friction
         if (movement.velocity.x != 0 || movement.velocity.y != 0) {
             movement.velocity.x = Mathf.Lerp(movement.velocity.x, 0, 
