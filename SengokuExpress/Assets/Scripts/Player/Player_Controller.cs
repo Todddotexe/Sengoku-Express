@@ -65,9 +65,9 @@ public class Player_Controller : MonoBehaviour {
         inputs.dash       = components.input.actions[binds.DASH_INPUT_LABEL];
         inputs.bark       = components.input.actions[binds.BARK_INPUT_LABEL];
         inputs.attack     = components.input.actions[binds.ATTACK_INPUT_LABEL];
-        // inputs.dash.performed      -= delegate_dash;
-        // inputs.bark.performed      -= delegate_bark;
-        // inputs.attack.performed    -= delegate_attack;
+        inputs.dash.performed      -= delegate_dash;
+        inputs.bark.performed      -= delegate_bark;
+        inputs.attack.performed    -= delegate_attack;
         
         inputs.dash.performed += delegate_dash;
         inputs.bark.performed += delegate_bark;
@@ -386,12 +386,6 @@ public class Player_Controller : MonoBehaviour {
         public Animator animator = null; // ! this is now required to be set through the editor because the animator is on a child object
         public AudioSource main_audio_source = null;
         public AudioSource walk_audio_source = null;
-    }
-
-    void OnDestory() {
-        inputs.dash.performed      -= delegate_dash;
-        inputs.bark.performed      -= delegate_bark;
-        inputs.attack.performed    -= delegate_attack;
     }
 }
 // /// Player Combat system -> todo generalize to be applied to the enemies
