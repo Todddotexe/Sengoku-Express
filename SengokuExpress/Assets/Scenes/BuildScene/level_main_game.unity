@@ -3566,9 +3566,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1086522089}
     m_Modifications:
+    - target: {fileID: 485650730, guid: 5aaf91136d4ba8d4dadb54fd50f9f98f, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -1.14
+      objectReference: {fileID: 0}
+    - target: {fileID: 485650731, guid: 5aaf91136d4ba8d4dadb54fd50f9f98f, type: 3}
+      propertyPath: m_Text
+      value: 'Hot damn I really need
+
+        to deliver this letter
+
+'
+      objectReference: {fileID: 0}
     - target: {fileID: 1381945599, guid: 5aaf91136d4ba8d4dadb54fd50f9f98f, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 672591291467628306, guid: 5aaf91136d4ba8d4dadb54fd50f9f98f, type: 3}
       propertyPath: m_AnchorMin.x
