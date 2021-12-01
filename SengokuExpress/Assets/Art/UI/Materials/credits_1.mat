@@ -21,20 +21,35 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: credits_1
-  m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
-  m_ShaderKeywords: _RECEIVE_SHADOWS_OFF _SPECULAR_SETUP
+  m_Shader: {fileID: -6465566751694194690, guid: 47891608c3460c74f9defb8cbc16050b, type: 3}
+  m_ShaderKeywords: _ALPHATEST_ON _RECEIVE_SHADOWS_OFF _SPECULAR_SETUP
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 2000
-  stringTagMap:
-    RenderType: Opaque
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
   disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - Texture2D_36371A4B:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_60A0CEB:
+        m_Texture: {fileID: 2800000, guid: e231e4c02c48ee14aafa55f7b1a843c1, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_785DA374:
+        m_Texture: {fileID: 2800000, guid: 8e8901d4417b88e4ab95ac6232177e19, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_FEF555B1:
+        m_Texture: {fileID: 2800000, guid: 9ff106f19bc62cd409173c2c0a3b06bb, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _BaseMap:
-        m_Texture: {fileID: 2800000, guid: 7ff3e6b0844fbd8409ce7768e37b9604, type: 3}
+        m_Texture: {fileID: 2800000, guid: 9ff106f19bc62cd409173c2c0a3b06bb, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
@@ -46,7 +61,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 7ff3e6b0844fbd8409ce7768e37b9604, type: 3}
+        m_Texture: {fileID: 2800000, guid: 9ff106f19bc62cd409173c2c0a3b06bb, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -62,7 +77,12 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _AlphaClip: 0
+    - Vector1_33F2DAE3: 2.5
+    - Vector1_367223AD: 0.5
+    - Vector1_9D75784F: 0.5
+    - Vector1_D0D025CD: 3
+    - Vector1_DE2563C7: 1.01
+    - _AlphaClip: 1
     - _Blend: 0
     - _BumpScale: 1
     - _Cull: 2
@@ -84,7 +104,10 @@ Material:
     - _WorkflowMode: 0
     - _ZWrite: 1
     m_Colors:
-    - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
+    - Color_9CE2700E: {r: 0.7783019, g: 0.9052572, b: 1, a: 1}
+    - Vector2_BEA1CC96: {r: 1, g: 1, b: 0, a: 0}
+    - Vector2_E16E386F: {r: 0, g: 0, b: 0, a: 0}
+    - _BaseColor: {r: 0.7028302, g: 0.82485574, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
