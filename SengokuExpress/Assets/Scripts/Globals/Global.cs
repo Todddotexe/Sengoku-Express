@@ -11,6 +11,7 @@ public static class Global {
     public static Input_Manager input_manager = null;
     public static bool has_init_input_manager = false;
     public static Player_Controller player_controller = null;
+    public static Main_Camera_Controller main_camera = null;
     /// layers
     /// pause system
     static GUI_Controller gui = null;

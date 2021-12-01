@@ -34,6 +34,8 @@ public class Main_Camera_Controller : MonoBehaviour {
     [SerializeField]
     Transform target;
     [SerializeField]
+    Transform joe;
+    [SerializeField]
     float drag_stiffness = 3f;
     [SerializeField]
     float drag_ignore_radius = 1f;
@@ -43,10 +45,15 @@ public class Main_Camera_Controller : MonoBehaviour {
     Vector3 angle = new Vector3(11, -14, 12);
     // Quaternion rotation;
     Transform transf;
+    bool joe_mode = false;
 
     // ==
     // MAIN FUNCTIONS
     // ==
+    void Awake()
+    {
+        Global.main_camera = this;
+    }
     void Start() {
         transf = gameObject.transform;
         transf.position = target.position;
@@ -62,6 +69,20 @@ public class Main_Camera_Controller : MonoBehaviour {
     //
     void FixedUpdate() {
         if (target == null) return;
+        
+        if (joe_mode)
+        {
+            joe.position += new Vector3(0, Time.deltaTime, 0);
+        }
+
         transf.position += ((target.position - transf.position) - target_offset) * drag_stiffness * Time.deltaTime;
+
+    }
+    public void look_at_joe()
+    {
+        target = joe;
+        transf.position = target.position;
+        transf.LookAt(joe);
+        joe_mode = true;
     }
 }

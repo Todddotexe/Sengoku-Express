@@ -38,6 +38,7 @@ public class Player_Controller : MonoBehaviour {
     float timer_knockback = 0.1f;
     float bark_meter_percentage = 0f; // goes from 0 - 1
     const float BARK_METER_POINT = 0.1f;
+    public bool won = false;
     void Awake() {
         // transform = base.transform;
     }
@@ -94,6 +95,10 @@ public class Player_Controller : MonoBehaviour {
     /// physics update
     void FixedUpdate() {
         if (Global.get_state() == Global.STATES.PAUSED) return; // don't do anything
+        if (won) {
+            components.animator.Play("Idle");
+            return;
+        }
         if (!is_alive) {
             Destroy(gameObject);
             Global.set_game_state(Global.STATES.LOST);
